@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'Henrietta Condensed';
+  font-weight: 400;
+  font-style: normal;
+  src: url('/fonts/VCHenriettaCondensed-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Henrietta Condensed';
+  font-weight: 500;
+  font-style: normal;
+  src: url('/fonts/VCHenriettaCondensed-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Henrietta Condensed';
+  font-weight: 600;
+  font-style: normal;
+  src: url('/fonts/VCHenriettaCondensed-SemiBold.woff2') format('woff2');
+}
