@@ -1,0 +1,14 @@
+:root {
+  @apply min-w-[320px];
+  --h-screen: calc(100 * var(--vh, 1vh));
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 150ms ease;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
