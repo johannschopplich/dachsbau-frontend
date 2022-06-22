@@ -35,17 +35,45 @@ const theme = {
   fontFamily: {
     heading: `Henrietta,${themeWind.fontFamily.sans}`,
     'heading-condensed': `Henrietta Condensed,${themeWind.fontFamily.sans}`,
+    serif: 'Fraunces,serif',
   },
 }
 
 export default defineConfig({
   theme,
+  shortcuts: {
+    content: 'px-4 sm:px-6 lg:px-8',
+  },
   presets: [
     presetWind(),
     presetTypography({
       cssExtend: {
         'h1,h2,h3,h4,h5,h6': {
           color: theme.colors.secondary[600],
+          'font-family': `Henrietta,${themeWind.fontFamily.sans}`,
+          'font-weight': '400',
+        },
+        a: {
+          color: 'currentColor',
+          'font-weight': 'unset',
+          'text-decoration-line': 'underline',
+          'text-decoration-style': 'solid',
+          'text-decoration-color': theme.colors.primary[600],
+          'text-decoration-thickness': 'max(2px, 0.1em)',
+          'text-underline-offset': 'max(2px, 0.1em)',
+          'text-decoration-skip-ink': 'auto',
+        },
+        'a:hover': {
+          color: theme.colors.primary[500],
+          'text-decoration-line': 'underline',
+        },
+        'a code': {
+          color: theme.colors.primary[500],
+          'text-decoration-line': 'none',
+        },
+        'p,ul,ol,pre': {
+          margin: '1em 0',
+          'line-height': 1.5,
         },
       },
     }),

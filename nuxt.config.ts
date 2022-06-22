@@ -1,18 +1,17 @@
 import { defineNuxtConfig } from 'nuxt'
 
-// https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
-  meta: {
-    title: 'Dachsbau',
-  },
-
-  modules: ['@unocss/nuxt', '@vueuse/nuxt'],
+  modules: ['@unocss/nuxt', '@vueuse/nuxt', 'nuxt-kql'],
 
   runtimeConfig: {
     public: {
-      kirbyBaseUrl: '',
-      kirbyApiKey: '',
+      baseUrl: '',
     },
+  },
+
+  kql: {
+    kirbyAuth: 'bearer',
+    kirbyEndpoint: 'api/kql',
   },
 
   unocss: {
