@@ -6,7 +6,7 @@ const site = useSite()
 const { baseUrl } = useRuntimeConfig().public
 const route = useRoute()
 
-const { data } = await useQuery({
+const { data } = await useKql({
   query: 'site',
   select: {
     title: true,

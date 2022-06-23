@@ -10,8 +10,8 @@ export default defineNuxtConfig({
   },
 
   kql: {
-    kirbyAuth: 'bearer',
-    kirbyEndpoint: 'api/kql',
+    prefix: 'api/kql',
+    auth: 'bearer',
   },
 
   unocss: {

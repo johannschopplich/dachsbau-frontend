@@ -3,7 +3,7 @@ definePageMeta({
   layout: 'home',
 })
 
-const { data } = await useQuery({
+const { data } = await useKql({
   query: 'kirby.page("dachse").children.listed',
   select: {
     id: 'page.id',

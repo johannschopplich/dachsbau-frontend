@@ -4,7 +4,7 @@ import type { KirbyDefaultPage, KirbyDefaultPageQuery } from '~/types'
 
 const route = useRoute()
 
-const { data } = await useQuery<KirbyDefaultPage, KirbyDefaultPageQuery>({
+const { data } = await useKql<KirbyDefaultPage, KirbyDefaultPageQuery>({
   query: `kirby.page("${route.path}")`,
   select: {
     id: true,
