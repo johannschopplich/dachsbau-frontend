@@ -99,7 +99,7 @@ onMounted(() => {
               class="cursor-pointer flex justify-center px-4 sm:w-1/2 sm:px-0 sm:items-center"
             >
               <div>
-                <div class="relative inline-block z-10">
+                <div class="relative inline-block z-5">
                   <HomeAnimatedDash
                     :is-active="animationStack.get(index) ?? false"
                   />
