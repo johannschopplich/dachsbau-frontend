@@ -47,11 +47,9 @@ onMounted(() => {
 
 <template>
   <div>
-    <div
-      class="relative w-full h-[calc(100*var(--vh,1vh)-2*var(--frame-width))]"
-    >
+    <div class="relative w-full h-[calc(var(--h-screen)-2*var(--frame-width))]">
       <div
-        class="floating-hero h-full max-w-screen-md mx-auto content-base grid grid-rows-[1fr_auto_1fr] gap-4 text-center"
+        class="floating-hero h-full max-w-screen-md mx-auto content-base grid grid-rows-[1.5fr_auto_1fr] gap-4 text-center"
       >
         <div />
         <p class="text-4xl font-heading text-primary-500 md:text-6xl">
@@ -120,7 +118,7 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class="w-full h-[calc(100*var(--vh,1vh)-2*var(--frame-width))]">
+    <div class="w-full h-[calc(var(--h-screen)-2*var(--frame-width))]">
       <div
         class="h-full max-w-screen-md mx-auto content-base flex items-center text-center"
       >
@@ -142,7 +140,7 @@ onMounted(() => {
   height: 100%;
   background: url('~/assets/img/dachsbau-hof-2048.png') no-repeat center
     calc(25% + (50% * var(--screen-ratio)));
-  background-size: min(50vw, 15rem) auto;
+  background-size: min(75vw, 20rem) auto;
   opacity: 0.25;
   pointer-events: none;
 }

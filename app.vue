@@ -63,6 +63,7 @@ useHead(() => ({
     { rel: 'stylesheet', href: '/fonts/HenriettaCondensed.css' },
   ],
   meta: [
+    { name: 'theme-color', content: '#3A455B' },
     { name: 'og:title', content: title.value },
     { name: 'og:description', content: description.value },
     { name: 'og:url', content: url.value },
