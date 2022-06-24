@@ -69,7 +69,7 @@ function close() {
           : 'translate-y-[100%] rotate-0 opacity-0 invisible pointer-events-none',
       ]"
     >
-      <img class="h-[15rem]" src="~/assets/img/frechdachs-1024.png" alt="" />
+      <img class="h-[10rem]" src="~/assets/img/frechdachs-1024.png" alt="" />
     </div>
   </header>
 </template>
