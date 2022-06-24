@@ -1,6 +1,14 @@
 :root {
   @apply min-w-[320px];
   --h-screen: calc(100 * var(--vh, 1vh));
+
+  --frame-width: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --frame-width: 1.5rem;
+  }
 }
 
 .page-enter-active,
@@ -11,4 +19,31 @@
 .page-enter-from,
 .page-leave-to {
   opacity: 0;
+}
+
+.handdrawn-mask {
+  -webkit-mask: url('~/assets/img/mask.svg');
+  mask: url('~/assets/img/mask.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+@supports ((-webkit-mask-box-image-width: 10px) or (mask-border-width: 10px)) {
+  .handdrawn-mask {
+    -webkit-mask-box-image-source: url('~/assets/img/mask.png');
+    mask-border-source: url('~/assets/img/mask.png');
+    -webkit-mask-box-image-slice: 20 fill;
+    mask-border-slice: 20 fill;
+    -webkit-mask-box-image-width: 10px;
+    mask-border-width: 10px;
+    -webkit-mask-box-image-repeat: repeat;
+    mask-border-repeat: repeat;
+  }
+}
+
+@media print {
+  .handdrawn-mask {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
 }

@@ -3,6 +3,7 @@ import { KirbyBlock } from '#nuxt-kql'
 import type { KirbyDefaultPage, KirbyDefaultPageQuery } from '~/types'
 
 const route = useRoute()
+const site = useSite()
 
 const { data } = await useKql<KirbyDefaultPage, KirbyDefaultPageQuery>({
   query: `kirby.page("${route.path}")`,
@@ -10,6 +11,7 @@ const { data } = await useKql<KirbyDefaultPage, KirbyDefaultPageQuery>({
     id: true,
     isErrorPage: true,
     title: true,
+    description: true,
     text: 'page.text.toBlocks',
     files: {
       query: 'page.files',
@@ -23,16 +25,20 @@ const { data } = await useKql<KirbyDefaultPage, KirbyDefaultPageQuery>({
   },
 })
 
+const title = computed(
+  () => `${data.value?.result?.title} – ${site.value.title}`
+)
+
 useHead(() => ({
-  title: data.value?.result?.title,
+  title: title.value,
   meta: [
-    { name: 'og:title', content: `${data.value?.result?.title} – Dachsbau` },
-    { name: 'og:description', content: route.meta.description },
+    { name: 'og:title', content: title.value },
+    { name: 'og:description', content: data.value?.result?.description },
     {
       name: 'twitter:title',
-      content: `${data.value?.result?.title} – Dachsbau`,
+      content: title.value,
     },
-    { name: 'twitter:description', content: route.meta.description },
+    { name: 'twitter:description', content: data.value?.result?.description },
   ],
 }))
 

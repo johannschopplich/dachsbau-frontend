@@ -42,7 +42,7 @@ const theme = {
 export default defineConfig({
   theme,
   shortcuts: {
-    content: 'px-4 sm:px-6 lg:px-8',
+    'content-base': 'px-4 sm:px-6 lg:px-8',
   },
   presets: [
     presetWind(),

@@ -1,3 +1,11 @@
+<script lang="ts">
+import type { InjectionKey, Ref } from 'vue'
+
+export const containerInjectionKey = Symbol('container') as InjectionKey<
+  Ref<HTMLElement | undefined>
+>
+</script>
+
 <script setup lang="ts">
 import { resolveURL } from 'ufo'
 import '~/assets/main.css'
@@ -10,6 +18,7 @@ const { data } = await useKql({
   query: 'site',
   select: {
     title: true,
+    description: true,
     children: {
       query: 'site.children',
       select: {
@@ -28,14 +37,16 @@ const { data } = await useKql({
   },
 })
 
-site.value = data.value.result || {}
+site.value = data.value?.result || {}
 
 const title = computed(() =>
   route.meta.title
     ? `${route.meta.title} – ${site.value.title}`
     : site.value.title
 )
-const description = 'Praxis für Yoga, systemische Beratung und Frauenbegleitung'
+const description = computed(
+  () => route.meta.description ?? site.value.description
+)
 const url = computed(() => resolveURL(baseUrl, route.path))
 
 useHead(() => ({
@@ -53,23 +64,27 @@ useHead(() => ({
   ],
   meta: [
     { name: 'og:title', content: title.value },
-    { name: 'og:description', content: description },
+    { name: 'og:description', content: description.value },
     { name: 'og:url', content: url.value },
     { name: 'og:type', content: 'website' },
     { name: 'og:image', content: 'https://vuejs.org/images/logo.png' },
     { name: 'twitter:title', content: title.value },
-    { name: 'twitter:description', content: description },
+    { name: 'twitter:description', content: description.value },
     { name: 'twitter:url', content: url.value },
     { name: 'twitter:image', content: 'https://vuejs.org/images/logo.png' },
     { name: 'twitter:card', content: 'summary' },
   ],
 }))
+
+const container = ref<HTMLElement | undefined>()
+provide(containerInjectionKey, container)
 </script>
 
 <template>
   <div
     id="scroll-container"
-    class="fixed w-[calc(100vw-1rem)] h-[calc(100*var(--vh,1vh)-1rem)] bg-secondary-200 m-2 overflow-y-scroll rounded-3xl md:w-[calc(100vw-3rem)] md:h-[calc(100*var(--vh,1vh)-3rem)] md:m-6"
+    ref="container"
+    class="fixed inset-2 bg-secondary-200 overflow-x-hidden overflow-y-scroll rounded-3xl md:inset-6"
   >
     <NuxtLayout>
       <NuxtPage />

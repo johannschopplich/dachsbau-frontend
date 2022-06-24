@@ -2,6 +2,7 @@ import type { KirbyBlock, KirbyQueryResponse } from '#nuxt-kql'
 
 export interface KirbySite {
   title?: string
+  description?: string
   children?: {
     id: string
     title: string
@@ -19,6 +20,7 @@ export interface KirbyDefaultPageQuery {
     id: string | boolean
     isErrorPage: string | boolean
     title: string | boolean
+    description: string | boolean
     text: string | boolean
     files: {
       query: string
@@ -37,6 +39,7 @@ export interface KirbyDefaultPage extends KirbyQueryResponse {
     id: string
     isErrorPage: boolean
     title: string
+    description: string
     text: KirbyBlock[]
     files: {
       id: string

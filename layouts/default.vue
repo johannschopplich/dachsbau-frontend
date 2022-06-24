@@ -1,11 +1,11 @@
 <template>
-  <div class="h-full">
+  <div class="relative h-full">
     <AppHeader />
 
-    <main class="max-w-screen-md mx-auto py-12 content">
+    <main class="max-w-screen-md mx-auto pt-36 pb-12 content-base">
       <slot />
     </main>
 
-    <AppFooter class="sticky top-[calc(var(--vh,1vh)*100)]" />
+    <AppFooter />
   </div>
 </template>
