@@ -81,8 +81,7 @@ onMounted(() => {
             class="group flex flex-col gap-4 sm:flex-row sm:gap-12"
             @mouseenter="animationStack.set(index, true)"
             @mouseleave="animationStack.set(index, false)"
-            @touchstart="animationStack.set(index, true)"
-            @touchend="animationStack.set(index, false)"
+            @click="animationStack.clear(), animationStack.set(index, true)"
           >
             <!-- <img
               src="~/assets/dachsbau-hof.jpg"
