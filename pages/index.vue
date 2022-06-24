@@ -139,6 +139,7 @@ onMounted(() => {
   left: 0;
   width: 100%;
   height: 100%;
+  transform: translateZ(1);
   background: url('~/assets/img/dachsbau-hof-2048.png') no-repeat center
     calc(25% + (50% * var(--screen-ratio)));
   background-size: min(75vw, 20rem) auto;
