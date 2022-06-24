@@ -52,7 +52,7 @@ onMounted(() => {
         class="floating-hero h-full max-w-screen-md mx-auto content-base grid grid-rows-[1fr_auto_1fr] gap-4 text-center md:grid-rows-[1.5fr_auto_1fr]"
       >
         <div />
-        <p class="text-5xl font-heading text-primary-500 md:text-6xl">
+        <p class="text-4xl font-heading text-primary-500 md:text-6xl">
           Praxis für Yoga, systemische Beratung und Frauenbegleitung
         </p>
         <div class="w-2px bg-primary-500 mx-auto"></div>
