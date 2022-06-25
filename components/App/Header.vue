@@ -68,8 +68,9 @@ function close() {
           ? 'translate-y-[20%] rotate-20 transition-delay-250'
           : 'translate-y-[100%] rotate-0 opacity-0 invisible pointer-events-none',
       ]"
+      aria-hidden="true"
     >
-      <img class="h-[10rem]" src="~/assets/img/frechdachs-1024.png" alt="" />
+      <img class="h-[12rem]" src="~/assets/img/frechdachs-1024.png" alt="" />
     </div>
   </header>
 </template>
