@@ -30,18 +30,14 @@ onMounted(() => {
   const { y } = useScroll(contentContainer)
   const { height } = useWindowSize()
 
-  watch(
-    y,
-    (value) => {
-      if (value < height.value) {
-        document.documentElement.style.setProperty(
-          '--screen-ratio',
-          `${value / height.value}`
-        )
-      }
-    },
-    { immediate: true }
-  )
+  watchEffect(() => {
+    if (y.value < height.value) {
+      document.documentElement.style.setProperty(
+        '--screen-ratio',
+        `${y.value / height.value}`
+      )
+    }
+  })
 })
 </script>
 

@@ -84,12 +84,11 @@ provide(containerInjectionKey, container)
 onMounted(() => {
   const { height } = useElementSize(container)
 
-  watch(
-    height,
-    (value) => {
-      document.documentElement.style.setProperty('--h-content', `${value}px`)
-    },
-    { immediate: true }
+  watchEffect(() =>
+    document.documentElement.style.setProperty(
+      '--h-content',
+      `${height.value}px`
+    )
   )
 })
 </script>
