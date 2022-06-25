@@ -47,7 +47,7 @@ onMounted(() => {
 
 <template>
   <div>
-    <div class="relative w-full h-[calc(var(--h-screen)-2*var(--frame-width))]">
+    <div class="relative w-full h-[var(--h-screen-framed)]">
       <div
         class="floating-hero h-full max-w-screen-md mx-auto content-base grid grid-rows-[1fr_auto_1fr] gap-4 text-center md:grid-rows-[1.5fr_auto_1fr]"
       >
@@ -61,7 +61,7 @@ onMounted(() => {
 
     <div class="animated-bg-container w-full">
       <div
-        class="animated-bg-mask w-[50vw] h-full mx-auto rounded-tr-full rounded-tl-full md:w-[40vw] lg:w-[30vw]"
+        class="animated-bg-mask w-[50vw] h-full mx-auto scale-[calc(1+0.5*var(--screen-ratio))] translate-z-1 transform-origin-bottom rounded-tr-full rounded-tl-full md:w-[40vw] lg:w-[30vw]"
       />
     </div>
 
@@ -119,7 +119,7 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class="w-full h-[calc(var(--h-screen)-2*var(--frame-width))]">
+    <div class="w-full h-[var(--h-screen-framed)]">
       <div
         class="h-full max-w-screen-md mx-auto content-base flex items-center text-center"
       >
@@ -148,31 +148,24 @@ onMounted(() => {
 }
 
 .animated-bg-container {
-  height: calc(50 * var(--vh, 1vh) - 2 * var(--frame-width));
+  --h: 50;
+  height: calc(var(--h) * var(--vh, 1vh) - 2 * var(--frame-width));
 }
 
 @media (min-width: 768px) {
   .animated-bg-container {
-    height: calc(75 * var(--vh, 1vh) - 2 * var(--frame-width));
+    --h: 75;
   }
 }
 
 @media (min-width: 1024px) {
   .animated-bg-container {
-    height: calc(100 * var(--vh, 1vh) - 2 * var(--frame-width));
+    --h: 100;
   }
 }
 
 .animated-bg-mask {
-  transform: scale(calc(1 + 0.5 * var(--screen-ratio)));
-  transform-origin: bottom;
   background: url('~/assets/yogascheune-hochkant.jpg') no-repeat center bottom;
-  background-size: calc(200% - (100% * var(--screen-ratio)));
-}
-
-@media (min-width: 768px) {
-  .animated-bg-mask {
-    background-size: auto calc(200% - (100% * var(--screen-ratio)));
-  }
+  background-size: auto calc(200% - (100% * var(--screen-ratio)));
 }
 </style>

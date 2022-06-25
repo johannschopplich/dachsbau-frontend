@@ -1,0 +1,27 @@
+:root {
+  @apply min-w-[320px];
+  --h-screen: calc(100 * var(--vh, 1vh));
+  --h-screen-framed: calc(var(--h-screen)-2 * var(--frame-width));
+
+  --frame-width: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --frame-width: 1.5rem;
+  }
+}
+
+button {
+  touch-action: manipulation;
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 150ms ease;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}

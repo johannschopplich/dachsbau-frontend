@@ -8,7 +8,8 @@ export const containerInjectionKey = Symbol('container') as InjectionKey<
 
 <script setup lang="ts">
 import { resolveURL } from 'ufo'
-import '~/assets/main.css'
+import '~/assets/css/main.css'
+import '~/assets/css/components.css'
 
 const site = useSite()
 const { baseUrl } = useRuntimeConfig().public
