@@ -41,6 +41,17 @@ const theme = {
 
 export default defineConfig({
   theme,
+  rules: [
+    [
+      'text-underline',
+      {
+        'text-decoration-line': 'underline',
+        'text-decoration-color': 'currentColor',
+        'text-decoration-thickness': 'var(--decoration-width)',
+        'text-underline-offset': 'var(--decoration-width)',
+      },
+    ],
+  ],
   shortcuts: {
     'content-base': 'px-4 sm:px-6 lg:px-8',
   },
@@ -59,9 +70,8 @@ export default defineConfig({
           'text-decoration-line': 'underline',
           'text-decoration-style': 'solid',
           'text-decoration-color': theme.colors.primary[600],
-          'text-decoration-thickness': 'max(2px, 0.1em)',
-          'text-underline-offset': 'max(2px, 0.1em)',
-          'text-decoration-skip-ink': 'auto',
+          'text-decoration-thickness': 'var(--decoration-width)',
+          'text-underline-offset': 'var(--decoration-width)',
         },
         'a:hover': {
           color: theme.colors.primary[500],
