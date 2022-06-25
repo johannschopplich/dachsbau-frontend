@@ -80,6 +80,18 @@ useHead(() => ({
 
 const container = ref<HTMLElement | undefined>()
 provide(containerInjectionKey, container)
+
+onMounted(() => {
+  const { height } = useElementSize(container)
+
+  watch(
+    height,
+    (value) => {
+      document.documentElement.style.setProperty('--h-content', `${value}px`)
+    },
+    { immediate: true }
+  )
+})
 </script>
 
 <template>

@@ -1,7 +1,8 @@
 :root {
   @apply min-w-[320px];
+
   --h-screen: calc(100 * var(--vh, 1vh));
-  --h-screen-framed: calc(var(--h-screen) - 2 * var(--frame-width));
+  --h-content: var(--h-screen);
 
   --frame-width: 0.5rem;
   --decoration-width: max(2px, 0.1em);
@@ -11,6 +12,11 @@
   :root {
     --frame-width: 1.5rem;
   }
+}
+
+html,
+body {
+  height: 100%;
 }
 
 a {

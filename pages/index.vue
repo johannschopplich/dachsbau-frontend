@@ -47,7 +47,7 @@ onMounted(() => {
 
 <template>
   <div>
-    <div class="relative w-full h-[var(--h-screen-framed)]">
+    <div class="relative w-full h-[var(--h-content)]">
       <div
         class="floating-hero h-full max-w-screen-md mx-auto content-base grid grid-rows-[1fr_auto_1fr] gap-4 text-center md:grid-rows-[1.5fr_auto_1fr]"
       >
@@ -66,7 +66,9 @@ onMounted(() => {
     </div>
 
     <div class="py-12 space-y-12">
-      <div class="h-[calc(25*var(--vh,1vh))] w-2px bg-primary-500 mx-auto" />
+      <div
+        class="h-[calc(0.25*var(--h-content))] w-2px bg-primary-500 mx-auto"
+      />
       <p class="text-4xl font-heading text-primary-500 text-center md:text-6xl">
         Angebote
       </p>
@@ -119,7 +121,7 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class="w-full h-[var(--h-screen-framed)]">
+    <div class="w-full h-[var(--h-content)]">
       <div
         class="h-full max-w-screen-md mx-auto content-base flex items-center text-center"
       >
@@ -148,19 +150,19 @@ onMounted(() => {
 }
 
 .animated-bg-container {
-  --h: 50;
-  height: calc(var(--h) * var(--vh, 1vh) - 2 * var(--frame-width));
+  --h: 0.5;
+  height: calc(var(--h) * var(--h-content));
 }
 
 @media (min-width: 768px) {
   .animated-bg-container {
-    --h: 75;
+    --h: 0.75;
   }
 }
 
 @media (min-width: 1024px) {
   .animated-bg-container {
-    --h: 100;
+    --h: 1;
   }
 }
 

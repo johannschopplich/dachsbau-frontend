@@ -44,7 +44,7 @@ function close() {
 
     <nav
       :class="[
-        'navigation absolute top-0 left-0 w-full bg-primary-600 flex items-center justify-center z-10 md:top-6 md:bg-transparent',
+        'navigation absolute top-0 left-0 bottom-0 w-full bg-primary-600 flex items-center justify-center z-10 md:top-6 md:bg-transparent',
         isOpen && 'is-open',
       ]"
     >
@@ -77,7 +77,7 @@ function close() {
 <style scoped>
 @media (max-width: 767.98px) {
   .navigation {
-    height: calc(100 * var(--vh, 1vh));
+    height: 100%;
     box-shadow: 0 0 5rem 5rem rgba(0, 0, 0, 0.5);
     transition: height 250ms ease-in, opacity 250ms ease-in;
   }
@@ -86,7 +86,7 @@ function close() {
     pointer-events: none;
     visibility: hidden;
     opacity: 0;
-    height: calc(0 * var(--vh, 1vh));
+    height: 0;
   }
 
   .navigation ul {
