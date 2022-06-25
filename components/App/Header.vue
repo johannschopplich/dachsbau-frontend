@@ -79,7 +79,6 @@ function close() {
   .navigation {
     height: 100%;
     box-shadow: 0 0 5rem 5rem rgba(0, 0, 0, 0.5);
-    transition: height 250ms ease-in, opacity 250ms ease-in;
   }
 
   .navigation:not(.is-open) {
@@ -87,6 +86,10 @@ function close() {
     visibility: hidden;
     opacity: 0;
     height: 0;
+  }
+
+  .navigation.is-open {
+    transition: height 250ms ease-in, opacity 250ms ease-in;
   }
 
   .navigation ul {
