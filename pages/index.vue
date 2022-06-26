@@ -45,13 +45,24 @@ onMounted(() => {
   <div>
     <div class="relative w-full h-[var(--h-content)]">
       <div
-        class="floating-hero h-full max-w-screen-md mx-auto content-base grid grid-rows-[1fr_auto_1fr] gap-4 text-center md:grid-rows-[1.5fr_auto_1fr]"
+        class="h-full max-w-screen-md mx-auto content-base grid grid-rows-[1fr_auto_1fr] gap-4 text-center md:grid-rows-[1.5fr_auto_1fr]"
       >
         <div />
         <p class="text-4xl font-heading text-primary-500 md:text-6xl">
           Praxis für Yoga, systemische Beratung und Frauenbegleitung
         </p>
         <div class="w-2px bg-primary-500 mx-auto"></div>
+      </div>
+
+      <div
+        class="absolute top-1/6 left-0 right-0 flex items-center justify-center translate-y-[calc(75%*var(--screen-ratio))] translate-z-1 pointer-events-none"
+        aria-hidden="true"
+      >
+        <img
+          class="w-[min(75vw,20rem)] opacity-25"
+          src="~/assets/img/dachsbau-hof-2048.png"
+          alt=""
+        />
       </div>
     </div>
 
@@ -130,21 +141,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.floating-hero::before {
-  position: absolute;
-  content: '';
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform: translateZ(1);
-  background: url('~/assets/img/dachsbau-hof-2048.png') no-repeat center
-    calc(25% + (50% * var(--screen-ratio)));
-  background-size: min(75vw, 20rem) auto;
-  opacity: 0.25;
-  pointer-events: none;
-}
-
 .animated-bg-container {
   --h: 0.5;
   height: calc(var(--h) * var(--h-content));
