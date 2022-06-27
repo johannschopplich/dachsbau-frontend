@@ -11,8 +11,8 @@ const { data } = await useKql({
     id: true,
     title: true,
     description: true,
-    files: {
-      query: 'page.files',
+    cover: {
+      query: 'page.content.cover.toFile',
       select: {
         id: true,
         filename: true,
@@ -94,17 +94,20 @@ onMounted(() => {
             @mouseleave="animationStack.set(index, false)"
             @click="animationStack.clear(), animationStack.set(index, true)"
           >
-            <!-- <img
-              src="~/assets/dachsbau-hof.jpg"
-              class="handdrawn-mask w-full aspect-[3/2] object-cover"
-            /> -->
-            <NuxtLink
-              :to="{ path: `/${item.id}` }"
-              :class="[
-                'handdrawn-mask cursor-pointer aspect-[3/2] bg-secondary-400 sm:w-1/2',
-                index % 2 === 1 && 'sm:order-2',
-              ]"
-            />
+            <NuxtLink :to="{ path: `/${item.id}` }">
+              <img
+                v-if="item.cover"
+                :srcset="item.cover.srcset"
+                class="handdrawn-mask w-full aspect-[3/2] object-cover"
+              />
+              <div
+                v-else
+                :class="[
+                  'handdrawn-mask cursor-pointer aspect-[3/2] bg-secondary-400 sm:w-1/2',
+                  index % 2 === 1 && 'sm:order-2',
+                ]"
+              />
+            </NuxtLink>
 
             <NuxtLink
               :to="{ path: `/${item.id}` }"

@@ -56,7 +56,7 @@ function close() {
     >
       <img
         :class="[
-          'absolute inset-0 scale-200 group-hover:opacity-100',
+          'absolute inset-0 scale-200 opacity-0 group-hover:opacity-100',
           isOpen && 'hidden',
         ]"
         src="~/assets/img/menu-hover-03.svg"
