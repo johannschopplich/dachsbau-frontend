@@ -12,9 +12,9 @@ const navItems = computed(() =>
 )
 
 function toggleMenu() {
+  contentContainer.value.scrollTo({ top: 0, left: 0 })
   isLocked.value = !isLocked.value
   isOpen.value = !isOpen.value
-  contentContainer.value.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 function close() {
@@ -55,9 +55,17 @@ function close() {
       @click="toggleMenu()"
     >
       <img
+        v-if="isOpen"
         :class="[
-          'absolute top-0 left-0 right-0 opacity-0 scale-200 group-hover:opacity-100',
-          isOpen && 'hidden',
+          'absolute top-1/2 left-0 right-0 -translate-y-1/2 opacity-0 scale-150 group-hover:opacity-100',
+        ]"
+        src="~/assets/img/menu-hover-01.svg"
+        alt=""
+      />
+      <img
+        v-else
+        :class="[
+          'absolute inset-0 opacity-0 scale-200 group-hover:opacity-100',
         ]"
         src="~/assets/img/menu-hover-03.svg"
         alt=""
