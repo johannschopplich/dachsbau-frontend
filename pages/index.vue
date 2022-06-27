@@ -56,10 +56,10 @@ onMounted(() => {
       </div>
 
       <div
-        class="h-full max-w-screen-md mx-auto padding-content grid grid-rows-[1fr_auto_1fr] gap-4 text-center"
+        class="h-full max-w-screen-md mx-auto padding-content grid grid-rows-[1fr_auto_1fr] gap-4"
       >
         <div />
-        <p class="text-4xl font-heading text-primary-500 md:text-6xl">
+        <p class="title text-center">
           Praxis für Yoga, systemische Beratung und Frauenbegleitung
         </p>
         <div class="w-2px bg-primary-500 mx-auto"></div>
@@ -78,9 +78,7 @@ onMounted(() => {
       <div
         class="h-[calc(0.25*var(--h-content))] w-2px bg-primary-500 mx-auto"
       />
-      <p class="text-4xl font-heading text-primary-500 text-center md:text-6xl">
-        Angebote
-      </p>
+      <p class="title text-center">Angebote</p>
     </div>
 
     <div class="relative bg-primary-700">
@@ -94,19 +92,19 @@ onMounted(() => {
             @mouseleave="animationStack.set(index, false)"
             @click="animationStack.clear(), animationStack.set(index, true)"
           >
-            <NuxtLink :to="{ path: `/${item.id}` }">
+            <NuxtLink
+              :to="{ path: `/${item.id}` }"
+              :class="[
+                'aspect-[3/2] handdrawn-mask sm:w-1/2',
+                index % 2 === 1 && 'sm:order-2',
+              ]"
+            >
               <img
                 v-if="item.cover"
                 :srcset="item.cover.srcset"
-                class="handdrawn-mask w-full aspect-[3/2] object-cover"
+                class="h-full object-cover"
               />
-              <div
-                v-else
-                :class="[
-                  'handdrawn-mask cursor-pointer aspect-[3/2] bg-secondary-400 sm:w-1/2',
-                  index % 2 === 1 && 'sm:order-2',
-                ]"
-              />
+              <div v-else class="w-full h-full bg-secondary-400" />
             </NuxtLink>
 
             <NuxtLink
@@ -140,17 +138,38 @@ onMounted(() => {
 
     <div class="w-full h-[var(--h-content)]">
       <div
-        class="h-full max-w-screen-md mx-auto padding-content flex items-center text-center"
+        class="h-full max-w-screen-md mx-auto padding-content flex items-center justify-center"
       >
-        <p class="text-4xl font-heading text-primary-500 md:text-5xl">
-          Kontakt
-        </p>
+        <div>
+          <h2 class="title relative">
+            <img
+              class="absolute top-1/2 -left-2 right-0 -translate-y-1/2 scale-150 pointer-events-none"
+              src="~/assets/img/menu-hover-01.svg"
+              alt=""
+              aria-hidden="true"
+            />
+            <span>Kontakt</span>
+          </h2>
+          <div
+            class="prose text-secondary-900 font-serif md:text-xl md:font-350"
+          >
+            <p>
+              Madlen und Martin Simon<br />
+              Dorfstr. 81<br />
+              07639 Tautenhain
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.title {
+  @apply text-4xl font-heading text-primary-500 md:text-6xl;
+}
+
 .animated-bg-container {
   --h: 0.5;
 }

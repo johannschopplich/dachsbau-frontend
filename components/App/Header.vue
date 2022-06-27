@@ -35,9 +35,10 @@ function close() {
       ]"
     >
       <img
-        class="absolute left-0 right-0 -bottom-2 opacity-0 group-hover:opacity-100 md:-bottom-3.5"
+        class="absolute left-0 right-0 -bottom-1/6 opacity-0 group-hover:opacity-100 md:-bottom-1/2 pointer-events-none"
         src="~/assets/img/menu-hover-04.svg"
         alt=""
+        aria-hidden="true"
       />
       <span class="relative">
         Dachsbau<br class="inline md:hidden" />
@@ -56,11 +57,12 @@ function close() {
     >
       <img
         :class="[
-          'absolute inset-0 scale-200 opacity-0 group-hover:opacity-100',
+          'absolute inset-0 scale-200 opacity-0 pointer-events-none group-hover:opacity-100',
           isOpen && 'hidden',
         ]"
         src="~/assets/img/menu-hover-03.svg"
         alt=""
+        aria-hidden="true"
       />
       <span class="relative">{{ isOpen ? 'Schließen' : 'Menü' }}</span>
     </button>
@@ -87,14 +89,14 @@ function close() {
 
   <div
     :class="[
-      'fixed bottom-0 left-4 transition-transform-250 z-20',
+      'fixed bottom-0 left-4 transition-transform-250 pointer-events-none z-20',
       isOpen
         ? 'translate-y-[20%] rotate-20 transition-delay-250'
-        : 'translate-y-[100%] rotate-0 opacity-0 invisible pointer-events-none',
+        : 'translate-y-[100%] rotate-0 opacity-0 invisible',
     ]"
     aria-hidden="true"
   >
-    <img class="h-[12rem]" src="~/assets/img/frechdachs-1024.png" alt="" />
+    <img class="h-48" src="~/assets/img/frechdachs-1024.png" alt="" />
   </div>
 </template>
 
