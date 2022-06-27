@@ -195,9 +195,4 @@ onMounted(() => {
     --h: 1;
   }
 }
-
-.animated-bg-mask {
-  background: url('~/assets/yogascheune-hochkant.jpg') no-repeat center bottom;
-  background-size: auto calc(200% - (100% * var(--screen-ratio)));
-}
 </style>
