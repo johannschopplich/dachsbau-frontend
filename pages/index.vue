@@ -55,7 +55,7 @@ onMounted(() => {
       </div>
 
       <div
-        class="absolute top-1/6 left-0 right-0 flex items-center justify-center translate-y-[calc(75%*var(--screen-ratio))] translate-z-1 pointer-events-none"
+        class="absolute top-1/6 left-0 right-0 flex items-center justify-center translate-y-[calc(75%*var(--screen-ratio))] pointer-events-none"
         aria-hidden="true"
       >
         <img
@@ -68,7 +68,7 @@ onMounted(() => {
 
     <div class="animated-bg-container w-full">
       <div
-        class="animated-bg-mask w-[50vw] h-full mx-auto scale-[calc(1+0.5*var(--screen-ratio))] translate-z-1 transform-origin-bottom rounded-tr-full rounded-tl-full md:w-[40vw] lg:w-[30vw]"
+        class="animated-bg-mask w-[50vw] h-full mx-auto scale-[calc(1+0.5*var(--screen-ratio))] transform-origin-bottom rounded-tr-full rounded-tl-full md:w-[40vw] lg:w-[30vw]"
       />
     </div>
 
