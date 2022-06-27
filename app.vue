@@ -15,31 +15,6 @@ const site = useSite()
 const { baseUrl } = useRuntimeConfig().public
 const route = useRoute()
 
-const { data } = await useKql({
-  query: 'site',
-  select: {
-    title: true,
-    description: true,
-    children: {
-      query: 'site.children',
-      select: {
-        id: true,
-        title: true,
-        isListed: true,
-      },
-    },
-    footer: {
-      query: 'site.footer.toPages',
-      select: {
-        id: true,
-        title: true,
-      },
-    },
-  },
-})
-
-site.value = data.value?.result || {}
-
 const title = computed(() =>
   route.meta.title
     ? `${route.meta.title} – ${site.value.title}`

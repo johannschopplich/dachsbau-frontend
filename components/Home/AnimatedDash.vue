@@ -3,23 +3,18 @@ const props = defineProps<{
   isActive: boolean
 }>()
 
-const strokeDashBase = ref(0)
+const strokeDashBase = computed(() => (props.isActive ? 100 : 0))
 const duration = computed(() => (props.isActive ? 500 : 0))
 
 const output = useTransition(strokeDashBase, {
   duration,
   transition: [0.75, 0, 0.25, 1],
 })
-
-watch(
-  () => props.isActive,
-  (value) => (strokeDashBase.value = value ? 100 : 0)
-)
 </script>
 
 <template>
   <div
-    class="absolute left-0 -top-1 w-full h-full scale-110 z-0 opacity-0 group-hover:opacity-100"
+    class="absolute left-0 -top-1 w-full h-full scale-110 opacity-0 group-hover:opacity-100"
   >
     <svg
       viewBox="0 0 400 200"

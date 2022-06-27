@@ -45,24 +45,24 @@ onMounted(() => {
   <div>
     <div class="relative w-full h-[var(--h-content)]">
       <div
-        class="h-full max-w-screen-md mx-auto padding-content grid grid-rows-[1fr_auto_1fr] gap-4 text-center md:grid-rows-[1.5fr_auto_1fr]"
+        class="absolute top-1/6 left-0 right-0 flex items-center justify-center translate-y-[calc(100%*var(--screen-ratio))] pointer-events-none"
+        aria-hidden="true"
+      >
+        <img
+          class="w-[min(75vw,22rem)] opacity-25"
+          src="~/assets/img/dachsbau-hof-2048.png"
+          alt=""
+        />
+      </div>
+
+      <div
+        class="h-full max-w-screen-md mx-auto padding-content grid grid-rows-[1fr_auto_1fr] gap-4 text-center"
       >
         <div />
         <p class="text-4xl font-heading text-primary-500 md:text-6xl">
           Praxis für Yoga, systemische Beratung und Frauenbegleitung
         </p>
         <div class="w-2px bg-primary-500 mx-auto"></div>
-      </div>
-
-      <div
-        class="absolute top-1/6 left-0 right-0 flex items-center justify-center translate-y-[calc(75%*var(--screen-ratio))] pointer-events-none"
-        aria-hidden="true"
-      >
-        <img
-          class="w-[min(75vw,20rem)] opacity-25"
-          src="~/assets/img/dachsbau-hof-2048.png"
-          alt=""
-        />
       </div>
     </div>
 
@@ -89,7 +89,7 @@ onMounted(() => {
           <div
             v-for="(item, index) in data?.result"
             :key="index"
-            class="group flex flex-col gap-4 sm:flex-row sm:gap-12"
+            class="group relative flex flex-col gap-4 sm:flex-row sm:gap-12"
             @mouseenter="animationStack.set(index, true)"
             @mouseleave="animationStack.set(index, false)"
             @click="animationStack.clear(), animationStack.set(index, true)"
@@ -99,7 +99,7 @@ onMounted(() => {
               class="handdrawn-mask w-full aspect-[3/2] object-cover"
             /> -->
             <NuxtLink
-              :to="{ path: `angebote/${item.id}` }"
+              :to="{ path: `/${item.id}` }"
               :class="[
                 'handdrawn-mask cursor-pointer aspect-[3/2] bg-secondary-400 sm:w-1/2',
                 index % 2 === 1 && 'sm:order-2',
@@ -107,11 +107,11 @@ onMounted(() => {
             />
 
             <NuxtLink
-              :to="{ path: 'angebote/' + item.id }"
+              :to="{ path: `/${item.id}` }"
               class="block cursor-pointer flex justify-center px-4 sm:w-1/2 sm:px-0 sm:items-center"
             >
               <div>
-                <div class="relative inline-block z-1">
+                <div class="relative inline-block">
                   <HomeAnimatedDash
                     :is-active="animationStack.get(index) ?? false"
                   />
