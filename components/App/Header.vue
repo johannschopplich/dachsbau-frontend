@@ -25,7 +25,7 @@ function close() {
 
 <template>
   <header
-    class="absolute top-6 left-6 right-6 flex justify-between items-start md:right-initial"
+    class="absolute top-6 left-4 right-4 flex justify-between items-start sm:left-6 sm:right-6 md:right-initial"
   >
     <NuxtLink
       to="/"
@@ -100,6 +100,7 @@ function close() {
 <style scoped>
 @media (max-width: 767.98px) {
   .navigation {
+    --timing-fn: cubic-bezier(0.4, 0, 0.2, 1);
     height: 100%;
     box-shadow: 0 0 5rem 5rem rgba(0, 0, 0, 0.5);
   }
@@ -112,7 +113,7 @@ function close() {
   }
 
   .navigation.is-open {
-    transition: height 250ms ease-in, opacity 250ms ease-in;
+    transition: height 250ms var(--timing-fn), opacity 250ms var(--timing-fn);
   }
 
   .navigation ul {
@@ -123,7 +124,8 @@ function close() {
   .navigation.is-open ul {
     opacity: 1;
     transform: translateY(0);
-    transition: transform 250ms ease 250ms, opacity 500ms ease 250ms;
+    transition: transform 250ms var(--timing-fn) 250ms,
+      opacity 500ms var(--timing-fn) 250ms;
   }
 }
 </style>
