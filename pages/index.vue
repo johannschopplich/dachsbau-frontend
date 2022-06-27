@@ -72,7 +72,7 @@ onMounted(() => {
       >
         <img
           v-if="site.cover"
-          class="h-[calc(200%-(100%*var(--screen-ratio)))] object-cover"
+          class="w-full h-[calc(200%-(100%*var(--screen-ratio)))] object-cover object-bottom"
           :srcset="site.cover?.srcset"
           sizes="
             (min-width: 1024px) 30vw,
