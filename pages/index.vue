@@ -66,7 +66,7 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class="animated-bg-container w-full">
+    <div class="h-[calc(var(--h)*var(--h-content))] w-full">
       <div
         class="animated-bg-mask w-[50vw] h-full mx-auto scale-[calc(1+0.5*var(--screen-ratio))] transform-origin-bottom rounded-tr-full rounded-tl-full md:w-[40vw] lg:w-[30vw]"
       />
@@ -148,7 +148,6 @@ onMounted(() => {
 <style scoped>
 .animated-bg-container {
   --h: 0.5;
-  height: calc(var(--h) * var(--h-content));
 }
 
 @media (min-width: 768px) {

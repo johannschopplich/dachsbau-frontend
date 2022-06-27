@@ -14,7 +14,7 @@ const navItems = computed(() =>
 function toggleMenu() {
   isLocked.value = !isLocked.value
   isOpen.value = !isOpen.value
-  contentContainer.value.scroll({ top: 0, behavior: 'smooth' })
+  contentContainer.value.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 function close() {
@@ -49,12 +49,20 @@ function close() {
       :aria-expanded="isOpen"
       :aria-label="isOpen ? 'Menu schließen' : 'Menu öffnen'"
       :class="[
-        'appearance-none cursor-pointer text-size-2xl leading-none font-heading-condensed hover:text-underline md:hidden',
+        'group appearance-none relative cursor-pointer text-size-2xl leading-none font-heading-condensed md:hidden',
         isOpen ? 'text-white' : 'text-primary-700',
       ]"
       @click="toggleMenu()"
     >
-      {{ isOpen ? 'Schließen' : 'Menü' }}
+      <img
+        :class="[
+          'absolute top-0 left-0 right-0 opacity-0 scale-200 group-hover:opacity-100',
+          isOpen && 'hidden',
+        ]"
+        src="~/assets/img/menu-hover-03.svg"
+        alt=""
+      />
+      <span class="relative">{{ isOpen ? 'Schließen' : 'Menü' }}</span>
     </button>
   </header>
 
