@@ -53,7 +53,7 @@ export default defineConfig({
     ],
   ],
   shortcuts: {
-    'content-base': 'px-4 sm:px-6 lg:px-8',
+    'padding-content': 'px-4 sm:px-6 lg:px-8',
   },
   presets: [
     presetWind(),

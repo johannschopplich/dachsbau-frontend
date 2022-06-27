@@ -55,25 +55,24 @@ const text = computed<KirbyBlock<string>[]>(
       {{ data?.result?.title }}
     </h1>
 
-    <div
-      v-if="data?.result"
-      class="prose text-secondary-900 font-serif md:text-xl md:font-350"
-    >
-      <template v-for="(block, index) in text" :key="index">
-        <component :is="block.content.level" v-if="block.type === 'heading'">
-          {{ (block as KirbyBlock<'heading'>).content.text }}
-        </component>
-        <div v-else v-html="block.content.text" />
+    <div class="prose text-secondary-900 font-serif md:text-xl md:font-350">
+      <template v-if="data?.result">
+        <template v-for="(block, index) in text" :key="index">
+          <component :is="block.content.level" v-if="block.type === 'heading'">
+            {{ (block as KirbyBlock<'heading'>).content.text }}
+          </component>
+          <div v-else v-html="block.content.text" />
+        </template>
       </template>
-    </div>
 
-    <div v-else class="prose">
-      <h1>Oh, Mist, Seite nicht gefunden!</h1>
-      <p>Mensch kann sich auch in einem Dachsbau verirren.</p>
-      <p>
-        Du kannst einfach zur
-        <NuxtLink to="/">Startseite</NuxtLink> zurückkehren.
-      </p>
+      <template v-else>
+        <h1>Oh, Mist, Seite nicht gefunden!</h1>
+        <p>Mensch kann sich auch in einem Dachsbau verirren.</p>
+        <p>
+          Du kannst einfach zur
+          <NuxtLink to="/">Startseite</NuxtLink> zurückkehren.
+        </p>
+      </template>
     </div>
   </div>
 </template>

@@ -6,7 +6,7 @@ definePageMeta({
 })
 
 const { data } = await useKql({
-  query: 'kirby.page("dachse").children.listed',
+  query: 'kirby.page("angebote").children.listed',
   select: {
     id: true,
     title: true,
@@ -45,7 +45,7 @@ onMounted(() => {
   <div>
     <div class="relative w-full h-[var(--h-content)]">
       <div
-        class="h-full max-w-screen-md mx-auto content-base grid grid-rows-[1fr_auto_1fr] gap-4 text-center md:grid-rows-[1.5fr_auto_1fr]"
+        class="h-full max-w-screen-md mx-auto padding-content grid grid-rows-[1fr_auto_1fr] gap-4 text-center md:grid-rows-[1.5fr_auto_1fr]"
       >
         <div />
         <p class="text-4xl font-heading text-primary-500 md:text-6xl">
@@ -82,7 +82,7 @@ onMounted(() => {
     </div>
 
     <div class="relative bg-primary-700">
-      <div class="max-w-screen-md mx-auto py-12 content-base">
+      <div class="max-w-screen-md mx-auto padding-content py-12">
         <div class="space-y-12">
           <div
             v-for="(item, index) in data?.result"
@@ -96,18 +96,20 @@ onMounted(() => {
               src="~/assets/dachsbau-hof.jpg"
               class="handdrawn-mask w-full aspect-[3/2] object-cover"
             /> -->
-            <div
+            <NuxtLink
+              :to="{ path: `angebote/${item.id}` }"
               :class="[
                 'handdrawn-mask cursor-pointer aspect-[3/2] bg-secondary-400 sm:w-1/2',
                 index % 2 === 1 && 'sm:order-2',
               ]"
             />
 
-            <div
-              class="cursor-pointer flex justify-center px-4 sm:w-1/2 sm:px-0 sm:items-center"
+            <NuxtLink
+              :to="{ path: 'angebote/' + item.id }"
+              class="block cursor-pointer flex justify-center px-4 sm:w-1/2 sm:px-0 sm:items-center"
             >
               <div>
-                <div class="relative inline-block z-5">
+                <div class="relative inline-block z-1">
                   <HomeAnimatedDash
                     :is-active="animationStack.get(index) ?? false"
                   />
@@ -118,11 +120,14 @@ onMounted(() => {
                     {{ item.title }}
                   </span>
                 </div>
-                <p class="font-serif text-secondary-200 sm:text-xl sm:font-350">
+
+                <div
+                  class="font-serif text-secondary-200 sm:text-xl sm:font-350"
+                >
                   {{ item.description }}
-                </p>
+                </div>
               </div>
-            </div>
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -130,7 +135,7 @@ onMounted(() => {
 
     <div class="w-full h-[var(--h-content)]">
       <div
-        class="h-full max-w-screen-md mx-auto content-base flex items-center text-center"
+        class="h-full max-w-screen-md mx-auto padding-content flex items-center text-center"
       >
         <p class="text-4xl font-heading text-primary-500 md:text-5xl">
           Kontakt

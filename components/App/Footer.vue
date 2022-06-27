@@ -3,7 +3,7 @@ const site = useSite()
 </script>
 
 <template>
-  <footer class="sticky top-[var(--h-screen)] content-base py-6">
+  <footer class="sticky top-[var(--h-screen)] padding-content py-6">
     <div class="flex gap-4 justify-center">
       <NuxtLink
         v-for="item in site?.footer ?? []"
