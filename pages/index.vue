@@ -42,7 +42,7 @@ onMounted(() => {
   <div>
     <div class="relative w-full h-[var(--h-content)]">
       <div
-        class="absolute top-1/6 left-0 right-0 flex items-center justify-center translate-y-[calc(100%*var(--screen-ratio))] pointer-events-none"
+        class="absolute top-1/6 left-0 right-0 flex items-center justify-center translate-y-[calc(100%*var(--screen-ratio))] pointer-events-none md:top-1/10"
         aria-hidden="true"
       >
         <img
