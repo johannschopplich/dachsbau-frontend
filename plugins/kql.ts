@@ -8,18 +8,15 @@ export default defineNuxtPlugin(async () => {
       description: true,
       children: {
         query: 'site.children',
-        select: {
-          id: true,
-          title: true,
-          isListed: true,
-        },
+        select: ['id', 'title', 'isListed'],
+      },
+      cover: {
+        query: 'site.content.cover.toFile',
+        select: ['id', 'filename', 'url', 'srcset'],
       },
       footer: {
         query: 'site.footer.toPages',
-        select: {
-          id: true,
-          title: true,
-        },
+        select: ['id', 'title'],
       },
     },
   })

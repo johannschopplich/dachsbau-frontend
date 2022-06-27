@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { KirbyBlock, KirbyQueryResponse } from '#nuxt-kql'
 
 export interface KirbySite {
@@ -8,6 +9,12 @@ export interface KirbySite {
     title: string
     isListed: boolean
   }[]
+  cover?: {
+    id: string
+    filename: string
+    url: string
+    srcset: string
+  }
   footer?: {
     id: string
     title: string
@@ -24,12 +31,7 @@ export interface KirbyDefaultPageQuery {
     text: string | boolean
     files: {
       query: string
-      select: {
-        id: string | boolean
-        filename: string | boolean
-        url: string | boolean
-        srcset: string | boolean
-      }
+      select: string[] | Record<string, any>
     }
   }
 }

@@ -15,12 +15,7 @@ const { data } = await useKql<KirbyDefaultPage, KirbyDefaultPageQuery>({
     text: 'page.text.toBlocks',
     files: {
       query: 'page.files',
-      select: {
-        id: true,
-        filename: true,
-        url: true,
-        srcset: true,
-      },
+      select: ['id', 'filename', 'url', 'srcset'],
     },
   },
 })

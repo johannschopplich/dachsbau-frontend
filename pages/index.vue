@@ -5,6 +5,8 @@ definePageMeta({
   layout: 'home',
 })
 
+const site = useSite()
+
 const { data } = await useKql({
   query: 'kirby.page("angebote").children.listed',
   select: {
@@ -13,12 +15,7 @@ const { data } = await useKql({
     description: true,
     cover: {
       query: 'page.content.cover.toFile',
-      select: {
-        id: true,
-        filename: true,
-        url: true,
-        srcset: true,
-      },
+      select: ['id', 'filename', 'url', 'srcset'],
     },
   },
 })
@@ -68,10 +65,23 @@ onMounted(() => {
 
     <div
       class="animated-bg-container h-[calc(var(--h)*var(--h-content))] w-full"
+      aria-hidden="true"
     >
       <div
-        class="animated-bg-mask w-[50vw] h-full mx-auto scale-[calc(1+0.5*var(--screen-ratio))] transform-origin-bottom rounded-tr-full rounded-tl-full md:w-[40vw] lg:w-[30vw]"
-      />
+        class="w-[50vw] h-full mx-auto scale-[calc(1+0.5*var(--screen-ratio))] transform-origin-bottom rounded-tr-full rounded-tl-full flex items-end overflow-hidden md:w-[40vw] lg:w-[30vw]"
+      >
+        <img
+          v-if="site.cover"
+          class="h-[calc(200%-(100%*var(--screen-ratio)))] object-cover"
+          :srcset="site.cover?.srcset"
+          sizes="
+            (min-width: 1024px) 30vw,
+            (min-width: 768px) 40vw,
+            100vw"
+          alt=""
+        />
+        <div v-else class="w-full h-full bg-secondary-400" />
+      </div>
     </div>
 
     <div class="py-12 space-y-12">
