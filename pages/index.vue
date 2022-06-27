@@ -89,7 +89,7 @@ onMounted(() => {
           <div
             v-for="(item, index) in data?.result"
             :key="index"
-            class="group relative flex flex-col gap-4 sm:flex-row sm:gap-12"
+            class="group flex flex-col gap-4 sm:flex-row sm:gap-12"
             @mouseenter="animationStack.set(index, true)"
             @mouseleave="animationStack.set(index, false)"
             @click="animationStack.clear(), animationStack.set(index, true)"
