@@ -25,14 +25,11 @@ function close() {
 
 <template>
   <header
-    class="absolute top-6 left-6 right-6 flex justify-between items-start z-20 md:right-auto"
+    class="absolute top-6 left-6 right-6 flex justify-between items-start md:right-auto"
   >
     <NuxtLink
       to="/"
-      :class="[
-        'group block relative text-size-2xl leading-none font-heading-condensed md:leading-tight',
-        isOpen ? 'text-white' : 'text-primary-700',
-      ]"
+      class="group block relative text-size-2xl leading-none text-primary-700 font-heading-condensed z-10 md:leading-tight"
     >
       <img
         class="absolute left-0 right-0 -bottom-1/6 opacity-0 group-hover:opacity-100 md:-bottom-1/2 pointer-events-none"
@@ -50,7 +47,7 @@ function close() {
       :aria-expanded="isOpen"
       :aria-label="isOpen ? 'Menu schließen' : 'Menu öffnen'"
       :class="[
-        'group appearance-none relative cursor-pointer text-size-2xl leading-none font-heading-condensed md:hidden',
+        'group appearance-none relative cursor-pointer text-size-2xl leading-none font-heading-condensed z-20 md:hidden',
         isOpen ? 'text-white' : 'text-primary-700',
       ]"
       @click="toggleMenu()"
