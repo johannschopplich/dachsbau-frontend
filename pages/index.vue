@@ -50,7 +50,7 @@ onMounted(() => {
       >
         <img
           class="w-[min(75vw,22rem)] opacity-25"
-          src="~/assets/img/dachsbau-hof-2048.png"
+          src="~/assets/img/dachsbau-hof-1024.png"
           alt=""
         />
       </div>

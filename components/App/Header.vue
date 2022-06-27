@@ -96,7 +96,7 @@ function close() {
     ]"
     aria-hidden="true"
   >
-    <img class="h-48" src="~/assets/img/frechdachs-1024.png" alt="" />
+    <img class="h-48" src="~/assets/img/frechdachs-512.png" alt="" />
   </div>
 </template>
 
