@@ -7,6 +7,7 @@ specifiers:
   '@unocss/nuxt': ^0.41.1
   '@unocss/preset-typography': ^0.41.1
   '@unocss/preset-wind': ^0.41.1
+  '@unocss/transformer-directives': ^0.41.1
   '@vueuse/nuxt': ^8.7.5
   eslint: ^8.18.0
   eslint-config-prettier: ^8.5.0
@@ -26,6 +27,7 @@ devDependencies:
   '@unocss/nuxt': 0.41.1
   '@unocss/preset-typography': 0.41.1
   '@unocss/preset-wind': 0.41.1
+  '@unocss/transformer-directives': 0.41.1
   '@vueuse/nuxt': 8.7.5
   eslint: 8.18.0
   eslint-config-prettier: 8.5.0_eslint@8.18.0

@@ -1,6 +1,7 @@
 import { defineConfig } from 'unocss'
 import { presetTypography } from '@unocss/preset-typography'
 import { presetWind, theme as themeWind } from '@unocss/preset-wind'
+import transformerDirective from '@unocss/transformer-directives'
 
 const theme = {
   // Color combination: https://coolors.co/3a455b-e7e6d1-f08a4b-9e2b25-646f4b
@@ -55,6 +56,7 @@ export default defineConfig({
   shortcuts: {
     'padding-content': 'px-4 sm:px-6 lg:px-8',
   },
+  transformers: [transformerDirective()],
   presets: [
     presetWind(),
     presetTypography({
