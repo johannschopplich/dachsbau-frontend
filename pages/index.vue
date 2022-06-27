@@ -82,7 +82,7 @@ onMounted(() => {
     </div>
 
     <div class="relative bg-primary-700">
-      <div class="max-w-screen-md mx-auto padding-content py-12">
+      <div class="max-w-screen-lg mx-auto padding-content py-12">
         <div class="space-y-12">
           <div
             v-for="(item, index) in data?.result"
