@@ -1,3 +1,5 @@
+import { defineNuxtPlugin } from '#app'
+
 export default defineNuxtPlugin(() => {
   if (matchMedia('(hover: hover)').matches) return
 

@@ -1,8 +1,12 @@
 <script setup lang="ts">
+import { promiseTimeout } from '@vueuse/core'
 import { containerInjectionKey } from '~/app.vue'
 
+const nuxtApp = useNuxtApp()
+const route = useRoute()
 const site = useSite()
 const isOpen = ref(false)
+const isRedirecting = ref(false)
 
 const contentContainer = inject(containerInjectionKey)
 const isLocked = useScrollLock(contentContainer)
@@ -11,13 +15,29 @@ const navItems = computed(() =>
   (site.value?.children ?? []).filter((i) => i.isListed)
 )
 
+// On Suspense resolved event
+nuxtApp.hook('page:finish', () => {
+  isRedirecting.value = false
+})
+
 function toggleMenu() {
   contentContainer.value.scrollTo({ top: 0, left: 0 })
   isLocked.value = !isLocked.value
   isOpen.value = !isOpen.value
 }
 
-function close() {
+async function close(path: string) {
+  if (isRedirecting.value) return
+
+  if (path === route.path) {
+    isOpen.value = false
+    isLocked.value = false
+    return
+  }
+
+  isRedirecting.value = true
+  await until(isRedirecting).toBe(false)
+  await promiseTimeout(150)
   isOpen.value = false
   isLocked.value = false
 }
@@ -75,9 +95,9 @@ function close() {
       <NuxtLink
         v-for="item in navItems"
         :key="item.id"
-        :to="{ path: item.id }"
+        :to="{ path: `/${item.id}` }"
         class="text-size-4xl leading-tight font-heading-condensed text-white hover:text-secondary-600 md:text-size-2xl md:text-primary-700"
-        @click="close()"
+        @click="close(`/${item.id}`)"
       >
         {{ item.title }}
       </NuxtLink>

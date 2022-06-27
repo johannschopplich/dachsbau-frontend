@@ -1,3 +1,5 @@
+import { defineNuxtPlugin } from '#app'
+
 export default defineNuxtPlugin(() => {
   // Lazily load the necessariy site data
   ;(async () => {

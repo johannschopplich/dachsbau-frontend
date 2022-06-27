@@ -8,6 +8,7 @@ export default <RouterConfig>{
 
     // Timeout for page transition
     setTimeout(() => {
+      // Handle scrolling inside the fixed app container
       if (savedPosition) {
         container.scroll(savedPosition)
       } else {
@@ -15,6 +16,7 @@ export default <RouterConfig>{
       }
     }, 150)
 
+    // Unused currently, but keep it for later
     if (savedPosition) {
       return savedPosition
     } else {
