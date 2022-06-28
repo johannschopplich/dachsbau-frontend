@@ -56,6 +56,7 @@ const random = () => Math.random() * 4 - 2
               v-if="item.cover"
               class="handdrawn-mask aspect-[3/2] w-full object-cover"
               :srcset="item.cover.srcset"
+              sizes="(min-width: 640px) 50vw, (min-width: 768px) 16rem, 100vw"
               loading="lazy"
             />
             <div
@@ -73,7 +74,7 @@ const random = () => Math.random() * 4 - 2
               {{ item.title }}
             </NuxtLink>
 
-            <p class="font-serif leading-tight text-stone-500">
+            <p class="text-stone-500 font-serif leading-tight font-350">
               {{ item.description }}
             </p>
           </div>
