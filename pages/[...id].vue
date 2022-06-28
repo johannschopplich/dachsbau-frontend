@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { KirbyBlock } from '#nuxt-kql'
 import type { KirbyDefaultPage, KirbyDefaultPageQuery } from '~/types'
 
 const route = useRoute()
@@ -31,32 +30,22 @@ useHead(() => ({
   ],
 }))
 
-const text = computed<KirbyBlock<string>[]>(
-  () => data.value?.result?.text ?? []
-)
+const page = computed(() => data.value?.result)
 </script>
 
 <template>
-  <div>
-    <h1
-      class="w-3/4 text-5xl text-primary-600 font-heading-condensed font-medium md:text-6xl"
-    >
-      {{ data?.result?.title }}
+  <div class="max-w-screen-md padding-content mx-auto pt-36 pb-12">
+    <h1 class="page-title w-3/4 hyphenate">
+      {{ page?.title ?? 'Oh, Mist, Seite nicht gefunden!' }}
     </h1>
 
     <div class="prose text-secondary-900 font-serif md:text-xl md:font-350">
-      <template v-if="data?.result">
-        <template v-for="(block, index) in text" :key="index">
-          <component :is="block.content.level" v-if="block.type === 'heading'">
-            {{ (block as KirbyBlock<'heading'>).content.text }}
-          </component>
-          <div v-else v-html="block.content.text" />
-        </template>
+      <template v-if="page">
+        <KirbyBlocks :blocks="page.text ?? []" :files="page.files ?? []" />
       </template>
 
       <template v-else>
-        <h1>Oh, Mist, Seite nicht gefunden!</h1>
-        <p>Mensch kann sich auch in einem Dachsbau verirren.</p>
+        <p>Mensch kann sich auch in einem Dachsbau verirren…</p>
         <p>
           Du kannst einfach zur
           <NuxtLink to="/">Startseite</NuxtLink> zurückkehren.
