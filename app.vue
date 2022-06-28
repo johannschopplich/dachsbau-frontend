@@ -43,6 +43,13 @@ useHead(() => ({
     { rel: 'stylesheet', href: '/fonts/Fraunces.css' },
     { rel: 'stylesheet', href: '/fonts/Henrietta.css' },
     { rel: 'stylesheet', href: '/fonts/HenriettaCondensed.css' },
+    {
+      rel: 'preload',
+      href: '/fonts/Fraunces-latin_basic.woff2',
+      as: 'font',
+      type: 'font/woff2',
+      crossorigin: 'anonymous',
+    },
   ],
   meta: [
     { name: 'theme-color', content: '#3A455B' },
