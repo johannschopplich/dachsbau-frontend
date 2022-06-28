@@ -54,11 +54,14 @@ const random = () => Math.random() * 4 - 2
           <div :style="`transform: rotate(${random()}deg)`">
             <img
               v-if="item.cover"
-              class="aspect-[3/2] w-full object-cover border-2 border-secondary-400 rounded-lg"
+              class="handdrawn-mask aspect-[3/2] w-full object-cover"
               :srcset="item.cover.srcset"
               loading="lazy"
             />
-            <div v-else class="w-full h-full bg-secondary-400 rounded-lg" />
+            <div
+              v-else
+              class="handdrawn-mask aspect-[3/2] w-full bg-secondary-400"
+            />
           </div>
 
           <div class="px-2">
