@@ -2,10 +2,12 @@
   <div class="relative h-full">
     <AppHeader />
 
-    <main class="max-w-screen-md mx-auto padding-content pt-36 pb-12">
+    <main>
       <slot />
     </main>
 
-    <AppFooter />
+    <ClientOnly>
+      <AppFooter />
+    </ClientOnly>
   </div>
 </template>

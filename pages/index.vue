@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { containerInjectionKey } from '~/app.vue'
 
-definePageMeta({
-  layout: 'home',
-})
-
 const site = useSite()
 
 const { data } = await useKql({
@@ -53,7 +49,7 @@ onMounted(() => {
       </div>
 
       <div
-        class="h-full max-w-screen-md mx-auto padding-content grid grid-rows-[1fr_auto_1fr] gap-4"
+        class="h-full max-w-screen-md padding-content mx-auto grid grid-rows-[1fr_auto_1fr] gap-4"
       >
         <div />
         <p class="title text-center">
@@ -91,64 +87,60 @@ onMounted(() => {
       <p class="title text-center">Angebote</p>
     </div>
 
-    <div class="relative bg-primary-700">
-      <div class="max-w-screen-lg mx-auto padding-content py-12">
-        <div class="space-y-12">
-          <div
-            v-for="(item, index) in data?.result"
-            :key="index"
-            class="group flex flex-col gap-4 sm:flex-row sm:gap-12"
-            @mouseenter="animationStack.set(index, true)"
-            @mouseleave="animationStack.set(index, false)"
-            @click="animationStack.clear(), animationStack.set(index, true)"
+    <div class="max-w-screen-lg bg-primary-700 padding-content mx-auto py-12">
+      <div class="space-y-12">
+        <div
+          v-for="(item, index) in data?.result"
+          :key="index"
+          class="group flex flex-col gap-4 sm:flex-row sm:gap-12"
+          @mouseenter="animationStack.set(index, true)"
+          @mouseleave="animationStack.set(index, false)"
+          @click="animationStack.clear(), animationStack.set(index, true)"
+        >
+          <NuxtLink
+            :to="{ path: `/${item.id}` }"
+            :class="['sm:w-1/2', index % 2 === 1 && 'sm:order-2']"
           >
-            <NuxtLink
-              :to="{ path: `/${item.id}` }"
-              :class="[
-                'aspect-[3/2] handdrawn-mask sm:w-1/2',
-                index % 2 === 1 && 'sm:order-2',
-              ]"
-            >
-              <img
-                v-if="item.cover"
-                :srcset="item.cover.srcset"
-                class="h-full object-cover"
-              />
-              <div v-else class="w-full h-full bg-secondary-400" />
-            </NuxtLink>
+            <img
+              v-if="item.cover"
+              :srcset="item.cover.srcset"
+              class="handdrawn-mask aspect-[3/2] w-full object-cover"
+            />
+            <div
+              v-else
+              class="handdrawn-mask aspect-[3/2] w-full h-full bg-secondary-400"
+            />
+          </NuxtLink>
 
-            <NuxtLink
-              :to="{ path: `/${item.id}` }"
-              class="block cursor-pointer flex justify-center px-4 sm:w-1/2 sm:px-0 sm:items-center"
-            >
-              <div>
-                <div class="relative inline-block">
-                  <HomeAnimatedDash
-                    :is-active="animationStack.get(index) ?? false"
-                  />
+          <NuxtLink
+            :to="{ path: `/${item.id}` }"
+            class="block flex justify-center px-4 sm:w-1/2 sm:px-0 sm:items-center"
+          >
+            <div>
+              <div class="relative inline-block">
+                <HomeAnimatedDash
+                  :is-active="animationStack.get(index) ?? false"
+                />
 
-                  <span
-                    class="relative text-2xl font-heading-condensed text-secondary-200 md:text-4xl"
-                  >
-                    {{ item.title }}
-                  </span>
-                </div>
-
-                <div
-                  class="font-serif text-secondary-200 sm:text-xl sm:font-350"
+                <span
+                  class="relative text-2xl font-heading-condensed text-secondary-200 md:text-4xl"
                 >
-                  {{ item.description }}
-                </div>
+                  {{ item.title }}
+                </span>
               </div>
-            </NuxtLink>
-          </div>
+
+              <div class="font-serif text-secondary-200 md:text-xl md:font-350">
+                {{ item.description }}
+              </div>
+            </div>
+          </NuxtLink>
         </div>
       </div>
     </div>
 
     <div class="w-full h-[var(--h-content)]">
       <div
-        class="h-full max-w-screen-md mx-auto padding-content flex items-center justify-center"
+        class="h-full max-w-screen-md padding-content mx-auto flex items-center justify-center"
       >
         <div>
           <h2 class="title relative">
