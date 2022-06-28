@@ -85,24 +85,26 @@ async function close(path: string) {
     </button>
   </header>
 
-  <nav
-    :class="[
-      'navigation absolute top-0 left-0 right-0 px-6 bg-primary-600 flex justify-center items-center rounded-3xl z-10 md:top-6 md:left-initial md:bg-transparent md:rounded-none',
-      isOpen && 'is-open',
-    ]"
-  >
-    <ul class="flex flex-col md:flex-row md:gap-4">
-      <NuxtLink
-        v-for="item in navItems"
-        :key="item.id"
-        :to="{ path: `/${item.id}` }"
-        class="text-size-4xl leading-tight font-heading-condensed text-white hover:text-secondary-600 md:text-size-2xl md:text-primary-700"
-        @click="close(`/${item.id}`)"
-      >
-        {{ item.title }}
-      </NuxtLink>
-    </ul>
-  </nav>
+  <ClientOnly>
+    <nav
+      :class="[
+        'navigation absolute top-0 left-0 right-0 px-6 bg-primary-600 flex justify-center items-center rounded-3xl z-10 md:top-6 md:left-initial md:bg-transparent md:rounded-none',
+        isOpen && 'is-open',
+      ]"
+    >
+      <ul class="flex flex-col md:flex-row md:gap-4">
+        <NuxtLink
+          v-for="item in navItems"
+          :key="item.id"
+          :to="{ path: `/${item.id}` }"
+          class="text-size-4xl leading-tight font-heading-condensed text-white hover:text-secondary-600 md:text-size-2xl md:text-primary-700"
+          @click="close(`/${item.id}`)"
+        >
+          {{ item.title }}
+        </NuxtLink>
+      </ul>
+    </nav>
+  </ClientOnly>
 
   <div
     :class="[
