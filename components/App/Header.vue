@@ -103,20 +103,20 @@ async function close(path: string) {
           {{ item.title }}
         </NuxtLink>
       </ul>
+
+      <div
+        :class="[
+          'fixed bottom-0 left-6 transition-transform-250 pointer-events-none',
+          isOpen
+            ? 'translate-y-[20%] rotate-15 transition-delay-250'
+            : 'translate-y-[100%] rotate-0 opacity-0 invisible',
+        ]"
+        aria-hidden="true"
+      >
+        <img class="h-48" src="~/assets/img/frechdachs-512.png" alt="" />
+      </div>
     </nav>
   </ClientOnly>
-
-  <div
-    :class="[
-      'fixed bottom-0 left-4 transition-transform-250 pointer-events-none z-20',
-      isOpen
-        ? 'translate-y-[20%] rotate-20 transition-delay-250'
-        : 'translate-y-[100%] rotate-0 opacity-0 invisible',
-    ]"
-    aria-hidden="true"
-  >
-    <img class="h-48" src="~/assets/img/frechdachs-512.png" alt="" />
-  </div>
 </template>
 
 <style scoped>
