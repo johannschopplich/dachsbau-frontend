@@ -3,8 +3,6 @@ import { KirbyBlock } from '#nuxt-kql'
 import type { KirbyDefaultPage, KirbyDefaultPageQuery } from '~/types'
 
 const route = useRoute()
-const site = useSite()
-
 const { data } = await useKql<KirbyDefaultPage, KirbyDefaultPageQuery>({
   query: `kirby.page("${route.path}")`,
   select: {
@@ -20,18 +18,14 @@ const { data } = await useKql<KirbyDefaultPage, KirbyDefaultPageQuery>({
   },
 })
 
-const title = computed(
-  () => `${data.value?.result?.title} – ${site.value.title}`
-)
-
 useHead(() => ({
-  title: title.value,
+  title: data.value?.result?.title,
   meta: [
-    { name: 'og:title', content: title.value },
+    { name: 'og:title', content: data.value?.result?.title },
     { name: 'og:description', content: data.value?.result?.description },
     {
       name: 'twitter:title',
-      content: title.value,
+      content: data.value?.result?.title,
     },
     { name: 'twitter:description', content: data.value?.result?.description },
   ],

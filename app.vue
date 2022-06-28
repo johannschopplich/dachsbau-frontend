@@ -15,13 +15,17 @@ const site = useSite()
 const { baseUrl } = useRuntimeConfig().public
 const route = useRoute()
 
+const titleFallback = 'Dachsbau Tautenhain'
+const descriptionFallback =
+  'Praxis für Yoga, systemische Beratung und Frauenbegleitung'
+
 const title = computed(() =>
   route.meta.title
-    ? `${route.meta.title} – ${site.value.title}`
-    : site.value.title
+    ? `${route.meta.title} – ${site.value.title ?? titleFallback}`
+    : site.value.title ?? titleFallback
 )
 const description = computed(
-  () => route.meta.description ?? site.value.description
+  () => route.meta.description ?? site.value.description ?? descriptionFallback
 )
 const url = computed(() => resolveURL(baseUrl, route.path))
 
@@ -30,7 +34,9 @@ useHead(() => ({
     class: 'bg-primary-700',
   },
   titleTemplate(chunk) {
-    return chunk ? `${chunk} – ${site.value.title}` : site.value.title
+    return chunk
+      ? `${chunk} – ${site.value.title ?? titleFallback}`
+      : site.value.title ?? titleFallback
   },
   link: [
     { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },

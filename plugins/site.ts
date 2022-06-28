@@ -1,7 +1,9 @@
 import { defineNuxtPlugin } from '#app'
 
 export default defineNuxtPlugin(() => {
-  // Lazily load the necessariy site data
+  const site = useSite()
+
+  // Lazily load the site data
   ;(async () => {
     try {
       const data = await $kql({
@@ -24,10 +26,9 @@ export default defineNuxtPlugin(() => {
         },
       })
 
-      useSite().value = data?.result || {}
+      site.value = data?.result || {}
     } catch (e) {
-      console.error('Error loading site data', e)
-      console.error('Error message:', e.message)
+      console.error('Error loading site data:', e.message)
     }
   })()
 })
