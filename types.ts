@@ -1,21 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { KirbyBlock, KirbyQueryResponse } from '#nuxt-kql'
 
+export interface KirbyFile {
+  id: string
+  filename: string
+  url: string
+  srcset: string
+}
+
 export interface KirbySite {
-  title?: string
-  description?: string
-  children?: {
+  title: string
+  description: string
+  children: {
     id: string
     title: string
     isListed: boolean
   }[]
-  cover?: {
-    id: string
-    filename: string
-    url: string
-    srcset: string
-  }
-  footer?: {
+  cover: KirbyFile
+  footer: {
     id: string
     title: string
   }[]
@@ -43,11 +45,6 @@ export interface KirbyDefaultPage extends KirbyQueryResponse {
     title: string
     description: string
     text: KirbyBlock[]
-    files: {
-      id: string
-      filename: string
-      url: string
-      srcset: string
-    }[]
+    files: KirbyFile[]
   }
 }
