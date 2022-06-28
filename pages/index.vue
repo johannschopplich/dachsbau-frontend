@@ -89,54 +89,58 @@ onMounted(() => {
       <p class="title text-center">Angebote</p>
     </div>
 
-    <div class="max-w-screen-lg bg-primary-700 padding-content mx-auto py-12">
-      <div class="space-y-12">
-        <div
-          v-for="(item, index) in data?.result"
-          :key="index"
-          class="group flex flex-col gap-4 sm:flex-row sm:gap-12"
-          @mouseenter="animationStack.set(index, true)"
-          @mouseleave="animationStack.set(index, false)"
-          @click="animationStack.clear(), animationStack.set(index, true)"
-        >
-          <NuxtLink
-            :to="{ path: `/${item.id}` }"
-            :class="['sm:w-1/2', index % 2 === 1 && 'sm:order-2']"
+    <div class="bg-primary-700">
+      <div class="max-w-screen-lg padding-content mx-auto py-12">
+        <div class="space-y-12">
+          <div
+            v-for="(item, index) in data?.result"
+            :key="index"
+            class="group flex flex-col gap-4 sm:flex-row sm:gap-12"
+            @mouseenter="animationStack.set(index, true)"
+            @mouseleave="animationStack.set(index, false)"
+            @click="animationStack.clear(), animationStack.set(index, true)"
           >
-            <img
-              v-if="item.cover"
-              class="handdrawn-mask aspect-[3/2] w-full object-cover"
-              :srcset="item.cover.srcset"
-              loading="lazy"
-            />
-            <div
-              v-else
-              class="handdrawn-mask aspect-[3/2] w-full h-full bg-secondary-400"
-            />
-          </NuxtLink>
+            <NuxtLink
+              :to="{ path: `/${item.id}` }"
+              :class="['sm:w-1/2', index % 2 === 1 && 'sm:order-2']"
+            >
+              <img
+                v-if="item.cover"
+                class="handdrawn-mask aspect-[3/2] w-full object-cover"
+                :srcset="item.cover.srcset"
+                loading="lazy"
+              />
+              <div
+                v-else
+                class="handdrawn-mask aspect-[3/2] w-full h-full bg-secondary-400"
+              />
+            </NuxtLink>
 
-          <NuxtLink
-            :to="{ path: `/${item.id}` }"
-            class="block flex justify-center px-4 sm:w-1/2 sm:px-0 sm:items-center"
-          >
-            <div>
-              <div class="relative inline-block">
-                <HomeAnimatedDash
-                  :is-active="animationStack.get(index) ?? false"
-                />
+            <NuxtLink
+              :to="{ path: `/${item.id}` }"
+              class="block flex justify-center px-4 sm:w-1/2 sm:px-0 sm:items-center"
+            >
+              <div>
+                <div class="relative inline-block">
+                  <HomeAnimatedDash
+                    :is-active="animationStack.get(index) ?? false"
+                  />
 
-                <span
-                  class="relative text-2xl font-heading-condensed text-secondary-200 md:text-4xl"
+                  <span
+                    class="relative text-2xl font-heading-condensed text-secondary-200 md:text-4xl"
+                  >
+                    {{ item.title }}
+                  </span>
+                </div>
+
+                <div
+                  class="font-serif text-secondary-200 md:text-xl md:font-350"
                 >
-                  {{ item.title }}
-                </span>
+                  {{ item.description }}
+                </div>
               </div>
-
-              <div class="font-serif text-secondary-200 md:text-xl md:font-350">
-                {{ item.description }}
-              </div>
-            </div>
-          </NuxtLink>
+            </NuxtLink>
+          </div>
         </div>
       </div>
     </div>
