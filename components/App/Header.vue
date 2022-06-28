@@ -87,7 +87,7 @@ async function close(path: string) {
 
   <nav
     :class="[
-      'navigation absolute top-0 left-0 right-0 px-6 bg-primary-600 flex justify-center items-center z-10 md:top-6 md:left-initial md:bg-transparent',
+      'navigation absolute top-0 left-0 right-0 px-6 bg-primary-600 flex justify-center items-center rounded-3xl z-10 md:top-6 md:left-initial md:bg-transparent md:rounded-none',
       isOpen && 'is-open',
     ]"
   >
