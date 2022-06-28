@@ -1,5 +1,5 @@
 :root {
-  @apply min-w-[320px];
+  --at-apply: 'min-w-[320px]';
 
   --h-screen: calc(100 * var(--vh, 1vh));
   --h-content: var(--h-screen);

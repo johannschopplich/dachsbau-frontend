@@ -4,8 +4,5 @@
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "emmet.includeLanguages": {
-    "postcss": "css"
-  },
   "eslint.validate": ["javascript", "javascriptreact", "vue"]
 }

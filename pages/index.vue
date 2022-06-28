@@ -176,7 +176,7 @@ onMounted(() => {
 
 <style scoped>
 .title {
-  @apply text-4xl font-heading text-primary-500 md:text-6xl;
+  --at-apply: 'text-4xl font-heading text-primary-500 md:text-6xl';
 }
 
 .animated-bg-container {
