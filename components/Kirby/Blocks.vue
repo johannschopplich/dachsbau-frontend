@@ -21,6 +21,7 @@ defineProps<{
           files?.find((i) => i.filename === block.content.image[0])?.srcset
         "
         sizes="(min-width: 768px) 768px, 100vw"
+        loading="lazy"
         alt=""
       />
       <figcaption v-if="block.content.caption">

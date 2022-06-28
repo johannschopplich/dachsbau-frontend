@@ -44,6 +44,7 @@ onMounted(() => {
         <img
           class="w-[min(75vw,22rem)] opacity-25"
           src="~/assets/img/dachsbau-hof-1024.png"
+          loading="lazy"
           alt=""
         />
       </div>
@@ -74,6 +75,7 @@ onMounted(() => {
             (min-width: 1024px) 30vw,
             (min-width: 768px) 40vw,
             100vw"
+          loading="lazy"
           alt=""
         />
         <div v-else class="w-full h-full bg-secondary-400" />
@@ -103,8 +105,9 @@ onMounted(() => {
           >
             <img
               v-if="item.cover"
-              :srcset="item.cover.srcset"
               class="handdrawn-mask aspect-[3/2] w-full object-cover"
+              :srcset="item.cover.srcset"
+              loading="lazy"
             />
             <div
               v-else
