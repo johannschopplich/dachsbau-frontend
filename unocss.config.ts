@@ -52,9 +52,32 @@ export default defineConfig({
         'text-underline-offset': 'var(--decoration-width)',
       },
     ],
+    [
+      'hyphenate',
+      {
+        'overflow-wrap': 'break-word',
+
+        '-webkit-hyphens': 'auto',
+        '-webkit-hyphenate-limit-before': '3',
+        '-webkit-hyphenate-limit-after': '3',
+        '-webkit-hyphenate-limit-chars': '6 3 3',
+        '-webkit-hyphenate-limit-lines': '2',
+        '-webkit-hyphenate-limit-last': 'always',
+        '-webkit-hyphenate-limit-zone': '8%',
+
+        hyphens: 'auto',
+        'hyphenate-limit-chars': '6 3 3',
+        'hyphenate-limit-lines': '2',
+        'hyphenate-limit-last': 'always',
+        'hyphenate-limit-zone': '8%',
+      },
+    ],
   ],
   shortcuts: {
+    'page-title':
+      'text-5xl text-primary-600 font-heading-condensed font-medium md:text-6xl',
     'padding-content': 'px-4 sm:px-6 lg:px-8',
+    'breakout-content': 'w-screen ml-[calc(50%-50vw)]',
   },
   transformers: [transformerDirective()],
   presets: [
@@ -70,7 +93,6 @@ export default defineConfig({
           color: 'currentColor',
           'font-weight': 'unset',
           'text-decoration-line': 'underline',
-          'text-decoration-style': 'solid',
           'text-decoration-color': theme.colors.primary[600],
           'text-decoration-thickness': 'var(--decoration-width)',
           'text-underline-offset': 'var(--decoration-width)',
@@ -86,6 +108,13 @@ export default defineConfig({
         'p,ul,ol,pre': {
           margin: '1em 0',
           'line-height': 1.5,
+        },
+        'figure,picture': {
+          margin: '2em auto',
+        },
+        figcaption: {
+          color: theme.colors.primary[700],
+          padding: '0.25em 0.5em',
         },
       },
     }),
