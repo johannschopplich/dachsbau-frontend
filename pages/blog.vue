@@ -56,7 +56,7 @@ const random = () => Math.random() * 4 - 2
               v-if="item.cover"
               class="handdrawn-mask aspect-[3/2] w-full object-cover"
               :srcset="item.cover.srcset"
-              sizes="(min-width: 640px) 50vw, (min-width: 768px) 16rem, 100vw"
+              sizes="(min-width: 768px) 16rem, (min-width: 640px) 50vw, 100vw"
               loading="lazy"
             />
             <div
