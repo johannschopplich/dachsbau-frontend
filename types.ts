@@ -27,7 +27,6 @@ export interface KirbyDefaultPageQuery {
   query: `kirby.page("${string}")`
   select: {
     id: string | boolean
-    isErrorPage: string | boolean
     title: string | boolean
     description: string | boolean
     text: string | boolean
@@ -41,7 +40,6 @@ export interface KirbyDefaultPageQuery {
 export interface KirbyDefaultPage extends KirbyQueryResponse {
   result?: {
     id: string
-    isErrorPage: boolean
     title: string
     description: string
     text: KirbyBlock[]
