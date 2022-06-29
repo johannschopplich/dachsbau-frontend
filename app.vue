@@ -29,42 +29,12 @@ const description = computed(
 )
 const url = computed(() => resolveURL(baseUrl, route.path))
 
-useHead(() => ({
+useHead({
   htmlAttrs: {
     class: 'bg-primary-700',
+    lang: 'de',
   },
-  titleTemplate(chunk) {
-    return chunk
-      ? `${chunk} – ${site.value.title ?? titleFallback}`
-      : site.value.title ?? titleFallback
-  },
-  link: [
-    { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
-    { rel: 'stylesheet', href: '/fonts/Fraunces.css' },
-    { rel: 'stylesheet', href: '/fonts/Henrietta.css' },
-    { rel: 'stylesheet', href: '/fonts/HenriettaCondensed.css' },
-    {
-      rel: 'preload',
-      href: '/fonts/Fraunces-latin_basic.woff2',
-      as: 'font',
-      type: 'font/woff2',
-      crossorigin: 'anonymous',
-    },
-  ],
-  meta: [
-    { name: 'theme-color', content: '#3A455B' },
-    { name: 'og:title', content: title.value },
-    { name: 'og:description', content: description.value },
-    { name: 'og:url', content: url.value },
-    { name: 'og:type', content: 'website' },
-    { name: 'og:image', content: 'https://vuejs.org/images/logo.png' },
-    { name: 'twitter:title', content: title.value },
-    { name: 'twitter:description', content: description.value },
-    { name: 'twitter:url', content: url.value },
-    { name: 'twitter:image', content: 'https://vuejs.org/images/logo.png' },
-    { name: 'twitter:card', content: 'summary' },
-  ],
-}))
+})
 
 const container = ref<HTMLElement | undefined>()
 provide(containerInjectionKey, container)
@@ -82,6 +52,37 @@ onMounted(() => {
 </script>
 
 <template>
+  <Head>
+    <Title>{{ title }}</Title>
+    <Link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <Link rel="stylesheet" href="/fonts/Fraunces.css" />
+    <Link rel="stylesheet" href="/fonts/Henrietta.css" />
+    <Link rel="stylesheet" href="/fonts/HenriettaCondensed.css" />
+    <Link
+      rel="preload"
+      href="/fonts/Fraunces-latin_basic.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <Meta name="description" :content="description" />
+    <Meta property="og:title" :content="title" />
+    <Meta property="og:description" :content="description" />
+    <Meta property="og:url" :content="url" />
+    <Meta property="og:type" :content="'website'" />
+    <Meta property="og:image" :content="'https://vuejs.org/images/logo.png'" />
+    <Meta property="twitter:title" :content="title" />
+    <Meta property="twitter:description" :content="description" />
+    <Meta property="twitter:url" :content="url" />
+    <Meta
+      property="twitter:image"
+      :content="'https://vuejs.org/images/logo.png'"
+    />
+    <Meta property="twitter:card" :content="'summary'" />
+
+    <Meta name="theme-color" :content="'#3A455B'" />
+  </Head>
+
   <div
     id="scroll-container"
     ref="container"
