@@ -20,17 +20,27 @@ const contentContainer = inject(containerInjectionKey)
 const animationStack = reactive(new Map<number, boolean>())
 
 onMounted(() => {
-  const { y } = useScroll(contentContainer)
+  const { y } = useScroll(contentContainer, {
+    onScroll() {
+      resume()
+    },
+    onStop() {
+      pause()
+    },
+  })
   const { height } = useWindowSize()
 
-  watchEffect(() => {
-    if (y.value < height.value) {
-      document.documentElement.style.setProperty(
-        '--screen-ratio',
-        `${y.value / height.value}`
-      )
-    }
-  })
+  const { pause, resume } = useRafFn(
+    () => {
+      if (y.value < height.value) {
+        document.documentElement.style.setProperty(
+          '--screen-ratio',
+          `${y.value / height.value}`
+        )
+      }
+    },
+    { immediate: false }
+  )
 })
 </script>
 
