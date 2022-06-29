@@ -1,13 +1,14 @@
-# Nuxt 3 Minimal Starter
+# Dachsbau Frontend
 
-I recommend to look at the [documentation](https://v3.nuxtjs.org).
+Frontend for [this website](https://dachsbau-tautenhain.de).
 
 ## Key Features
+
+This is my best practice solution to build a Nuxt 3 based frontend and Kirby.
 
 - 📐 Prettier & ESLint
 - 🔢 Pre-configured [VSCode settings](./.vscode/settings.json)
 - 🐶 Native Git hooks with [simple-git-hooks](https://github.com/toplenboren/simple-git-hooks)
-- 🚓 [Conventional commits](./.gitlab/commit-convention.md)
 
 ## Prerequisites
 
