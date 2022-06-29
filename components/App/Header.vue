@@ -5,8 +5,10 @@ import { containerInjectionKey } from '~/app.vue'
 const nuxtApp = useNuxtApp()
 const route = useRoute()
 const site = useSite()
+
 const isOpen = ref(false)
 const isRedirecting = ref(false)
+const hasLoaded = ref(false)
 
 const contentContainer = inject(containerInjectionKey)
 const isLocked = useScrollLock(contentContainer)
@@ -17,6 +19,7 @@ const navItems = computed(() =>
 
 // On Suspense resolved event
 nuxtApp.hook('page:finish', () => {
+  hasLoaded.value = true
   isRedirecting.value = false
 })
 
@@ -105,21 +108,16 @@ async function close(path: string) {
       </ul>
 
       <div
+        v-if="hasLoaded"
         :class="[
-          'fixed bottom-0 left-6 transition-transform-250 pointer-events-none',
+          'fixed bottom-0 left-6 transition-transform-250 pointer-events-none md:hidden',
           isOpen
             ? 'translate-y-[20%] rotate-15 transition-delay-250'
             : 'translate-y-[100%] rotate-0 opacity-0 invisible',
         ]"
         aria-hidden="true"
       >
-        <img
-          class="h-48"
-          src="~/assets/img/frechdachs-512.png"
-          width="256"
-          height="512"
-          alt=""
-        />
+        <img class="h-48" src="~/assets/img/frechdachs-512.png" alt="" />
       </div>
     </nav>
   </ClientOnly>
