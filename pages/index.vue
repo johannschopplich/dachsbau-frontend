@@ -103,6 +103,7 @@ onMounted(() => {
             <NuxtLink
               :to="{ path: `/${item.id}` }"
               :class="['sm:w-1/2', index % 2 === 1 && 'sm:order-2']"
+              :aria-label="item.title"
             >
               <img
                 v-if="item.cover"

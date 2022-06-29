@@ -78,9 +78,9 @@ onMounted(() => {
       property="twitter:image"
       :content="'https://vuejs.org/images/logo.png'"
     />
-    <Meta property="twitter:card" :content="'summary'" />
+    <Meta property="twitter:card" content="summary" />
 
-    <Meta name="theme-color" :content="'#3A455B'" />
+    <Meta name="theme-color" content="#3A455B" />
   </Head>
 
   <div
