@@ -54,17 +54,26 @@ onMounted(() => {
 <template>
   <Head>
     <Title>{{ title }}</Title>
+
     <Link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <Link rel="stylesheet" href="/fonts/Fraunces.css" />
     <Link rel="stylesheet" href="/fonts/Henrietta.css" />
     <Link rel="stylesheet" href="/fonts/HenriettaCondensed.css" />
     <Link
       rel="preload"
-      href="/fonts/Fraunces-latin_basic.woff2"
+      href="/fonts/VCHenrietta-Regular.woff2"
       as="font"
       type="font/woff2"
       crossorigin="anonymous"
     />
+    <Link
+      rel="preload"
+      href="/fonts/VCHenriettaCondensed-Medium.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+
     <Meta name="description" :content="description" />
     <Meta property="og:title" :content="title" />
     <Meta property="og:description" :content="description" />
