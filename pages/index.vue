@@ -44,8 +44,9 @@ onMounted(() => {
         <img
           class="w-[min(75vw,22rem)] opacity-25"
           src="~/assets/img/dachsbau-hof-1024.png"
-          loading="lazy"
-          alt=""
+          width="1024"
+          height="649"
+          alt="Dachsbau Tautenhain Skizze"
         />
       </div>
 

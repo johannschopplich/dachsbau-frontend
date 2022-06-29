@@ -113,7 +113,13 @@ async function close(path: string) {
         ]"
         aria-hidden="true"
       >
-        <img class="h-48" src="~/assets/img/frechdachs-512.png" alt="" />
+        <img
+          class="h-48"
+          src="~/assets/img/frechdachs-512.png"
+          width="256"
+          height="512"
+          alt=""
+        />
       </div>
     </nav>
   </ClientOnly>
