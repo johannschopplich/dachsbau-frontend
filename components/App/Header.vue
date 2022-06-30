@@ -86,38 +86,36 @@ async function close(path: string) {
     </button>
   </header>
 
-  <ClientOnly>
-    <nav
-      :class="[
-        'navigation absolute top-0 left-0 right-0 px-6 bg-primary-600 flex justify-center items-center z-10 md:top-6 md:left-initial md:bg-transparent md:rounded-none',
-        isOpen && 'is-open',
-      ]"
-    >
-      <ul class="flex flex-col md:flex-row md:gap-4">
-        <NuxtLink
-          v-for="item in navItems"
-          :key="item.id"
-          :to="{ path: `/${item.id}` }"
-          class="text-size-4xl leading-tight font-heading-condensed text-white hover:text-secondary-600 md:text-size-2xl md:text-primary-700"
-          @click="close(`/${item.id}`)"
-        >
-          {{ item.title }}
-        </NuxtLink>
-      </ul>
-
-      <div
-        :class="[
-          'fixed bottom-0 left-6 transition-transform-250 pointer-events-none md:hidden',
-          isOpen
-            ? 'translate-y-[20%] rotate-15 transition-delay-250'
-            : 'translate-y-[100%] rotate-0 opacity-0 invisible',
-        ]"
-        aria-hidden="true"
+  <nav
+    :class="[
+      'navigation absolute top-0 left-0 right-0 px-6 bg-primary-600 flex justify-center items-center z-10 md:top-6 md:left-initial md:bg-transparent md:rounded-none',
+      isOpen && 'is-open',
+    ]"
+  >
+    <ul class="flex flex-col md:flex-row md:gap-4">
+      <NuxtLink
+        v-for="item in navItems"
+        :key="item.id"
+        :to="{ path: `/${item.id}` }"
+        class="text-size-4xl leading-tight font-heading-condensed text-white hover:text-secondary-600 md:text-size-2xl md:text-primary-700"
+        @click="close(`/${item.id}`)"
       >
-        <img class="h-48" src="~/assets/img/frechdachs-512.png" alt="" />
-      </div>
-    </nav>
-  </ClientOnly>
+        {{ item.title }}
+      </NuxtLink>
+    </ul>
+
+    <div
+      :class="[
+        'fixed bottom-0 left-6 transition-transform-250 pointer-events-none md:hidden',
+        isOpen
+          ? 'translate-y-[20%] rotate-15 transition-delay-250'
+          : 'translate-y-[100%] rotate-0 opacity-0 invisible',
+      ]"
+      aria-hidden="true"
+    >
+      <img class="h-48" src="~/assets/img/frechdachs-512.png" alt="" />
+    </div>
+  </nav>
 </template>
 
 <style scoped>

@@ -68,7 +68,7 @@ onMounted(() => {
       </div>
 
       <div
-        class="h-full max-w-screen-md padding-content mx-auto grid grid-rows-[1fr_auto_1fr] gap-4"
+        class="relative h-full max-w-screen-md padding-content mx-auto grid grid-rows-[1fr_auto_1fr] gap-4"
       >
         <div />
         <p class="title text-center">
