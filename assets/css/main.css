@@ -2,7 +2,7 @@
   --at-apply: 'min-w-[320px]';
 
   --h-screen: calc(100 * var(--vh, 1vh));
-  --h-content: var(--h-screen);
+  --h-content: calc(var(--h-screen) - 2 * var(--frame-width));
 
   --frame-width: 0.5rem;
   --decoration-width: max(2px, 0.1em);

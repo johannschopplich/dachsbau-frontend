@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { promiseTimeout } from '@vueuse/core'
-import { containerInjectionKey } from '~/app.vue'
+import { containerInjectionKey } from '~/types'
 
 const nuxtApp = useNuxtApp()
 const route = useRoute()

@@ -1,5 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import type { InjectionKey, Ref } from 'vue'
 import type { KirbyBlock, KirbyQueryResponse } from '#nuxt-kql'
+
+export const containerInjectionKey = Symbol('container') as InjectionKey<
+  Ref<HTMLElement | undefined>
+>
 
 export interface KirbyFile {
   id: string

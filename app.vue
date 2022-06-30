@@ -1,13 +1,7 @@
-<script lang="ts">
-import type { InjectionKey, Ref } from 'vue'
-
-export const containerInjectionKey = Symbol('container') as InjectionKey<
-  Ref<HTMLElement | undefined>
->
-</script>
-
 <script setup lang="ts">
 import { resolveURL } from 'ufo'
+import { containerInjectionKey } from './types'
+
 import '~/assets/css/main.css'
 import '~/assets/css/components.css'
 
@@ -42,6 +36,7 @@ provide(containerInjectionKey, container)
 onMounted(() => {
   const { height } = useElementSize(container)
 
+  // Manually set `--h-content`, because somehow Android 100vh is too high
   watchEffect(() =>
     document.documentElement.style.setProperty(
       '--h-content',

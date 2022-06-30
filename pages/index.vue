@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { containerInjectionKey } from '~/app.vue'
+import { containerInjectionKey } from '~/types'
 
 const site = useSite()
 
