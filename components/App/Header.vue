@@ -8,7 +8,6 @@ const site = useSite()
 
 const isOpen = ref(false)
 const isRedirecting = ref(false)
-const hasLoaded = ref(false)
 
 const contentContainer = inject(containerInjectionKey)
 const isLocked = useScrollLock(contentContainer)
@@ -19,7 +18,6 @@ const navItems = computed(() =>
 
 // On Suspense resolved event
 nuxtApp.hook('page:finish', () => {
-  hasLoaded.value = true
   isRedirecting.value = false
 })
 
@@ -108,7 +106,6 @@ async function close(path: string) {
       </ul>
 
       <div
-        v-if="hasLoaded"
         :class="[
           'fixed bottom-0 left-6 transition-transform-250 pointer-events-none md:hidden',
           isOpen

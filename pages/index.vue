@@ -53,7 +53,14 @@ onMounted(() => {
       >
         <img
           class="w-[min(75vw,22rem)] opacity-25"
-          src="~/assets/img/dachsbau-hof-1024.png"
+          srcset="
+            ~/assets/img/dachsbau-hof-512.png   512w,
+            ~/assets/img/dachsbau-hof-1024.png 1024w
+          "
+          sizes="
+            (min-width: 768px) 22rem,
+            75vw
+          "
           width="1024"
           height="649"
           alt="Dachsbau Tautenhain Skizze"
