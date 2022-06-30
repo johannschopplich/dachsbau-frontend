@@ -93,7 +93,6 @@ onMounted(() => {
             (min-width: 1024px) 30vw,
             (min-width: 768px) 40vw,
             100vw"
-          loading="lazy"
           alt=""
         />
         <div v-else class="w-full h-full bg-secondary-400" />
