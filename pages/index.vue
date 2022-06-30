@@ -28,6 +28,7 @@ onMounted(() => {
       pause()
     },
   })
+
   const { height } = useWindowSize()
 
   const { pause, resume } = useRafFn(

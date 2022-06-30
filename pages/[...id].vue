@@ -16,25 +16,25 @@ const { data } = await useKql<KirbyDefaultPage, KirbyDefaultPageQuery>({
   },
 })
 
+const page = computed(() => data.value?.result)
+
 useHead(() => ({
-  title: data.value?.result?.title,
+  title: page.value?.title,
   meta: [
-    { name: 'og:title', content: data.value?.result?.title },
-    { name: 'og:description', content: data.value?.result?.description },
+    { name: 'og:title', content: page.value?.title },
+    { name: 'og:description', content: page.value?.description },
     {
       name: 'twitter:title',
-      content: data.value?.result?.title,
+      content: page.value?.title,
     },
-    { name: 'twitter:description', content: data.value?.result?.description },
+    { name: 'twitter:description', content: page.value?.description },
   ],
 }))
-
-const page = computed(() => data.value?.result)
 </script>
 
 <template>
   <div class="max-w-screen-md padding-content mx-auto pt-36 pb-12">
-    <h1 class="page-title w-3/4 hyphenate">
+    <h1 class="page-title hyphenate md:w-3/4">
       {{ page?.title ?? 'Oh, Mist, Seite nicht gefunden!' }}
     </h1>
 

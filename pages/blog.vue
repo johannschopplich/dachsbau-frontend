@@ -19,20 +19,20 @@ const { data } = await useKql({
   },
 })
 
+const page = computed(() => data.value?.result)
+
 useHead(() => ({
-  title: data.value?.result?.title,
+  title: page.value?.title,
   meta: [
-    { name: 'og:title', content: data.value?.result?.title },
-    { name: 'og:description', content: data.value?.result?.description },
+    { name: 'og:title', content: page.value?.title },
+    { name: 'og:description', content: page.value?.description },
     {
       name: 'twitter:title',
-      content: data.value?.result?.title,
+      content: page.value?.title,
     },
-    { name: 'twitter:description', content: data.value?.result?.description },
+    { name: 'twitter:description', content: page.value?.description },
   ],
 }))
-
-const page = computed(() => data.value?.result)
 
 // Random number between -1 and 1
 const random = () => Math.random() * 4 - 2
@@ -41,7 +41,7 @@ const random = () => Math.random() * 4 - 2
 <template>
   <div class="pt-36 pb-12">
     <div class="max-w-screen-md padding-content mx-auto mb-6">
-      <h1 class="page-title w-3/4 hyphenate">Blog</h1>
+      <h1 class="page-title hyphenate md:w-3/4">Blog</h1>
     </div>
 
     <div class="max-w-screen-lg padding-content mx-auto">
