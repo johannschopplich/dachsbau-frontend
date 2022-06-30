@@ -9,17 +9,13 @@ const site = useSite()
 const { baseUrl } = useRuntimeConfig().public
 const route = useRoute()
 
-const titleFallback = 'Dachsbau Tautenhain'
-const descriptionFallback =
-  'Praxis für Yoga, systemische Beratung und Frauenbegleitung'
-
 const title = computed(() =>
   route.meta.title
-    ? `${route.meta.title} – ${site.value.title ?? titleFallback}`
-    : site.value.title ?? titleFallback
+    ? `${route.meta.title} – ${site.value.title}`
+    : site.value.title
 )
 const description = computed(
-  () => route.meta.description ?? site.value.description ?? descriptionFallback
+  () => route.meta.description ?? site.value.description
 )
 const url = computed(() => resolveURL(baseUrl, route.path))
 
@@ -57,6 +53,13 @@ onMounted(() => {
     <Link
       rel="preload"
       href="/fonts/VCHenrietta-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <Link
+      rel="preload"
+      href="/fonts/VCHenriettaCondensed-Regular.woff2"
       as="font"
       type="font/woff2"
       crossorigin="anonymous"

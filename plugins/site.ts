@@ -3,10 +3,6 @@ import { defineNuxtPlugin } from '#app'
 export default defineNuxtPlugin(async () => {
   const site = useSite()
 
-  if (Object.keys(site.value).length) {
-    return
-  }
-
   try {
     const data = await $kql({
       query: 'site',
