@@ -2,9 +2,11 @@
 
 Frontend for [Dachsbau Tautenhain](https://dachsbau.netlify.app). The backend code is [over here](https://johannschopplich.com/github/dachsbau-backend).
 
-This repository uses Nuxt 3 for the frontend and fetches content from a [headless Kirby]([Kirby Headless Starter](https://github.com/johannschopplich/kirby-headless-starter)) instance.
+This repository uses Nuxt 3 for the frontend and fetches content from a [headless Kirby](https://github.com/johannschopplich/kirby-headless-starter) instance.
 
 This website is created for my best friend to support her in her new endeavours to launch a business of her own. I created [`nuxt-kql`](https://nuxt-kql.jhnn.dev) in the process, since I really wanted to try out Kirby in a headless environment.
+
+All illustrations are drawn by the talented artist [Julia Frank](https://www.instagram.com/mum.mal.mini/).
 
 ## Key Features
 
