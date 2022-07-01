@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { KirbyBlockHeading, KirbyBlockImage, KirbyBlockText } from '#components'
+import type { ComponentPublicInstance } from 'vue'
 import type { KirbyBlock, KirbyBlockType } from '#nuxt-kql'
 import type { KirbyFile } from '~/types'
 
@@ -8,7 +9,10 @@ defineProps<{
   files?: KirbyFile[]
 }>()
 
-const blockComponents: Partial<Record<KirbyBlockType, any>> = {
+const blockComponents: Partial<
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  Record<KirbyBlockType, new (...args: any[]) => ComponentPublicInstance>
+> = {
   heading: KirbyBlockHeading,
   image: KirbyBlockImage,
   text: KirbyBlockText,
