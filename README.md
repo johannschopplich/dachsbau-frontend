@@ -32,10 +32,22 @@ Data is fetched within Suspense components. Thus, the initial server response ti
 
 ## Setup
 
-Make sure to install the dependencies
+Make sure to install the dependencies:
 
 ```bash
 pnpm install
+```
+
+Adapt the relevant environment variables:
+
+```bash
+# For SEO meta data
+NUXT_PUBLIC_BASE_URL=https://dachsbau-tautenhain.de
+# Base URL of the Kirby backend
+KIRBY_BASE_URL=
+# Token for bearer authentication
+# See https://github.com/johannschopplich/kirby-headless-starter
+KIRBY_API_TOKEN=
 ```
 
 ## Development
