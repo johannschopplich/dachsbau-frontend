@@ -13,7 +13,8 @@ All illustrations are drawn by the talented artist [Julia Frank](https://www.ins
 This is my best practice solution to build a Nuxt 3 based frontend on top of a headless Kirby instance.
 
 - 🫂 Kirby Query Language with [`nuxt-kql`](https://nuxt-kql.jhnn.dev)
-- 🔎 SEO meta data included
+- 🍢 [File-based Kirby Blocks](./components/Kirby/Block/)
+- 🔎 SSR generated SEO meta data
 - 📐 Prettier & ESLint
 - 🔢 Pre-configured [VSCode settings](./.vscode/settings.json)
 - 🐶 Native Git hooks with [simple-git-hooks](https://github.com/toplenboren/simple-git-hooks)
