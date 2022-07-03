@@ -78,14 +78,11 @@ onMounted(() => {
     <Meta property="og:url" :content="url" />
     <Meta property="og:type" :content="'website'" />
     <Meta property="og:image" :content="'https://vuejs.org/images/logo.png'" />
-    <Meta property="twitter:title" :content="title" />
-    <Meta property="twitter:description" :content="description" />
-    <Meta property="twitter:url" :content="url" />
-    <Meta
-      property="twitter:image"
-      :content="'https://vuejs.org/images/logo.png'"
-    />
-    <Meta property="twitter:card" content="summary" />
+    <Meta name="twitter:title" :content="title" />
+    <Meta name="twitter:description" :content="description" />
+    <Meta name="twitter:url" :content="url" />
+    <Meta name="twitter:image" :content="'https://vuejs.org/images/logo.png'" />
+    <Meta name="twitter:card" content="summary" />
 
     <Meta name="theme-color" content="#3A455B" />
   </Head>

@@ -20,15 +20,16 @@ const { data } = await useKql({
 })
 
 const page = computed(() => data.value?.result)
+const title = computed(() => `${page.value?.title} – ${useSite().value.title}`)
 
 useHead(() => ({
-  title: page.value?.title,
+  title: title.value,
   meta: [
-    { name: 'og:title', content: page.value?.title },
-    { name: 'og:description', content: page.value?.description },
+    { property: 'og:title', content: title.value },
+    { property: 'og:description', content: page.value?.description },
     {
       name: 'twitter:title',
-      content: page.value?.title,
+      content: title.value,
     },
     { name: 'twitter:description', content: page.value?.description },
   ],
