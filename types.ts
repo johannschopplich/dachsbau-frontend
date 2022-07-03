@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { InjectionKey, Ref } from 'vue'
-import type { KirbyBlock, KirbyQueryResponse } from '#nuxt-kql'
+import type { KirbyBlock, KirbyLayout, KirbyQueryResponse } from '#nuxt-kql'
 
 export const containerInjectionKey = Symbol('container') as InjectionKey<
   Ref<HTMLElement | undefined>
@@ -34,7 +34,8 @@ export interface KirbyDefaultPageQuery {
     id: string | boolean
     title: string | boolean
     description: string | boolean
-    text: string | boolean
+    text?: string | boolean
+    layout?: string | boolean
     files: {
       query: string
       select: string[] | Record<string, any>
@@ -47,7 +48,8 @@ export interface KirbyDefaultPage extends KirbyQueryResponse {
     id: string
     title: string
     description: string
-    text: KirbyBlock[]
+    text?: KirbyBlock[]
+    layout?: KirbyLayout[]
     files: KirbyFile[]
   }
 }

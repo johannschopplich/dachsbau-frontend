@@ -9,6 +9,7 @@ const { data } = await useKql<KirbyDefaultPage, KirbyDefaultPageQuery>({
     title: true,
     description: true,
     text: 'page.text.toBlocks',
+    layout: 'page.layout.toLayouts',
     files: {
       query: 'page.files',
       select: ['id', 'filename', 'url', 'srcset'],
@@ -16,30 +17,71 @@ const { data } = await useKql<KirbyDefaultPage, KirbyDefaultPageQuery>({
   },
 })
 
-const page = computed(() => data.value?.result)
+const page = computed(() => data.value.result)
+const title = computed(
+  () => `${page.value?.title ?? 'Fehler'} – ${useSite().value.title}`
+)
+const hasLayout = computed(() => !!page.value?.layout?.length)
 
 useHead(() => ({
-  title: page.value?.title,
+  title: title.value,
   meta: [
-    { name: 'og:title', content: page.value?.title },
-    { name: 'og:description', content: page.value?.description },
+    { property: 'og:title', content: title.value },
+    { property: 'og:description', content: page.value?.description },
     {
       name: 'twitter:title',
-      content: page.value?.title,
+      content: title.value,
     },
     { name: 'twitter:description', content: page.value?.description },
   ],
 }))
+
+/** Returns the number of columns this column spans */
+function span(width: `${string}/${string}`, columns = 12) {
+  const [a, b] = width.split('/')
+  return columns * (parseInt(a) / parseInt(b))
+}
 </script>
 
 <template>
-  <div class="max-w-screen-md padding-content mx-auto pt-36 pb-12">
+  <div
+    :class="[
+      'padding-content mx-auto pt-36 pb-12',
+      hasLayout ? 'max-w-screen-xl' : 'max-w-screen-md',
+    ]"
+  >
     <h1 class="page-title hyphenate md:w-3/4">
       {{ page?.title ?? 'Oh, Mist, Seite nicht gefunden!' }}
     </h1>
 
+    <div v-if="hasLayout" class="space-y-12">
+      <section
+        v-for="layout in page.layout"
+        :id="layout.id"
+        :key="layout.id"
+        class="grid gap-4 md:grid-cols-12"
+      >
+        <div
+          v-for="(column, index) in layout.columns"
+          :key="index"
+          :style="{
+            gridColumn: `span ${span(column.width)}`,
+          }"
+        >
+          <div
+            class="prose text-secondary-900 font-serif md:text-xl md:font-350"
+          >
+            <KirbyBlocks
+              :blocks="column.blocks ?? []"
+              :files="page.files ?? []"
+            />
+          </div>
+        </div>
+      </section>
+    </div>
+
     <div class="prose text-secondary-900 font-serif md:text-xl md:font-350">
-      <template v-if="page">
+      <template v-if="page?.text">
         <KirbyBlocks :blocks="page.text ?? []" :files="page.files ?? []" />
       </template>
 
