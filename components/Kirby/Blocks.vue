@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { KirbyBlockHeading, KirbyBlockImage, KirbyBlockText } from '#components'
+import {
+  KirbyBlockHeading,
+  KirbyBlockImage,
+  KirbyBlockList,
+  KirbyBlockText,
+} from '#components'
 import type { ComponentPublicInstance } from 'vue'
 import type { KirbyBlock, KirbyBlockType } from '#nuxt-kql'
 import type { KirbyFile } from '~/types'
@@ -15,6 +20,7 @@ const blockComponents: Partial<
 > = {
   heading: KirbyBlockHeading,
   image: KirbyBlockImage,
+  list: KirbyBlockList,
   text: KirbyBlockText,
 }
 </script>
