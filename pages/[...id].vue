@@ -54,12 +54,12 @@ function span(width: `${string}/${string}`, columns = 12) {
       {{ page?.title ?? 'Oh, Mist, Seite nicht gefunden!' }}
     </h1>
 
-    <div v-if="hasLayout" class="space-y-12">
+    <div v-if="hasLayout" class="md:space-y-12">
       <section
         v-for="layout in page.layout"
         :id="layout.id"
         :key="layout.id"
-        class="grid gap-4 md:grid-cols-12"
+        class="md:grid md:gap-4 md:grid-cols-12"
       >
         <div
           v-for="(column, index) in layout.columns"
