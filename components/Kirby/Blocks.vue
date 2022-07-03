@@ -2,7 +2,9 @@
 import {
   KirbyBlockHeading,
   KirbyBlockImage,
+  KirbyBlockLine,
   KirbyBlockList,
+  KirbyBlockQuote,
   KirbyBlockText,
 } from '#components'
 import type { ComponentPublicInstance } from 'vue'
@@ -15,12 +17,13 @@ defineProps<{
 }>()
 
 const blockComponents: Partial<
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Record<KirbyBlockType, new (...args: any[]) => ComponentPublicInstance>
 > = {
   heading: KirbyBlockHeading,
   image: KirbyBlockImage,
+  line: KirbyBlockLine,
   list: KirbyBlockList,
+  quote: KirbyBlockQuote,
   text: KirbyBlockText,
 }
 </script>
