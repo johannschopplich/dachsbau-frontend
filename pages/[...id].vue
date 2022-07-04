@@ -35,12 +35,6 @@ useHead(() => ({
     { name: 'twitter:description', content: page.value?.description },
   ],
 }))
-
-/** Returns the number of columns this column spans */
-function span(width: `${string}/${string}`, columns = 12) {
-  const [a, b] = width.split('/')
-  return columns * (parseInt(a) / parseInt(b))
-}
 </script>
 
 <template>
@@ -54,31 +48,11 @@ function span(width: `${string}/${string}`, columns = 12) {
       {{ page?.title ?? 'Oh, Mist, Seite nicht gefunden!' }}
     </h1>
 
-    <div v-if="hasLayout" class="md:space-y-12">
-      <section
-        v-for="layout in page.layout"
-        :id="layout.id"
-        :key="layout.id"
-        class="md:grid md:gap-12 md:grid-cols-12"
-      >
-        <div
-          v-for="(column, index) in layout.columns"
-          :key="index"
-          :style="{
-            gridColumn: `span ${span(column.width)}`,
-          }"
-        >
-          <div
-            class="prose text-secondary-900 font-serif md:text-xl md:font-350"
-          >
-            <KirbyBlocks
-              :blocks="column.blocks ?? []"
-              :files="page.files ?? []"
-            />
-          </div>
-        </div>
-      </section>
-    </div>
+    <KirbyLayouts
+      v-if="hasLayout"
+      :layouts="page.layout ?? []"
+      :files="page.files ?? []"
+    />
 
     <div class="prose text-secondary-900 font-serif md:text-xl md:font-350">
       <template v-if="page?.text">
