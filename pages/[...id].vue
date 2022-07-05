@@ -10,7 +10,7 @@ const select = {
   layouts: 'page.layout.toLayouts',
   files: {
     query: 'page.files',
-    select: ['id', 'filename', 'url', 'srcset', 'caption', 'alt'],
+    select: ['id', 'filename', 'url', 'srcset', 'alt'],
   },
 }
 
