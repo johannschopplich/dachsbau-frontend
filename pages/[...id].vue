@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { KirbyQueryResponse } from '#nuxt-kql'
 import type { KirbyDefaultPage, KirbyDefaultPageQuery } from '~/types'
 
 const route = useRoute()
@@ -22,7 +23,7 @@ const { data: defaultData } = await useKql<
   select,
 })
 
-let data = ref(defaultData.value)
+let data = ref<KirbyQueryResponse>(defaultData.value)
 
 if (!data.value?.result) {
   const { data: errorData } = await useKql({
