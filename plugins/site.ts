@@ -15,7 +15,7 @@ export default defineNuxtPlugin(async () => {
         },
         cover: {
           query: 'site.content.cover.toFile',
-          select: ['id', 'filename', 'url', 'srcset'],
+          select: ['id', 'filename', 'url', 'srcset', 'caption', 'alt'],
         },
         footer: {
           query: 'site.footer.toPages',

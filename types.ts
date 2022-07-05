@@ -11,6 +11,8 @@ export interface KirbyFile {
   filename: string
   url: string
   srcset: string
+  caption: string
+  alt: string
 }
 
 export interface KirbySite {

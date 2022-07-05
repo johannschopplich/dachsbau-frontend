@@ -7,11 +7,10 @@ const props = defineProps<{
 }>()
 
 const page = usePage()
-const files = computed<KirbyFile[]>(() => page.value?.files ?? [])
-const srcset = computed(
-  () =>
-    files.value?.find((i) => i.filename === props.block.content.image[0])
-      ?.srcset
+const image = computed(() =>
+  ((page.value?.files ?? []) as KirbyFile[]).find(
+    (i) => i.filename === props.block.content.image?.[0]
+  )
 )
 </script>
 
@@ -19,14 +18,13 @@ const srcset = computed(
   <figure class="!-mx-6 !sm:mx-[2em]">
     <img
       class="handdrawn-mask"
-      :srcset="srcset"
+      :src="block.content.location === 'web' ? block.content.src : undefined"
+      :srcset="image?.srcset"
       sizes="(min-width: 768px) 768px, 100vw"
       loading="lazy"
-      :alt="block.content?.alt"
+      :alt="block.content.alt || image?.alt"
     />
 
-    <figcaption v-if="block.content.caption">
-      {{ block.content.caption }}
-    </figcaption>
+    <figcaption v-if="block.content.caption" v-html="block.content.caption" />
   </figure>
 </template>

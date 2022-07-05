@@ -10,6 +10,13 @@ const site = useSite()
 const page = usePage()
 const route = useRoute()
 
+useHead({
+  htmlAttrs: {
+    class: 'bg-primary-700',
+    lang: 'de',
+  },
+})
+
 const title = computed(() =>
   page.value?.title
     ? `${page.value?.title} – ${site.value.title}`
@@ -19,13 +26,6 @@ const description = computed(
   () => page.value?.description ?? site.value.description
 )
 const url = computed(() => resolveURL(baseUrl, route.path))
-
-useHead({
-  htmlAttrs: {
-    class: 'bg-primary-700',
-    lang: 'de',
-  },
-})
 
 const container = ref<HTMLElement | undefined>()
 provide(containerInjectionKey, container)
