@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@iconify-json/carbon': ^1.1.6
+  '@sindresorhus/slugify': ^2.1.0
   '@typescript-eslint/eslint-plugin': ^5.30.5
   '@typescript-eslint/parser': ^5.30.5
   '@unocss/nuxt': ^0.43.1
@@ -22,6 +23,7 @@ specifiers:
 
 devDependencies:
   '@iconify-json/carbon': 1.1.6
+  '@sindresorhus/slugify': 2.1.0
   '@typescript-eslint/eslint-plugin': 5.30.5_6zdoc3rn4mpiddqwhppni2mnnm
   '@typescript-eslint/parser': 5.30.5_4x5o4skxv6sl53vpwefgt23khm
   '@unocss/nuxt': 0.43.1
@@ -830,6 +832,22 @@ packages:
     dependencies:
       estree-walker: 2.0.2
       picomatch: 2.3.1
+    dev: true
+
+  /@sindresorhus/slugify/2.1.0:
+    resolution: {integrity: sha512-gU3Gdm/V167BmUwIn8APHZ3SeeRVRUSOdXxnt7Q/JkUHLXaaTA/prYmoRumwsSitJZWUDYMzDWdWgrOdvE8IRQ==}
+    engines: {node: '>=12'}
+    dependencies:
+      '@sindresorhus/transliterate': 1.5.0
+      escape-string-regexp: 5.0.0
+    dev: true
+
+  /@sindresorhus/transliterate/1.5.0:
+    resolution: {integrity: sha512-/sfSkoNelLq5riqNRp5uBjHIKBi1MWZk9ubRT1WiBQuTfmDf7BeQkph2DJzRB83QagMPHk2VDjuvpy0VuwyzdA==}
+    engines: {node: '>=12'}
+    dependencies:
+      escape-string-regexp: 5.0.0
+      lodash.deburr: 4.1.0
     dev: true
 
   /@trysound/sax/0.2.0:
@@ -3508,6 +3526,10 @@ packages:
 
   /lodash.debounce/4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
+    dev: true
+
+  /lodash.deburr/4.1.0:
+    resolution: {integrity: sha512-m/M1U1f3ddMCs6Hq2tAsYThTBDaAKFDX3dwDo97GEYzamXi9SqUpjWi/Rrj/gf3X2n8ktwgZrlP1z6E3v/IExQ==}
     dev: true
 
   /lodash.defaults/4.2.0:

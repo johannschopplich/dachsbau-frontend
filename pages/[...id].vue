@@ -26,7 +26,7 @@ let data = ref(defaultData.value)
 
 if (!data.value?.result) {
   const { data: errorData } = await useKql({
-    query: 'kirby.page("error}")',
+    query: 'kirby.page("error")',
     select,
   })
   data.value = errorData.value
@@ -53,7 +53,7 @@ usePage(page.value)
     <KirbyLayouts v-if="hasLayouts" :layouts="page.layouts ?? []" />
 
     <div class="prose text-secondary-900 font-serif md:text-xl md:font-350">
-      <KirbyBlocks :blocks="page.text ?? []" />
+      <KirbyBlocks :blocks="page?.text ?? []" />
     </div>
   </div>
 </template>
