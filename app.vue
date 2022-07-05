@@ -5,17 +5,18 @@ import { containerInjectionKey } from './types'
 import '~/assets/css/main.css'
 import '~/assets/css/components.css'
 
-const site = useSite()
 const { baseUrl } = useRuntimeConfig().public
+const site = useSite()
+const page = usePage()
 const route = useRoute()
 
 const title = computed(() =>
-  route.meta.title
-    ? `${route.meta.title} – ${site.value.title}`
+  route.path !== '/'
+    ? `${page.value?.title ?? 'Fehler'} – ${site.value.title}`
     : site.value.title
 )
 const description = computed(
-  () => route.meta.description ?? site.value.description
+  () => page.value?.description ?? site.value.description
 )
 const url = computed(() => resolveURL(baseUrl, route.path))
 

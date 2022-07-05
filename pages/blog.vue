@@ -19,21 +19,8 @@ const { data } = await useKql({
   },
 })
 
-const page = computed(() => data.value?.result)
-const title = computed(() => `${page.value?.title} – ${useSite().value.title}`)
-
-useHead(() => ({
-  title: title.value,
-  meta: [
-    { property: 'og:title', content: title.value },
-    { property: 'og:description', content: page.value?.description },
-    {
-      name: 'twitter:title',
-      content: title.value,
-    },
-    { name: 'twitter:description', content: page.value?.description },
-  ],
-}))
+const page = computed(() => data.value.result)
+usePage(data.value.result)
 
 // Random number between -1 and 1
 const random = () => Math.random() * 4 - 2

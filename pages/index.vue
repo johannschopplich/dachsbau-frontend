@@ -16,6 +16,8 @@ const { data } = await useKql({
   },
 })
 
+usePage(data.value.result)
+
 const contentContainer = inject(containerInjectionKey)
 const animationStack = reactive(new Map<number, boolean>())
 

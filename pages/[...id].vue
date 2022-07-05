@@ -18,23 +18,9 @@ const { data } = await useKql<KirbyDefaultPage, KirbyDefaultPageQuery>({
 })
 
 const page = computed(() => data.value.result)
-const title = computed(
-  () => `${page.value?.title ?? 'Fehler'} – ${useSite().value.title}`
-)
-const hasLayout = computed(() => !!page.value?.layout?.length)
+usePage(data.value.result)
 
-useHead(() => ({
-  title: title.value,
-  meta: [
-    { property: 'og:title', content: title.value },
-    { property: 'og:description', content: page.value?.description },
-    {
-      name: 'twitter:title',
-      content: title.value,
-    },
-    { name: 'twitter:description', content: page.value?.description },
-  ],
-}))
+const hasLayout = computed(() => !!page.value?.layout?.length)
 </script>
 
 <template>
