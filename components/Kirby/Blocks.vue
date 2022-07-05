@@ -26,22 +26,17 @@ const blockComponents: Partial<
 }
 
 const router = useRouter()
+const route = useRoute()
 const content = ref<HTMLElement | undefined>()
 
 if (process.client) {
   useEventListener(window, 'hashchange', navigate)
   useEventListener(content, 'click', handleAnchors)
-  onMounted(() => {
-    navigate()
-    setTimeout(navigate, 500)
-  })
 }
 
 function navigate() {
-  if (process.client && window.location.hash) {
-    document
-      .querySelector(decodeURIComponent(window.location.hash))
-      ?.scrollIntoView({ behavior: 'smooth' })
+  if (process.client && route.hash) {
+    document.querySelector(route.hash)?.scrollIntoView({ behavior: 'smooth' })
   }
 }
 
@@ -50,8 +45,6 @@ function handleAnchors(
     target: HTMLElement
   }
 ) {
-  if (process.server) return
-
   const link = event.target.closest('a')
 
   if (
@@ -72,7 +65,7 @@ function handleAnchors(
     if (origin !== window.location.origin) return
     event.preventDefault()
 
-    if (hash && !path) {
+    if (hash && (!path || path === route.path)) {
       window.history.replaceState({}, '', link.href)
       navigate()
     } else {

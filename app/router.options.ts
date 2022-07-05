@@ -6,16 +6,25 @@ export default <RouterConfig>{
     const container =
       document.querySelector<HTMLDivElement>('#scroll-container')
 
-    // On Suspense resolved event
-    nuxtApp.hook('page:finish', () => {
-      // Timeout for page transition
-      setTimeout(() => {
-        // Handle scrolling inside the fixed app container
-        container.scrollTo(savedPosition ?? { top: 0 })
-      }, 150)
-    })
+    return new Promise((resolve) => {
+      // On Suspense resolved event
+      nuxtApp.hook('page:finish', () => {
+        // Timeout for page transition
+        setTimeout(() => {
+          // Handle scrolling inside the fixed app container
+          if (to.hash) {
+            resolve({
+              el: to.hash,
+              behavior: 'smooth',
+            })
+            return
+          }
 
-    // Unused currently, but keep it for later
-    return savedPosition ?? { top: 0 }
+          container.scrollTo(savedPosition ?? { top: 0 })
+
+          resolve(savedPosition ?? { top: 0 })
+        }, 150)
+      })
+    })
   },
 }
