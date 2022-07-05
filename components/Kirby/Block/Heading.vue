@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import slugify from '@sindresorhus/slugify'
 import type { KirbyBlock } from '#nuxt-kql'
 
 defineProps<{
@@ -7,7 +8,11 @@ defineProps<{
 </script>
 
 <template>
-  <component :is="block.content.level" v-if="block.type === 'heading'">
+  <component
+    :is="block.content.level"
+    v-if="block.type === 'heading'"
+    :id="slugify(block.content.text)"
+  >
     {{ block.content.text }}
   </component>
 </template>

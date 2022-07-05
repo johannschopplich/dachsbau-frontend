@@ -24,10 +24,68 @@ const blockComponents: Partial<
   quote: KirbyBlockQuote,
   text: KirbyBlockText,
 }
+
+const router = useRouter()
+const content = ref<HTMLElement | undefined>()
+
+if (process.client) {
+  useEventListener(window, 'hashchange', navigate)
+  useEventListener(content, 'click', handleAnchors)
+  onMounted(() => {
+    navigate()
+    setTimeout(navigate, 500)
+  })
+}
+
+function navigate() {
+  if (process.client && window.location.hash) {
+    document
+      .querySelector(decodeURIComponent(window.location.hash))
+      ?.scrollIntoView({ behavior: 'smooth' })
+  }
+}
+
+function handleAnchors(
+  event: MouseEvent & {
+    target: HTMLElement
+  }
+) {
+  if (process.server) return
+
+  const link = event.target.closest('a')
+
+  if (
+    !event.defaultPrevented &&
+    link &&
+    event.button === 0 &&
+    link.target !== '_blank' &&
+    link.rel !== 'external' &&
+    !link.download &&
+    !event.metaKey &&
+    !event.ctrlKey &&
+    !event.shiftKey &&
+    !event.altKey
+  ) {
+    const url = new URL(link.href)
+    const { origin, pathname: path, hash } = url
+
+    if (origin !== window.location.origin) return
+    event.preventDefault()
+
+    if (hash && !path) {
+      window.history.replaceState({}, '', link.href)
+      navigate()
+    } else {
+      router.push({ path, hash })
+    }
+  }
+}
 </script>
 
 <template>
-  <template v-for="(block, index) in blocks ?? []" :key="index">
-    <component :is="blockComponents[block.type]" :block="block" />
-  </template>
+  <div ref="content">
+    <template v-for="(block, index) in blocks ?? []" :key="index">
+      <component :is="blockComponents[block.type]" :block="block" />
+    </template>
+  </div>
 </template>
