@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { KirbyBlock } from '#nuxt-kql'
-import type { KirbyFile } from '~/types'
+import type { KirbyImage } from '~/types'
 
 const props = defineProps<{
   block?: KirbyBlock<'image'>
@@ -8,7 +8,7 @@ const props = defineProps<{
 
 const page = usePage()
 const image = computed(() =>
-  ((page.value?.files ?? []) as KirbyFile[]).find(
+  ((page.value?.images ?? []) as KirbyImage[]).find(
     (i) => i.filename === props.block.content.image?.[0]
   )
 )

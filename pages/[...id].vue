@@ -9,8 +9,8 @@ const select = {
   description: true,
   text: 'page.text.toBlocks',
   layouts: 'page.layout.toLayouts',
-  files: {
-    query: 'page.files',
+  images: {
+    query: 'page.images',
     select: ['id', 'filename', 'url', 'srcset', 'alt'],
   },
 }

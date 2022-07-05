@@ -6,7 +6,7 @@ export const containerInjectionKey = Symbol('container') as InjectionKey<
   Ref<HTMLElement | undefined>
 >
 
-export interface KirbyFile {
+export interface KirbyImage {
   id: string
   filename: string
   url: string
@@ -22,7 +22,7 @@ export interface KirbySite {
     title: string
     isListed: boolean
   }[]
-  cover: KirbyFile
+  cover: KirbyImage
   footer: {
     id: string
     title: string
@@ -37,7 +37,7 @@ export interface KirbyDefaultPageQuery {
     description: string | boolean
     text?: string | boolean
     layouts?: string | boolean
-    files: {
+    images: {
       query: string
       select: string[] | Record<string, any>
     }
@@ -51,6 +51,6 @@ export interface KirbyDefaultPage extends KirbyQueryResponse {
     description: string
     text?: KirbyBlock[]
     layouts?: KirbyLayout[]
-    files: KirbyFile[]
+    images: KirbyImage[]
   }
 }
