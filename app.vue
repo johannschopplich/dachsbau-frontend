@@ -11,8 +11,8 @@ const page = usePage()
 const route = useRoute()
 
 const title = computed(() =>
-  route.path !== '/'
-    ? `${page.value?.title ?? 'Fehler'} – ${site.value.title}`
+  page.value?.title
+    ? `${page.value?.title} – ${site.value.title}`
     : site.value.title
 )
 const description = computed(

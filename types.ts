@@ -35,7 +35,7 @@ export interface KirbyDefaultPageQuery {
     title: string | boolean
     description: string | boolean
     text?: string | boolean
-    layout?: string | boolean
+    layouts?: string | boolean
     files: {
       query: string
       select: string[] | Record<string, any>
@@ -49,7 +49,7 @@ export interface KirbyDefaultPage extends KirbyQueryResponse {
     title: string
     description: string
     text?: KirbyBlock[]
-    layout?: KirbyLayout[]
+    layouts?: KirbyLayout[]
     files: KirbyFile[]
   }
 }

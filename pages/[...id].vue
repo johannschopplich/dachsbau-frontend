@@ -2,56 +2,57 @@
 import type { KirbyDefaultPage, KirbyDefaultPageQuery } from '~/types'
 
 const route = useRoute()
-const { data } = await useKql<KirbyDefaultPage, KirbyDefaultPageQuery>({
-  query: `kirby.page("${route.path}")`,
-  select: {
-    id: true,
-    title: true,
-    description: true,
-    text: 'page.text.toBlocks',
-    layout: 'page.layout.toLayouts',
-    files: {
-      query: 'page.files',
-      select: ['id', 'filename', 'url', 'srcset'],
-    },
+const select = {
+  id: true,
+  title: true,
+  description: true,
+  text: 'page.text.toBlocks',
+  layouts: 'page.layout.toLayouts',
+  files: {
+    query: 'page.files',
+    select: ['id', 'filename', 'url', 'srcset'],
   },
+}
+
+const { data: defaultData } = await useKql<
+  KirbyDefaultPage,
+  KirbyDefaultPageQuery
+>({
+  query: `kirby.page("${route.path}")`,
+  select,
 })
+
+let data = ref(defaultData.value)
+
+if (!data.value?.result) {
+  const { data: errorData } = await useKql({
+    query: 'kirby.page("error}")',
+    select,
+  })
+  data.value = errorData.value
+}
 
 const page = computed(() => data.value.result)
 usePage(data.value.result)
 
-const hasLayout = computed(() => !!page.value?.layout?.length)
+const hasLayouts = computed(() => !!page.value?.layouts?.length)
 </script>
 
 <template>
   <div
     :class="[
       'padding-content mx-auto pt-36 pb-12',
-      hasLayout ? 'max-w-screen-xl' : 'max-w-screen-md',
+      hasLayouts ? 'max-w-screen-xl' : 'max-w-screen-md',
     ]"
   >
     <h1 class="page-title hyphenate md:w-3/4">
-      {{ page?.title ?? 'Oh, Mist, Seite nicht gefunden!' }}
+      {{ page?.title }}
     </h1>
 
-    <KirbyLayouts
-      v-if="hasLayout"
-      :layouts="page.layout ?? []"
-      :files="page.files ?? []"
-    />
+    <KirbyLayouts v-if="hasLayouts" :layouts="page.layouts ?? []" />
 
     <div class="prose text-secondary-900 font-serif md:text-xl md:font-350">
-      <template v-if="page?.text">
-        <KirbyBlocks :blocks="page.text ?? []" :files="page.files ?? []" />
-      </template>
-
-      <template v-else>
-        <p>Mensch kann sich auch in einem Dachsbau verirren…</p>
-        <p>
-          Du kannst einfach zur
-          <NuxtLink to="/">Startseite</NuxtLink> zurückkehren.
-        </p>
-      </template>
+      <KirbyBlocks :blocks="page.text ?? []" />
     </div>
   </div>
 </template>

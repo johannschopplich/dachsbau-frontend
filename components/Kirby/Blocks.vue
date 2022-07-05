@@ -9,11 +9,9 @@ import {
 } from '#components'
 import type { ComponentPublicInstance } from 'vue'
 import type { KirbyBlock, KirbyBlockType } from '#nuxt-kql'
-import type { KirbyFile } from '~/types'
 
 defineProps<{
-  blocks?: KirbyBlock<string>[]
-  files?: KirbyFile[]
+  blocks: KirbyBlock<string>[]
 }>()
 
 const blockComponents: Partial<
@@ -30,10 +28,6 @@ const blockComponents: Partial<
 
 <template>
   <template v-for="(block, index) in blocks ?? []" :key="index">
-    <component
-      :is="blockComponents[block.type]"
-      :block="block"
-      :files="files"
-    />
+    <component :is="blockComponents[block.type]" :block="block" />
   </template>
 </template>

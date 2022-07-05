@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import type { KirbyLayout } from '#nuxt-kql'
-import type { KirbyFile } from '~/types'
 
 defineProps<{
   layouts: KirbyLayout[]
-  files: KirbyFile[]
 }>()
 
 /** Returns the number of columns this column spans */
@@ -30,7 +28,7 @@ function span(width: `${string}/${string}`, columns = 12) {
         }"
       >
         <div class="prose text-secondary-900 font-serif md:text-xl md:font-350">
-          <KirbyBlocks :blocks="column.blocks" :files="files" />
+          <KirbyBlocks :blocks="column.blocks" />
         </div>
       </div>
     </section>
