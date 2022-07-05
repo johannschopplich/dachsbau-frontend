@@ -33,9 +33,10 @@ if (!data.value?.result) {
 }
 
 const page = computed(() => data.value.result)
-usePage(data.value.result)
-
 const hasLayouts = computed(() => !!page.value?.layouts?.length)
+
+// Make current page data globally available
+usePage(page.value)
 </script>
 
 <template>

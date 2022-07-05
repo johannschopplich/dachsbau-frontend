@@ -16,6 +16,7 @@ const { data } = await useKql({
   },
 })
 
+// Make current page data globally available
 usePage(data.value.result)
 
 const contentContainer = inject(containerInjectionKey)
