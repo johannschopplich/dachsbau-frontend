@@ -12,15 +12,18 @@ const image = computed(() =>
     (i) => i.filename === props.block.content.image?.[0]
   )
 )
+
+const figure = ref<HTMLElement | undefined>()
+const { width } = useElementSize(figure)
 </script>
 
 <template>
-  <figure class="!-mx-6 !sm:mx-[2em]">
+  <figure ref="figure" class="!-mx-6 !sm:mx-[2em]">
     <img
       class="handdrawn-mask"
       :src="block.content.location === 'web' ? block.content.src : undefined"
       :srcset="image?.srcset"
-      sizes="(min-width: 768px) 768px, 100vw"
+      :sizes="`${width}px`"
       loading="lazy"
       :alt="block.content.alt || image?.alt"
     />
