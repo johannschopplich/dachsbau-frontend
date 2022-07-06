@@ -35,8 +35,10 @@ if (process.client) {
 }
 
 function navigate() {
-  if (route.hash) {
-    document.querySelector(route.hash)?.scrollIntoView({ behavior: 'smooth' })
+  if (window.location.hash) {
+    document
+      .querySelector(window.location.hash)
+      ?.scrollIntoView({ behavior: 'smooth' })
   }
 }
 
