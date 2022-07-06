@@ -35,7 +35,7 @@ if (process.client) {
 }
 
 function navigate() {
-  if (process.client && route.hash) {
+  if (route.hash) {
     document.querySelector(route.hash)?.scrollIntoView({ behavior: 'smooth' })
   }
 }
