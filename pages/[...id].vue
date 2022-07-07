@@ -33,10 +33,11 @@ if (!data.value?.result) {
   data.value = errorData.value
 }
 
-// Make current page data globally available
-const page = usePage(data.value.result)
-
+const page = computed(() => data.value.result)
 const hasLayouts = computed(() => !!page.value?.layouts?.length)
+
+// Make current page data globally available
+usePage(page.value)
 </script>
 
 <template>

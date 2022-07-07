@@ -19,8 +19,10 @@ const { data } = await useKql({
   },
 })
 
+const page = computed(() => data.value.result)
+
 // Make current page data globally available
-const page = usePage(data.value.result)
+usePage(page.value)
 
 // Random number between -1 and 1
 const random = () => Math.random() * 4 - 2
