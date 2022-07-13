@@ -20,23 +20,23 @@
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.6",
     "@sindresorhus/slugify": "^2.1.0",
-    "@typescript-eslint/eslint-plugin": "^5.30.5",
-    "@typescript-eslint/parser": "^5.30.5",
-    "@unocss/nuxt": "^0.43.1",
-    "@unocss/preset-typography": "^0.43.1",
-    "@unocss/preset-wind": "^0.43.1",
-    "@unocss/transformer-directives": "^0.43.1",
-    "@vueuse/nuxt": "^8.7.5",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
+    "@unocss/nuxt": "^0.44.1",
+    "@unocss/preset-typography": "^0.44.1",
+    "@unocss/preset-wind": "^0.44.1",
+    "@unocss/transformer-directives": "^0.44.1",
+    "@vueuse/nuxt": "^8.9.2",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-vue": "^9.1.1",
+    "eslint-plugin-vue": "^9.2.0",
     "lint-staged": "^13.0.3",
     "nuxt": "^3.0.0-rc.4",
     "nuxt-kql": "^0.9.5",
     "prettier": "^2.7.1",
     "simple-git-hooks": "^2.8.0",
     "typescript": "^4.7.4",
-    "unocss": "^0.43.1"
+    "unocss": "^0.44.1"
   },
   "pnpm": {
     "peerDependencyRules": {
