@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { resolveURL } from 'ufo'
+import { resolveURL, withHttps } from 'ufo'
 import { containerInjectionKey } from './types'
 
 import '~/assets/css/main.css'
 import '~/assets/css/components.css'
 
 const origin = process.server
-  ? useRequestHeaders().referer
+  ? withHttps(useRequestHeaders().host)
   : window.location.origin
 const site = useSite()
 const page = usePage()
