@@ -8,17 +8,6 @@ This website is created for my best friend to support her in her new endeavours 
 
 All illustrations are drawn by the talented artist [Julia Frank](https://www.instagram.com/mum.mal.mini/).
 
-## Key Features
-
-This is my best practice solution to build a Nuxt 3 based frontend on top of a headless Kirby instance.
-
-- 🫂 Kirby Query Language with [`nuxt-kql`](https://nuxt-kql.jhnn.dev)
-- 🍢 [Component based Kirby Blocks](./components/Kirby/Block/)
-- 🔎 SSR generated SEO meta data
-- 📐 Prettier & ESLint
-- 🔢 Pre-configured [VSCode settings](./.vscode/settings.json)
-- 🐶 Native Git hooks with [simple-git-hooks](https://github.com/toplenboren/simple-git-hooks)
-
 ## Prerequisites
 
 Before getting started, please make sure you have installed the recommended setup.
@@ -40,8 +29,6 @@ pnpm install
 Adapt the relevant environment variables:
 
 ```bash
-# Site base URL for SEO meta data
-NUXT_PUBLIC_BASE_URL=https://dachsbau-tautenhain.de
 # Base URL of the Kirby backend
 KIRBY_BASE_URL=
 # Token for bearer authentication
@@ -66,12 +53,6 @@ pnpm build
 ```
 
 Check out the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
-
-## FAQ
-
-### Are There Any Drawbacks?
-
-Data is fetched within Suspense components to ensure pre-rendered state for the user and SEO. Thus, the initial server response time is increased by about 50–100 ms for the initial KQL page query. This might be a road blocker for you. It's fine for my usecase. Still a lot faster than WordPress etc. 😉
 
 ## Credits
 
