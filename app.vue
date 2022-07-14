@@ -5,7 +5,9 @@ import { containerInjectionKey } from './types'
 import '~/assets/css/main.css'
 import '~/assets/css/components.css'
 
-const { baseUrl } = useRuntimeConfig().public
+const origin = process.server
+  ? useRequestHeaders().referer
+  : window.location.origin
 const site = useSite()
 const page = usePage()
 const route = useRoute()
@@ -25,7 +27,7 @@ const title = computed(() =>
 const description = computed(
   () => page.value?.description ?? site.value.description
 )
-const url = computed(() => resolveURL(baseUrl, route.path))
+const url = computed(() => resolveURL(origin, route.path))
 
 const container = ref<HTMLElement | undefined>()
 provide(containerInjectionKey, container)

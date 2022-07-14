@@ -3,12 +3,6 @@ import { defineNuxtConfig } from 'nuxt'
 export default defineNuxtConfig({
   modules: ['@unocss/nuxt', '@vueuse/nuxt', 'nuxt-kql'],
 
-  runtimeConfig: {
-    public: {
-      baseUrl: '',
-    },
-  },
-
   kql: {
     prefix: 'api/kql',
     auth: 'bearer',
