@@ -1,6 +1,6 @@
 import { defineConfig } from 'unocss'
-import { presetTypography } from '@unocss/preset-typography'
 import { presetWind, theme as themeWind } from '@unocss/preset-wind'
+import { presetTypography } from '@unocss/preset-typography'
 import transformerDirective from '@unocss/transformer-directives'
 
 const theme = {

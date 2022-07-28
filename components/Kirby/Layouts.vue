@@ -27,9 +27,10 @@ function span(width: `${string}/${string}`, columns = 12) {
           gridColumn: `span ${span(column.width)}`,
         }"
       >
-        <div class="prose text-secondary-900 font-serif md:text-xl md:font-350">
-          <KirbyBlocks :blocks="column.blocks" />
-        </div>
+        <KirbyBlocks
+          :blocks="column.blocks"
+          class="prose text-secondary-900 font-serif md:text-xl md:font-350"
+        />
       </div>
     </section>
   </div>

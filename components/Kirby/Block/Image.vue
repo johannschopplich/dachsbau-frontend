@@ -18,7 +18,7 @@ const { width } = useElementSize(figure)
 </script>
 
 <template>
-  <figure ref="figure" class="!-mx-6 !sm:mx-[2em]">
+  <figure ref="figure">
     <img
       class="handdrawn-mask"
       :src="block.content.location === 'web' ? block.content.src : undefined"

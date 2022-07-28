@@ -53,8 +53,19 @@ usePage(page.value)
 
     <KirbyLayouts v-if="hasLayouts" :layouts="page.layouts ?? []" />
 
-    <div class="prose text-secondary-900 font-serif md:text-xl md:font-350">
-      <KirbyBlocks :blocks="page?.text ?? []" />
-    </div>
+    <KirbyBlocks
+      :blocks="page?.text ?? []"
+      class="prose text-secondary-900 font-serif md:text-xl md:font-350"
+    />
   </div>
 </template>
+
+<style scoped>
+.prose :where(figure) {
+  --at-apply: '-mx-6 sm:mx-[2em]';
+}
+
+.prose :where(figcaption) {
+  --at-apply: 'px-6 sm:px-2';
+}
+</style>
