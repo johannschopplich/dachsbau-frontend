@@ -34,7 +34,7 @@ if (!data.value?.result) {
 }
 
 // Make current page data globally available
-const page = setPage(data.value.result)
+const page = setCurrentPage(() => data.value.result)
 
 const hasLayouts = computed(() => !!page.value?.layouts?.length)
 </script>

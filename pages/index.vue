@@ -17,7 +17,7 @@ const { data } = await useKql({
 })
 
 // Make current page data globally available
-setPage(data.value.result)
+setCurrentPage(() => data.value.result)
 
 const contentContainer = inject(containerInjectionKey)
 const animationStack = reactive(new Map<number, boolean>())
