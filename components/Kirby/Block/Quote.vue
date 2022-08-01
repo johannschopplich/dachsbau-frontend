@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <blockquote>
-    <div hoist v-html="block.content.text" />
+    <div v-html="block.content.text" />
     <footer v-html="block.content.citation" />
   </blockquote>
 </template>
