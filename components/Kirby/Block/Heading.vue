@@ -8,11 +8,13 @@ defineProps<{
 </script>
 
 <template>
-  <!-- eslint-disable vue/no-v-text-v-html-on-component -->
-  <component
-    :is="block.content.level"
-    :id="slugify(block.content.text)"
-    v-html="block.content.text"
-  />
-  <!-- eslint-enable vue/no-v-text-v-html-on-component -->
+  <div>
+    <!-- eslint-disable vue/no-v-text-v-html-on-component -->
+    <component
+      :is="block.content.level"
+      :id="slugify(block.content.text)"
+      v-html="block.content.text"
+    />
+    <!-- eslint-enable vue/no-v-text-v-html-on-component -->
+  </div>
 </template>
