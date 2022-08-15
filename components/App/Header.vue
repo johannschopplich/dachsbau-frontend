@@ -9,7 +9,8 @@ const site = useSite()
 const isOpen = ref(false)
 const isRedirecting = ref(false)
 
-const contentContainer = inject(containerInjectionKey)
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const contentContainer = inject(containerInjectionKey)!
 const isLocked = useScrollLock(contentContainer)
 
 const navItems = computed(() =>
@@ -22,7 +23,7 @@ nuxtApp.hook('page:finish', () => {
 })
 
 function toggleMenu() {
-  contentContainer.value.scrollTo({ top: 0, left: 0 })
+  contentContainer.value?.scrollTo({ top: 0, left: 0 })
   isLocked.value = !isLocked.value
   isOpen.value = !isOpen.value
 }

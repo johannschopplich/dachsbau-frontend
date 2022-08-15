@@ -1,16 +1,8 @@
 <script setup lang="ts">
-import { resolveURL, withHttps } from 'ufo'
 import { containerInjectionKey } from './types'
 
 import '~/assets/css/main.css'
 import '~/assets/css/components.css'
-
-const origin = process.server
-  ? withHttps(useRequestHeaders().host)
-  : window.location.origin
-const site = useSite()
-const page = useCurrentPage()
-const route = useRoute()
 
 useHead({
   htmlAttrs: {
@@ -18,16 +10,6 @@ useHead({
     lang: 'de',
   },
 })
-
-const title = computed(() =>
-  page.value?.title
-    ? `${page.value?.title} – ${site.value.title}`
-    : site.value.title
-)
-const description = computed(
-  () => page.value?.description ?? site.value.description
-)
-const url = computed(() => resolveURL(origin, route.path))
 
 const container = ref<HTMLElement | undefined>()
 provide(containerInjectionKey, container)
@@ -47,8 +29,6 @@ onMounted(() => {
 
 <template>
   <Head>
-    <Title>{{ title }}</Title>
-
     <Link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <Link rel="stylesheet" href="/fonts/Fraunces.css" />
     <Link rel="stylesheet" href="/fonts/Henrietta.css" />
@@ -74,18 +54,6 @@ onMounted(() => {
       type="font/woff2"
       crossorigin="anonymous"
     />
-
-    <Meta name="description" :content="description" />
-    <Meta property="og:title" :content="title" />
-    <Meta property="og:description" :content="description" />
-    <Meta property="og:url" :content="url" />
-    <Meta property="og:type" :content="'website'" />
-    <Meta property="og:image" :content="'https://vuejs.org/images/logo.png'" />
-    <Meta name="twitter:title" :content="title" />
-    <Meta name="twitter:description" :content="description" />
-    <Meta name="twitter:url" :content="url" />
-    <Meta name="twitter:image" :content="'https://vuejs.org/images/logo.png'" />
-    <Meta name="twitter:card" content="summary" />
 
     <Meta name="theme-color" content="#3A455B" />
   </Head>

@@ -23,7 +23,7 @@ const { data: defaultData } = await useKql<
   select,
 })
 
-let data = ref<KirbyQueryResponse>(defaultData.value)
+let data = ref<KirbyQueryResponse | null>(defaultData.value)
 
 if (!data.value?.result) {
   const { data: errorData } = await useKql({
@@ -34,7 +34,7 @@ if (!data.value?.result) {
 }
 
 // Make current page data globally available
-const page = setCurrentPage(() => data.value.result)
+const page = setCurrentPage(() => data.value?.result)
 
 const hasLayouts = computed(() => !!page.value?.layouts?.length)
 </script>

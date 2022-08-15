@@ -34,8 +34,8 @@ const theme = {
     },
   },
   fontFamily: {
-    heading: `Henrietta,${themeWind.fontFamily.sans}`,
-    'heading-condensed': `Henrietta Condensed,${themeWind.fontFamily.sans}`,
+    heading: `Henrietta,${themeWind?.fontFamily?.sans}`,
+    'heading-condensed': `Henrietta Condensed,${themeWind?.fontFamily?.sans}`,
     serif: 'Fraunces,serif',
   },
 }
@@ -86,7 +86,7 @@ export default defineConfig({
       cssExtend: {
         'h1,h2,h3,h4,h5,h6': {
           color: theme.colors.secondary[600],
-          'font-family': `Henrietta,${themeWind.fontFamily.sans}`,
+          'font-family': `Henrietta,${themeWind?.fontFamily?.sans}`,
           'font-weight': '400',
         },
         a: {

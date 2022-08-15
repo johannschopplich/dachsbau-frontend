@@ -22,17 +22,9 @@ export default defineNuxtConfig({
     },
   },
 
-  hooks: {
-    'vite:extendConfig'(config, { isServer }) {
-      if (isServer) {
-        // Workaround for Netlify issue
-        // https://github.com/nuxt/framework/issues/6204
-        config.build.rollupOptions.output.inlineDynamicImports = true
-      }
-    },
-  },
-
   typescript: {
+    strict: true,
+    typeCheck: true,
     shim: false,
   },
 })

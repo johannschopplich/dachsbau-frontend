@@ -20,7 +20,7 @@ export default <RouterConfig>{
             return
           }
 
-          container.scrollTo(savedPosition ?? { top: 0 })
+          container?.scrollTo(savedPosition ?? { top: 0 })
 
           resolve(savedPosition ?? { top: 0 })
         }, 150)
