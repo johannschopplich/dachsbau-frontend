@@ -64,6 +64,7 @@ onMounted(() => {
     class="fixed inset-2 bg-secondary-200 overflow-x-hidden overflow-y-scroll rounded-3xl md:inset-6"
   >
     <NuxtLayout>
+      <NuxtLoadingIndicator color="#5A6B8D" />
       <NuxtPage />
     </NuxtLayout>
   </div>
