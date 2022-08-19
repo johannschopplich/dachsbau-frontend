@@ -207,13 +207,13 @@ onMounted(() => {
 
 @keyframes hero-bounce {
   0% {
-    transform: translateY(0);
+    transform: translateY(0) scaleX(1);
   }
   50% {
-    transform: translateY(0.25rem);
+    transform: translateY(0.5rem) scaleX(0.98);
   }
   100% {
-    transform: translateY(0);
+    transform: translateY(0) scaleX(1);
   }
 }
 
