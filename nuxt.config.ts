@@ -10,21 +10,11 @@ export default defineNuxtConfig({
 
   unocss: {
     preflight: true,
-    uno: true,
-    icons: {
-      scale: 1.2,
-      extraProperties: {
-        position: 'relative',
-        display: 'inline-block',
-        'vertical-align': 'middle',
-        bottom: '0.125ex',
-      },
-    },
   },
 
   typescript: {
     strict: true,
-    typeCheck: true,
+    // typeCheck: true,
     shim: false,
   },
 })
