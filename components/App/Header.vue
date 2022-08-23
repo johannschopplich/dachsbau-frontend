@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { promiseTimeout } from '@vueuse/core'
+import { promiseTimeout, toRefs } from '@vueuse/core'
 import { containerInjectionKey } from '~/types'
 
 const nuxtApp = useNuxtApp()
 const route = useRoute()
 const site = useSite()
 
-const isOpen = ref(false)
+const nav = useNavState()
+const { isOpen } = toRefs(nav)
 const isRedirecting = ref(false)
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -51,28 +52,31 @@ async function close(path: string) {
   >
     <NuxtLink
       to="/"
-      class="group block relative text-size-2xl leading-none text-primary-700 font-heading-condensed z-10 md:leading-tight"
+      class="group block flex gap-2 text-size-xl leading-none text-primary-700 font-heading-condensed z-10 md:text-size-2xl md:leading-tight"
     >
       <img
-        class="absolute left-0 right-0 -bottom-1/6 opacity-0 group-hover:opacity-100 md:-bottom-1/2 pointer-events-none"
-        src="~/assets/img/menu-hover-04.svg"
-        alt=""
-        aria-hidden="true"
+        class="h-[1em] mt-[-0.125em]"
+        src="~/assets/img/dachsbau-logo-256.png"
+        alt="Dachsbau Tautenhain Logo"
       />
-      <div class="relative flex gap-2">
+
+      <div class="relative">
         <img
-          class="h-[1em]"
-          src="~/assets/img/dachsbau-logo-256.png"
-          alt="Dachsbau Tautenhain Logo"
+          class="absolute left-0 right-0 -bottom-1/6 opacity-0 group-hover:opacity-100 md:-bottom-1/2 pointer-events-none"
+          src="~/assets/img/menu-hover-04.svg"
+          alt=""
+          aria-hidden="true"
         />
-        Dachsbau<br class="inline md:hidden" />
-        Tautenhain
+        <span class="relative">
+          Dachsbau<br class="inline md:hidden" />
+          Tautenhain
+        </span>
       </div>
     </NuxtLink>
 
     <button
       :class="[
-        'group appearance-none relative cursor-pointer text-size-2xl leading-none font-heading-condensed z-20 md:hidden',
+        'group appearance-none relative cursor-pointer text-size-xl leading-none font-heading-condensed z-20 md:text-size-xl md:hidden',
         isOpen ? 'text-white' : 'text-primary-700',
       ]"
       :aria-expanded="isOpen"

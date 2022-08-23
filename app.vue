@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { containerInjectionKey } from './types'
-
 import '~/assets/css/main.css'
 import '~/assets/css/components.css'
+import { containerInjectionKey } from './types'
 
 useHead({
   htmlAttrs: {
@@ -11,6 +10,7 @@ useHead({
   },
 })
 
+const nav = useNavState()
 const container = ref<HTMLElement | undefined>()
 provide(containerInjectionKey, container)
 
@@ -70,11 +70,14 @@ onMounted(() => {
   </div>
 
   <div
+    v-show="!nav.isOpen"
     class="fixed right-1 bottom-1 w-[min(5rem,10vw)] h-[min(5rem,10vw)] bg-primary-700"
   />
-  <img
-    class="fixed right-1 bottom-1 w-[min(10rem,25vw)] md:right-2 md:bottom-2"
-    src="~/assets/img/dachs.png"
-    alt=""
-  />
+  <NuxtLink v-show="!nav.isOpen" to="/">
+    <img
+      class="fixed right-1 bottom-1 w-[min(10rem,30vw)] md:right-2 md:bottom-2"
+      src="~/assets/img/dachs.png"
+      alt=""
+    />
+  </NuxtLink>
 </template>
