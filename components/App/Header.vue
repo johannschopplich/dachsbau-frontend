@@ -59,10 +59,15 @@ async function close(path: string) {
         alt=""
         aria-hidden="true"
       />
-      <span class="relative">
+      <div class="relative flex gap-2">
+        <img
+          class="h-[1em]"
+          src="~/assets/img/dachsbau-logo-256.png"
+          alt="Dachsbau Tautenhain Logo"
+        />
         Dachsbau<br class="inline md:hidden" />
         Tautenhain
-      </span>
+      </div>
     </NuxtLink>
 
     <button

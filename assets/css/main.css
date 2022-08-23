@@ -1,6 +1,4 @@
 :root {
-  min-width: 320px;
-
   --h-screen: calc(100 * var(--vh, 1vh));
   --h-content: calc(var(--h-screen) - 2 * var(--frame-width));
 
@@ -12,6 +10,11 @@
   :root {
     --frame-width: 1.5rem;
   }
+}
+
+html,
+#scroll-container {
+  min-width: 320px;
 }
 
 html,
