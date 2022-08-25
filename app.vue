@@ -69,14 +69,10 @@ onMounted(() => {
     </NuxtLayout>
   </div>
 
-  <div
-    v-show="!nav.isOpen"
-    class="fixed right-1 bottom-1 w-[min(5rem,10vw)] h-[min(5rem,10vw)] bg-primary-700"
-  />
   <NuxtLink v-show="!nav.isOpen" to="/">
     <img
-      class="fixed right-1 bottom-1 w-[min(10rem,30vw)] md:right-2 md:bottom-2"
-      src="~/assets/img/dachs.png"
+      class="fixed right-0 bottom-0 w-[min(10rem,30vw)] md:right-1 md:bottom-1"
+      src="~/assets/img/dachs-im-rahmen-320.png"
       alt=""
     />
   </NuxtLink>
