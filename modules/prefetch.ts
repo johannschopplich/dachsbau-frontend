@@ -13,11 +13,10 @@ export default defineNuxtModule({
     site: false,
   },
   async setup(options, nuxt) {
-    if (!options.site) return
-
     const logger = useLogger()
 
     nuxt.hook('build:before', async () => {
+      if (!options.site) return
       logger.info('Prefetching site data...')
 
       const data = await $fetch('api/kql', {
