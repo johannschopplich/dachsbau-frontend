@@ -47,7 +47,7 @@ export default defineNuxtModule({
       })
 
       addTemplate({
-        filename: 'nuxt-kql/cache.ts',
+        filename: 'nuxt-kql/cache.mjs',
         write: true,
         getContents() {
           return `
@@ -55,6 +55,16 @@ export const site = ${JSON.stringify(data.result)}
 `.trimStart()
         },
       })
+    })
+
+    addTemplate({
+      filename: 'nuxt-kql/cache.d.ts',
+      write: true,
+      getContents() {
+        return `
+export declare const site: Record<string, any>
+`.trimStart()
+      },
     })
   },
 })
