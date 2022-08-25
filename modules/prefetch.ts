@@ -1,6 +1,6 @@
 import { $fetch } from 'ohmyfetch'
 import { addTemplate, defineNuxtModule, useLogger } from '@nuxt/kit'
-import type { KirbyQueryRequest } from '#nuxt-kql'
+import type { KirbyQueryRequest, KirbyQueryResponse } from '#nuxt-kql'
 
 export default defineNuxtModule({
   meta: {
@@ -17,35 +17,38 @@ export default defineNuxtModule({
     const logger = useLogger()
 
     nuxt.hook('nitro:init', async () => {
-      if (!options.site) return
-      logger.info('Prefetching site data...')
+      let site: KirbyQueryResponse | undefined
 
-      const data = await kql({
-        query: 'site',
-        select: {
-          title: true,
-          description: true,
-          children: {
-            query: 'site.children',
-            select: ['id', 'title', 'isListed'],
+      if (options.site) {
+        logger.info('Prefetching site data...')
+
+        site = await kql({
+          query: 'site',
+          select: {
+            title: true,
+            description: true,
+            children: {
+              query: 'site.children',
+              select: ['id', 'title', 'isListed'],
+            },
+            cover: {
+              query: 'site.content.cover.toFile',
+              select: ['id', 'filename', 'url', 'srcset', 'alt'],
+            },
+            footer: {
+              query: 'site.footer.toPages',
+              select: ['id', 'title'],
+            },
           },
-          cover: {
-            query: 'site.content.cover.toFile',
-            select: ['id', 'filename', 'url', 'srcset', 'alt'],
-          },
-          footer: {
-            query: 'site.footer.toPages',
-            select: ['id', 'title'],
-          },
-        },
-      })
+        })
+      }
 
       addTemplate({
         filename: 'nuxt-kql/cache.mjs',
         write: true,
         getContents() {
           return `
-export const site = ${JSON.stringify(data.result)}
+export const site = ${JSON.stringify(site?.result || {})}
 `.trimStart()
         },
       })
@@ -64,7 +67,7 @@ export declare const site: Record<string, any>
 })
 
 async function kql(query: KirbyQueryRequest) {
-  return await $fetch('api/kql', {
+  return await $fetch<KirbyQueryResponse>('api/kql', {
     baseURL: process.env.KIRBY_BASE_URL,
     method: 'POST',
     body: query,
