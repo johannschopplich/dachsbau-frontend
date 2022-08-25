@@ -1,5 +1,6 @@
 import { $fetch } from 'ohmyfetch'
 import { addTemplate, defineNuxtModule, useLogger } from '@nuxt/kit'
+import type { KirbyQueryRequest } from '#nuxt-kql'
 
 export default defineNuxtModule({
   meta: {
@@ -19,30 +20,23 @@ export default defineNuxtModule({
       if (!options.site) return
       logger.info('Prefetching site data...')
 
-      const data = await $fetch('api/kql', {
-        baseURL: process.env.KIRBY_BASE_URL,
-        method: 'POST',
-        body: {
-          query: 'site',
-          select: {
-            title: true,
-            description: true,
-            children: {
-              query: 'site.children',
-              select: ['id', 'title', 'isListed'],
-            },
-            cover: {
-              query: 'site.content.cover.toFile',
-              select: ['id', 'filename', 'url', 'srcset', 'alt'],
-            },
-            footer: {
-              query: 'site.footer.toPages',
-              select: ['id', 'title'],
-            },
+      const data = await kql({
+        query: 'site',
+        select: {
+          title: true,
+          description: true,
+          children: {
+            query: 'site.children',
+            select: ['id', 'title', 'isListed'],
           },
-        },
-        headers: {
-          Authorization: `Bearer ${process.env.KIRBY_API_TOKEN}`,
+          cover: {
+            query: 'site.content.cover.toFile',
+            select: ['id', 'filename', 'url', 'srcset', 'alt'],
+          },
+          footer: {
+            query: 'site.footer.toPages',
+            select: ['id', 'title'],
+          },
         },
       })
 
@@ -68,3 +62,14 @@ export declare const site: Record<string, any>
     })
   },
 })
+
+async function kql(query: KirbyQueryRequest) {
+  return await $fetch('api/kql', {
+    baseURL: process.env.KIRBY_BASE_URL,
+    method: 'POST',
+    body: query,
+    headers: {
+      Authorization: `Bearer ${process.env.KIRBY_API_TOKEN}`,
+    },
+  })
+}
