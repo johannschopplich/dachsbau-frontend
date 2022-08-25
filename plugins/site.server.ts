@@ -4,10 +4,9 @@ import type { H3Error } from 'h3'
 
 export default defineNuxtPlugin(async () => {
   const site = useSite()
-  if (site.value) return
-
   site.value = preloadedSite || {}
-  if (site.value) return
+
+  if (Object.keys(site.value).length) return
 
   try {
     const data = await $kql({
