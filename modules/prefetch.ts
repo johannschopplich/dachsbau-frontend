@@ -17,7 +17,7 @@ export default defineNuxtModule({
 
     const logger = useLogger()
 
-    nuxt.hook('nitro:init', async () => {
+    nuxt.hook('build:before', async () => {
       logger.info('Prefetching site data...')
 
       const data = await $fetch('api/kql', {
