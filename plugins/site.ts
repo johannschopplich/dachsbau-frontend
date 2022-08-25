@@ -4,8 +4,9 @@ import type { H3Error } from 'h3'
 
 export default defineNuxtPlugin(async () => {
   const site = useSite()
-  site.value = preloadedSite || {}
+  if (site.value) return
 
+  site.value = preloadedSite || {}
   if (site.value) return
 
   try {
