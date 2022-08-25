@@ -34,7 +34,7 @@ export default defineNuxtConfig({
         },
       })
 
-      await writeFile('./site.json', JSON.stringify(data, null, 2))
+      await writeFile('public/site.json', JSON.stringify(data, null, 2))
     },
   },
 

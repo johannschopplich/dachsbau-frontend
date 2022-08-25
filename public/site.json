@@ -1,0 +1,71 @@
+{
+  "code": 200,
+  "status": "OK",
+  "result": {
+    "title": "Dachsbau Tautenhain",
+    "description": "Praxis für Yoga, systemische Beratung und Frauenbegleitung",
+    "children": [
+      {
+        "id": "ueber-uns",
+        "title": "Über uns",
+        "isListed": true
+      },
+      {
+        "id": "blog",
+        "title": "Blog",
+        "isListed": true
+      },
+      {
+        "id": "allgemeine-geschaftsbedingungen",
+        "title": "Allgemeine Geschäftsbedingungen",
+        "isListed": false
+      },
+      {
+        "id": "angebote",
+        "title": "Angebote",
+        "isListed": false
+      },
+      {
+        "id": "error",
+        "title": "Oh, Mist, Seite nicht gefunden!",
+        "isListed": false
+      },
+      {
+        "id": "freundinnen",
+        "title": "Freund:innen des Dachsbaus",
+        "isListed": false
+      },
+      {
+        "id": "home",
+        "title": "home",
+        "isListed": false
+      },
+      {
+        "id": "impressum",
+        "title": "Impressum",
+        "isListed": false
+      }
+    ],
+    "cover": {
+      "id": "blessing-way-schwangerenberatung.jpg",
+      "filename": "blessing-way-schwangerenberatung.jpg",
+      "url": "https://dachsbau.jhnn.dev/media/site/41390b7d47-1661273812/blessing-way-schwangerenberatung.jpg",
+      "srcset": "https://dachsbau.jhnn.dev/media/site/41390b7d47-1661273812/blessing-way-schwangerenberatung-360x.jpg 360w, https://dachsbau.jhnn.dev/media/site/41390b7d47-1661273812/blessing-way-schwangerenberatung-720x.jpg 720w, https://dachsbau.jhnn.dev/media/site/41390b7d47-1661273812/blessing-way-schwangerenberatung-1024x.jpg 1024w, https://dachsbau.jhnn.dev/media/site/41390b7d47-1661273812/blessing-way-schwangerenberatung-1280x.jpg 1280w, https://dachsbau.jhnn.dev/media/site/41390b7d47-1661273812/blessing-way-schwangerenberatung-1536x.jpg 1536w",
+      "alt": ""
+    },
+    "footer": [
+      {
+        "id": "allgemeine-geschaftsbedingungen",
+        "title": "Allgemeine Geschäftsbedingungen"
+      },
+      {
+        "id": "freundinnen",
+        "title": "Freund:innen des Dachsbaus"
+      },
+      {
+        "id": "impressum",
+        "title": "Impressum"
+      }
+    ]
+  }
+}

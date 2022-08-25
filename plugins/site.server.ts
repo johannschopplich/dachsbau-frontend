@@ -6,7 +6,7 @@ export default defineNuxtPlugin(async () => {
   const site = useSite()
 
   try {
-    const data = JSON.parse(await readFile('./site.json', 'utf8'))
+    const data = JSON.parse(await readFile('public/site.json', 'utf8'))
     site.value = data?.result || {}
     return
   } catch (e) {
