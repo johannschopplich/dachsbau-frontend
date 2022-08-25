@@ -15,7 +15,7 @@ export default defineNuxtModule({
   async setup(options, nuxt) {
     const logger = useLogger()
 
-    nuxt.hook('build:before', async () => {
+    nuxt.hook('nitro:init', async () => {
       if (!options.site) return
       logger.info('Prefetching site data...')
 
