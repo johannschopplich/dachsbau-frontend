@@ -8,6 +8,10 @@ export default defineNuxtConfig({
     auth: 'bearer',
   },
 
+  kqlPrefetch: {
+    site: true,
+  },
+
   unocss: {
     preflight: true,
   },

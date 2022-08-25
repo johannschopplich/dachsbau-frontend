@@ -2,7 +2,19 @@ import { $fetch } from 'ohmyfetch'
 import { addTemplate, defineNuxtModule, useLogger } from '@nuxt/kit'
 
 export default defineNuxtModule({
+  meta: {
+    name: 'nuxt-kql/prefetch',
+    configKey: 'kqlPrefetch',
+    compatibility: {
+      nuxt: '^3.0.0',
+    },
+  },
+  defaults: {
+    site: false,
+  },
   async setup(options, nuxt) {
+    if (!options.site) return
+
     const logger = useLogger()
 
     nuxt.hook('nitro:init', async () => {
