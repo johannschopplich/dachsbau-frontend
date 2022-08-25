@@ -1,19 +1,23 @@
 import { readFile } from 'fs/promises'
+import destr from 'destr'
 import { defineNuxtPlugin } from '#app'
 import type { H3Error } from 'h3'
+import type { KirbyQueryResponse } from '#nuxt-kql'
 
 export default defineNuxtPlugin(async () => {
   const site = useSite()
+  let data: KirbyQueryResponse | undefined
 
   try {
-    const data = JSON.parse(await readFile('public/site.json', 'utf8'))
+    data = destr(await readFile('public/site.json', 'utf8'))
     site.value = data?.result || {}
-    return
   } catch (e) {
-    console.error('Error reading site.json', e)
+    console.warn('Preloaded site data not found')
   }
 
-  fetchSite()
+  if (!data) {
+    fetchSite()
+  }
 
   async function fetchSite() {
     try {
