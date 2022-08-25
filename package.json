@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.7",
+    "@nuxt/kit": "npm:@nuxt/kit-edge@latest",
     "@sindresorhus/slugify": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^5.35.1",
     "@typescript-eslint/parser": "^5.35.1",

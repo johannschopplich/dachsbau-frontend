@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@iconify-json/carbon': ^1.1.7
+  '@nuxt/kit': npm:@nuxt/kit-edge@latest
   '@sindresorhus/slugify': ^2.1.0
   '@typescript-eslint/eslint-plugin': ^5.35.1
   '@typescript-eslint/parser': ^5.35.1
@@ -22,6 +23,7 @@ specifiers:
 
 devDependencies:
   '@iconify-json/carbon': 1.1.7
+  '@nuxt/kit': /@nuxt/kit-edge/3.0.0-rc.8-27689472.403e0e6
   '@sindresorhus/slugify': 2.1.0
   '@typescript-eslint/eslint-plugin': 5.35.1_ktjxjibzrfqejavile4bhmzhjq
   '@typescript-eslint/parser': 5.35.1_4rv7y5c6xz3vfxwhbrcxxi73bq
