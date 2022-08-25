@@ -102,7 +102,7 @@ async function close(path: string) {
       isOpen && 'is-open',
     ]"
   >
-    <ul class="flex flex-col gap-4 text-center md:flex-row md:text-left">
+    <ul class="flex flex-col gap-4 md:flex-row">
       <NuxtLink
         v-for="item in navItems"
         :key="item.id"
