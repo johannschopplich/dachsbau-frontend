@@ -15,7 +15,6 @@ export default defineNuxtModule({
   },
   async setup(options) {
     const logger = useLogger()
-
     let site: KirbyQueryResponse | undefined
 
     if (options.prefetchSite) {
@@ -51,9 +50,11 @@ export default defineNuxtModule({
       write: true,
       getContents() {
         return `
-export const site${site?.result ? '' : ': KirbySite'} = ${JSON.stringify(
-          site?.result ?? {}
-        )}
+export const site = ${
+          site?.result
+            ? JSON.stringify(site.result || {})
+            : '{} as Record<string, any>'
+        }
 export type KirbySite = ${site?.result ? 'typeof site' : 'Record<string, any>'}
 `.trimStart()
       },
