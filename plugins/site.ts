@@ -1,10 +1,8 @@
 import { defineNuxtPlugin } from '#app'
-import { site as prefetchedSite } from '#build/nuxt-kql/cache'
 import type { H3Error } from 'h3'
 
 export default defineNuxtPlugin(async () => {
   const site = useSite()
-  site.value = prefetchedSite || {}
 
   if (Object.keys(site.value).length) return
 

@@ -4,24 +4,24 @@ import type { KirbyQueryRequest, KirbyQueryResponse } from '#nuxt-kql'
 
 export default defineNuxtModule({
   meta: {
-    name: 'nuxt-kql/prefetch',
-    configKey: 'kqlPrefetch',
+    name: 'kirby',
+    configKey: 'kirby',
     compatibility: {
       nuxt: '^3.0.0',
     },
   },
   defaults: {
-    site: false,
+    prefetchSite: false,
   },
-  async setup(options, nuxt) {
+  async setup(options) {
     const logger = useLogger()
 
-    nuxt.hook('nitro:init', async () => {
-      let site: KirbyQueryResponse | undefined
+    let site: KirbyQueryResponse | undefined
 
-      if (options.site) {
-        logger.info('Prefetching site data...')
+    if (options.prefetchSite) {
+      logger.info('Prefetching site data...')
 
+      try {
         site = await kql({
           query: 'site',
           select: {
@@ -41,33 +41,28 @@ export default defineNuxtModule({
             },
           },
         })
+      } catch (e) {
+        logger.error("Couldn't prefetch site data")
       }
-
-      addTemplate({
-        filename: 'nuxt-kql/cache.mjs',
-        write: true,
-        getContents() {
-          return `
-export const site = ${JSON.stringify(site?.result || {})}
-`.trimStart()
-        },
-      })
-    })
+    }
 
     addTemplate({
-      filename: 'nuxt-kql/cache.d.ts',
+      filename: 'kirby.ts',
       write: true,
       getContents() {
         return `
-export declare const site: Record<string, any>
+export const site${site?.result ? '' : ': KirbySite'} = ${JSON.stringify(
+          site?.result ?? {}
+        )}
+export type KirbySite = ${site?.result ? 'typeof site' : 'Record<string, any>'}
 `.trimStart()
       },
     })
   },
 })
 
-async function kql(query: KirbyQueryRequest) {
-  return await $fetch<KirbyQueryResponse>('api/kql', {
+function kql(query: KirbyQueryRequest) {
+  return $fetch<KirbyQueryResponse>('api/kql', {
     baseURL: process.env.KIRBY_BASE_URL,
     method: 'POST',
     body: query,

@@ -14,21 +14,6 @@ export interface KirbyImage {
   alt: string
 }
 
-export interface KirbySite {
-  title: string
-  description: string
-  children: {
-    id: string
-    title: string
-    isListed: boolean
-  }[]
-  cover: KirbyImage
-  footer: {
-    id: string
-    title: string
-  }[]
-}
-
 export interface KirbyDefaultPageQuery {
   query: `kirby.page("${string}")`
   select: {
