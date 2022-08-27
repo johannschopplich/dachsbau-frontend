@@ -14,6 +14,10 @@ const nav = useNavState()
 const container = ref<HTMLElement | undefined>()
 provide(containerInjectionKey, container)
 
+onClickOutside(container, () => {
+  container.value?.focus()
+})
+
 onMounted(() => {
   const { height } = useElementSize(container)
 
@@ -61,7 +65,8 @@ onMounted(() => {
   <div
     id="scroll-container"
     ref="container"
-    class="fixed inset-2 bg-secondary-200 overflow-x-hidden overflow-y-scroll rounded-3xl md:inset-6"
+    class="fixed inset-2 bg-secondary-200 overflow-x-hidden overflow-y-scroll rounded-3xl focus:outline-none md:inset-6"
+    tabindex="-1"
   >
     <NuxtLayout>
       <NuxtLoadingIndicator color="#5A6B8D" />
@@ -69,11 +74,11 @@ onMounted(() => {
     </NuxtLayout>
   </div>
 
-  <NuxtLink v-show="!nav.isOpen" to="/">
+  <div v-show="!nav.isOpen" class="pointer-events-none">
     <img
       class="fixed right-0 bottom-0 w-[min(10rem,30vw)] md:right-1 md:bottom-1"
       src="~/assets/img/dachs-im-rahmen-320.png"
       alt=""
     />
-  </NuxtLink>
+  </div>
 </template>
