@@ -18,7 +18,7 @@ const select = {
   ...(routeSelects?.[route.path] ?? {}),
   images: {
     query: 'page.images',
-    select: ['id', 'filename', 'url', 'srcset', 'alt'],
+    select: ['id', 'filename', 'url', 'width', 'height', 'srcset', 'alt'],
   },
 }
 

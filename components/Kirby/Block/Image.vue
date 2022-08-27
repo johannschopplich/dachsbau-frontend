@@ -23,6 +23,8 @@ const { width } = useElementSize(figure)
       class="handdrawn-mask"
       :src="block.content.location === 'web' ? block.content.src : undefined"
       :srcset="image?.srcset"
+      :width="image?.width"
+      :height="image?.height"
       :sizes="`${width}px`"
       :alt="block.content.alt || image?.alt"
     />

@@ -10,6 +10,8 @@ export interface KirbyImage {
   id: string
   filename: string
   url: string
+  width: string
+  height: string
   srcset: string
   alt: string
 }

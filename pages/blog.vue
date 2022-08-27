@@ -12,7 +12,7 @@ const { data } = await useKql({
         description: true,
         cover: {
           query: 'page.content.cover.toFile',
-          select: ['id', 'filename', 'url', 'srcset', 'alt'],
+          select: ['id', 'filename', 'url', 'width', 'height', 'srcset', 'alt'],
         },
       },
     },
