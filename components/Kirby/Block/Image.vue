@@ -24,7 +24,6 @@ const { width } = useElementSize(figure)
       :src="block.content.location === 'web' ? block.content.src : undefined"
       :srcset="image?.srcset"
       :sizes="`${width}px`"
-      loading="lazy"
       :alt="block.content.alt || image?.alt"
     />
 

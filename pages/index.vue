@@ -130,7 +130,6 @@ onMounted(() => {
                 v-if="item.cover"
                 class="handdrawn-mask aspect-[3/2] w-full object-cover"
                 :srcset="item.cover.srcset"
-                loading="lazy"
                 :alt="`Titelbild für ${item.title}`"
               />
               <div

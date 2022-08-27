@@ -29,6 +29,6 @@ export default defineNuxtPlugin(async () => {
 
     site.value = data?.result || {}
   } catch (e) {
-    console.error('Error loading site data:', (e as H3Error).message)
+    console.error('Failed to load site data', (e as H3Error).message)
   }
 })
