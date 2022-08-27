@@ -107,9 +107,6 @@ export default defineConfig({
           margin: '1em 0',
           'line-height': 1.5,
         },
-        'figure,picture': {
-          margin: '2em auto',
-        },
         figcaption: {
           color: theme.colors.primary[700],
           padding: '0.25em 0.5em',

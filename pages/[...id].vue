@@ -99,7 +99,7 @@ const hasLayouts = computed(() => !!page.value?.layouts?.length)
 
 <style scoped>
 .prose :where(figure) {
-  --at-apply: '-mx-6 sm:mx-[2em]';
+  --at-apply: '-mx-6 sm:mx-0';
 }
 
 .prose :where(figcaption) {
