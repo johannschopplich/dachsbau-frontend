@@ -15,13 +15,13 @@ export default defineNuxtModule({
   },
   async setup(options) {
     const logger = useLogger()
-    let site: KirbyQueryResponse | undefined
+    let siteResponse: KirbyQueryResponse | undefined
 
     if (options.prefetchSite) {
       logger.info('Prefetching site data...')
 
       try {
-        site = await kql({
+        siteResponse = await kql({
           query: 'site',
           select: {
             title: true,
@@ -45,17 +45,17 @@ export default defineNuxtModule({
       }
     }
 
+    const site = siteResponse?.result
+
     addTemplate({
       filename: 'kirby.ts',
       write: true,
       getContents() {
         return `
 export const site = ${
-          site?.result
-            ? JSON.stringify(site.result || {})
-            : '{} as Record<string, any>'
+          site ? JSON.stringify(site || {}) : '{} as Record<string, any>'
         }
-export type KirbySite = ${site?.result ? 'typeof site' : 'Record<string, any>'}
+export type KirbySite = ${site ? 'typeof site' : 'Record<string, any>'}
 `.trimStart()
       },
     })
