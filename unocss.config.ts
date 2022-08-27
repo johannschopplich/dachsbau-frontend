@@ -108,7 +108,7 @@ export default defineConfig({
           'line-height': 1.5,
         },
         figcaption: {
-          color: theme.colors.primary[700],
+          color: theme.colors.secondary[700],
           padding: '0.25em 0.5em',
         },
       },
