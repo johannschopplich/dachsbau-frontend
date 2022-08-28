@@ -6,6 +6,7 @@ import '~/assets/css/components.css'
 
 useHead({
   htmlAttrs: {
+    class: 'min-w-[320px] bg-primary-700',
     lang: 'de',
   },
 })
@@ -65,7 +66,7 @@ onMounted(() => {
   <div
     id="scroll-container"
     ref="container"
-    class="fixed inset-2 bg-secondary-200 overflow-x-hidden overflow-y-scroll rounded-3xl focus:outline-none md:inset-6"
+    class="fixed inset-[var(--frame-width)] min-w-[320px] bg-secondary-200 overflow-x-hidden overflow-y-scroll rounded-3xl focus:outline-none"
     tabindex="-1"
   >
     <NuxtLayout>
