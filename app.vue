@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import { containerInjectionKey } from '~/types'
+
 import '~/assets/css/main.css'
 import '~/assets/css/components.css'
-import { containerInjectionKey } from '~/types'
 
 useHead({
   htmlAttrs: {
