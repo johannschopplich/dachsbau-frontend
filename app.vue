@@ -21,7 +21,7 @@ onClickOutside(container, () => {
 onMounted(() => {
   const { height } = useElementSize(container)
 
-  // Manually set `--h-content`, because somehow Android 100vh is too high
+  // Manually set `--h-content`, because somehow `100vh` on Android is too tall
   watchEffect(() =>
     document.documentElement.style.setProperty(
       '--h-content',
