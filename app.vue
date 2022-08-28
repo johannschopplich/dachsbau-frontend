@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import '~/assets/css/main.css'
 import '~/assets/css/components.css'
-import { containerInjectionKey } from './types'
+import { containerInjectionKey } from '~/types'
 
 useHead({
   htmlAttrs: {
-    class: 'bg-primary-700',
     lang: 'de',
   },
 })

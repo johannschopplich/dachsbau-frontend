@@ -12,6 +12,10 @@
   }
 }
 
+html {
+  --at-apply: 'bg-primary-700';
+}
+
 html,
 #scroll-container {
   min-width: 320px;

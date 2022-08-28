@@ -11,18 +11,17 @@ export default <RouterConfig>{
       nuxtApp.hook('page:finish', () => {
         // Timeout for page transition
         setTimeout(() => {
-          // Handle scrolling inside the fixed app container
           if (to.hash) {
             resolve({
               el: to.hash,
               behavior: 'smooth',
             })
-            return
+          } else {
+            // Handle scrolling inside the fixed app container
+            container?.scrollTo(savedPosition ?? { top: 0 })
+
+            resolve(savedPosition ?? { top: 0 })
           }
-
-          container?.scrollTo(savedPosition ?? { top: 0 })
-
-          resolve(savedPosition ?? { top: 0 })
         }, 150)
       })
     })
