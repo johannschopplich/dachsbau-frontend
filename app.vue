@@ -3,6 +3,7 @@ import { containerInjectionKey } from '~/types'
 
 import '~/assets/css/main.css'
 import '~/assets/css/components.css'
+import '~/assets/css/prose.css'
 
 useHead({
   htmlAttrs: {

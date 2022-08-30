@@ -1,0 +1,199 @@
+/*
+ * Base styles
+ *
+ * Adapted from https://github.com/unocss/unocss/tree/main/packages/preset-typography
+ */
+.prose {
+  --un-prose-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  --un-prose-borders: currentColor;
+}
+
+.prose > :where(*:not(:last-child)) {
+  margin-bottom: calc(1rem * var(--un-prose-space-y, 1));
+}
+
+/* .prose
+  :where(p:not(:first-child), ul:not(:first-child), ol:not(:first-child), pre:not(:first-child), blockquote:not(:first-child), figure:not(:first-child), table:not(:first-child)) {
+  margin-bottom: calc(1rem * var(--un-prose-space-y, 1));
+} */
+
+.prose
+  :where(h1:not(:first-child), h2:not(:first-child), h3:not(:first-child), h4:not(:first-child), h5:not(:first-child), h6:not(:first-child)) {
+  margin-top: calc(2rem * var(--un-prose-space-y, 1));
+}
+
+.prose :where(h1, h2, h3, h4, h5, h6) {
+  color: var(--un-prose-headings);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.prose :where(a) {
+  color: var(--un-prose-links, currentColor);
+}
+
+.prose :where(a code) {
+  color: var(--un-prose-links, currentColor);
+}
+
+.prose :where(p, ul, ol, pre) {
+  line-height: 1.5;
+}
+
+.prose :where(blockquote) {
+  font-style: italic;
+  border-left: 0.25em solid var(--un-prose-borders);
+  padding-left: 1em;
+}
+
+/*
+ * Taking 16px as a base, we scale h1, h2, h3, and h4 like
+ * 16 (base) > 18 (h4) > 22 (h3) > 28 (h2) > 36 (h1)
+ */
+.prose :where(h1) {
+  font-size: 2.25em;
+}
+
+.prose :where(h2) {
+  font-size: 1.75em;
+}
+
+.prose :where(h3) {
+  font-size: 1.375em;
+}
+
+.prose :where(h4) {
+  font-size: 1.125em;
+}
+
+.prose :where(figcaption) {
+  color: var(--un-prose-captions);
+  font-size: 0.875em;
+  line-height: 1.25;
+  margin-top: 0.5rem;
+}
+
+.prose :where(code) {
+  color: var(--un-prose-code);
+  font-size: 0.875em;
+  font-weight: 600;
+  font-family: var(--un-prose-font-mono);
+}
+
+.prose :where(:not(pre) > code)::before,
+.prose :where(:not(pre) > code)::after {
+  content: '`';
+}
+
+.prose :where(pre) {
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  border-radius: 0.375rem;
+}
+
+.prose :where(pre, code) {
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  hyphens: none;
+  background: transparent;
+}
+
+.prose :where(pre code) {
+  font-weight: inherit;
+}
+
+.prose :where(ol, ul) {
+  padding-left: 1.25em;
+}
+
+.prose :where(ol) {
+  list-style-type: decimal;
+}
+
+.prose :where(ul) {
+  list-style-type: disc;
+}
+
+.prose :where(ol > li)::marker,
+.prose :where(ul > li)::marker,
+.prose :where(summary)::marker {
+  color: var(--un-prose-lists, currentColor);
+}
+
+.prose :where(hr) {
+  margin: calc(2rem * var(--un-prose-space-y, 1)) 0;
+  border: 1px solid var(--un-prose-hr, currentColor);
+}
+
+.prose :where(table) {
+  display: block;
+  margin: 1em 0;
+  border-collapse: collapse;
+  overflow-x: auto;
+}
+
+.prose :where(tr:nth-child(2n)) {
+  background: var(--un-prose-bg-soft);
+}
+
+.prose :where(td, th) {
+  border: 1px solid var(--un-prose-borders);
+  padding: 0.625em 1em;
+}
+
+.prose :where(abbr) {
+  cursor: help;
+}
+
+.prose :where(kbd) {
+  color: var(--un-prose-code);
+  border: 1px solid;
+  font-size: 0.875em;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.prose :where(details) {
+  margin: 1em 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--un-prose-bg-soft);
+}
+
+.prose :where(summary) {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/*
+ * Custom styles
+ */
+.prose :where(h1, h2, h3, h4, h5, h6) {
+  --at-apply: 'text-secondary-600 font-heading font-400';
+}
+
+.prose :where(a) {
+  text-decoration-line: underline;
+  text-decoration-color: #4a5874; /* primary-600 */
+  text-decoration-thickness: var(--decoration-width);
+  text-underline-offset: var(--decoration-width);
+}
+
+.prose :where(a:hover) {
+  text-decoration-color: #5a6b8d; /* primary-500 */
+}
+
+.prose :where(a code) {
+  --at-apply: 'text-primary-500';
+  text-decoration-line: none;
+}
+
+.prose :where(figcaption) {
+  --at-apply: 'px-2 text-secondary-700';
+}

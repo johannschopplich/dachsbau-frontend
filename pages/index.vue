@@ -172,7 +172,7 @@ onMounted(() => {
         class="h-full max-w-screen-md padding-content mx-auto flex items-center justify-center"
       >
         <div>
-          <h2 class="title relative">
+          <h2 class="title relative mb-6">
             <img
               class="absolute top-1/2 -left-2 right-0 -translate-y-1/2 scale-150 pointer-events-none"
               src="~/assets/img/menu-hover-01.svg"

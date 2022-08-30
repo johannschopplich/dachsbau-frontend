@@ -1,6 +1,7 @@
 <script setup lang="ts">
+const route = useRoute()
 const { data } = await useKql({
-  query: 'kirby.page("blog")',
+  query: `kirby.page("${route.path}")`,
   select: {
     title: true,
     description: true,
@@ -39,7 +40,7 @@ const random = () => Math.random() * 4 - 2
           :key="index"
           class="group relative space-y-4"
         >
-          <div :style="`transform: rotate(${random()}deg)`">
+          <div :style="{ transform: `rotate(${random()}deg)` }">
             <img
               v-if="item.cover"
               class="handdrawn-mask aspect-[3/2] w-full object-cover"

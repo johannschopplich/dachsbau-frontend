@@ -1,4 +1,4 @@
-import { defineConfig, presetTypography, transformerDirectives } from 'unocss'
+import { defineConfig, transformerDirectives } from 'unocss'
 import { presetWind, theme as themeWind } from '@unocss/preset-wind'
 
 const theme = {
@@ -73,45 +73,10 @@ export default defineConfig({
   ],
   shortcuts: {
     'page-title':
-      'text-5xl text-primary-600 font-heading-condensed font-medium md:text-6xl',
+      'text-4xl text-primary-600 font-heading-condensed font-medium md:text-6xl',
     'padding-content': 'px-4 sm:px-6 lg:px-8',
     'breakout-content': 'w-screen ml-[calc(50%-50vw)]',
   },
   transformers: [transformerDirectives()],
-  presets: [
-    presetWind(),
-    presetTypography({
-      cssExtend: {
-        'h1,h2,h3,h4,h5,h6': {
-          color: theme.colors.secondary[600],
-          'font-family': `Henrietta,${themeWind?.fontFamily?.sans}`,
-          'font-weight': '400',
-        },
-        a: {
-          color: 'currentColor',
-          'font-weight': 'unset',
-          'text-decoration-line': 'underline',
-          'text-decoration-color': theme.colors.primary[600],
-          'text-decoration-thickness': 'var(--decoration-width)',
-          'text-underline-offset': 'var(--decoration-width)',
-        },
-        'a:hover': {
-          color: theme.colors.primary[500],
-          'text-decoration-line': 'underline',
-        },
-        'a code': {
-          color: theme.colors.primary[500],
-          'text-decoration-line': 'none',
-        },
-        'p,ul,ol,pre': {
-          margin: '1em 0',
-          'line-height': 1.5,
-        },
-        figcaption: {
-          color: theme.colors.secondary[700],
-          padding: '0.25em 0.5em',
-        },
-      },
-    }),
-  ],
+  presets: [presetWind()],
 })

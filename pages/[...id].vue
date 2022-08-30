@@ -42,7 +42,7 @@ const hasLayouts = computed(() => !!page.value?.layouts?.length)
 <template>
   <div
     :class="[
-      'padding-content mx-auto pt-36 pb-12',
+      'padding-content mx-auto space-y-6 pt-36 pb-12',
       hasLayouts ? 'max-w-screen-xl' : 'max-w-screen-md',
     ]"
   >
@@ -58,9 +58,3 @@ const hasLayouts = computed(() => !!page.value?.layouts?.length)
     />
   </div>
 </template>
-
-<style scoped>
-.prose :where(figcaption) {
-  --at-apply: 'sm:px-2';
-}
-</style>
