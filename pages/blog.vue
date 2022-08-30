@@ -38,16 +38,18 @@ function random() {
     <div class="max-w-screen-lg padding-content mx-auto">
       <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
         <div
-          v-for="(item, index) in [...page.posts, ...page.posts, ...page.posts]"
+          v-for="(item, index) in page?.posts ?? []"
           :key="index"
-          class="relative"
-          :style="{ transform: `rotate(${random()}deg)` }"
+          class="relative transform"
+          :style="`--un-rotate: ${random()}deg`"
         >
           <div class="group handdrawn-mask bg-secondary-100 p-4 pt-6">
             <img
               v-if="item.cover"
               class="handdrawn-mask aspect-[3/2] w-full object-cover"
               :srcset="item.cover.srcset"
+              :width="item.cover.width"
+              :height="item.cover.height"
               sizes="(min-width: 768px) 16rem, (min-width: 640px) 50vw, 100vw"
             />
             <div
@@ -64,7 +66,7 @@ function random() {
                 {{ item.title }}
               </NuxtLink>
 
-              <p class="text-stone-500 font-serif leading-tight font-350 mt-2">
+              <p class="text-stone-600 font-serif leading-tight font-350 mt-2">
                 {{ item.description }}
               </p>
             </div>
