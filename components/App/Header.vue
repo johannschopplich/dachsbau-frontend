@@ -10,7 +10,6 @@ const nav = useNavState()
 const { isOpen } = toRefs(nav)
 const isRedirecting = ref(false)
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const contentContainer = inject(containerInjectionKey)!
 const isLocked = useScrollLock(contentContainer)
 

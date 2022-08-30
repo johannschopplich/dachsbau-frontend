@@ -19,7 +19,6 @@ const { data } = await useKql({
 // Make current page data globally available
 setCurrentPage(() => data.value?.result)
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const contentContainer = inject(containerInjectionKey)!
 const animationStack = reactive(new Map<number, boolean>())
 
