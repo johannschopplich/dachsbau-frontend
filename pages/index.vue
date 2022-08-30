@@ -94,8 +94,7 @@ onMounted(() => {
           class="w-full h-[calc(200%-(100%*var(--screen-ratio)))] object-cover object-bottom"
           :srcset="site.cover.srcset"
           sizes="
-            (min-width: 1024px) 30vw,
-            (min-width: 768px) 40vw,
+            (min-width: 768px) 50vw,
             100vw"
           alt=""
         />
