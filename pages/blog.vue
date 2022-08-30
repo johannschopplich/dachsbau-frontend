@@ -24,7 +24,9 @@ const { data } = await useKql({
 const page = setCurrentPage(data.value?.result)
 
 // Random number between -1 and 1
-const random = () => Math.random() * 4 - 2
+function random() {
+  return Math.random() * 4 - 2
+}
 </script>
 
 <template>
@@ -36,11 +38,12 @@ const random = () => Math.random() * 4 - 2
     <div class="max-w-screen-lg padding-content mx-auto">
       <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
         <div
-          v-for="(item, index) in page.posts"
+          v-for="(item, index) in [...page.posts, ...page.posts, ...page.posts]"
           :key="index"
-          class="group relative space-y-4"
+          class="relative"
+          :style="{ transform: `rotate(${random()}deg)` }"
         >
-          <div :style="{ transform: `rotate(${random()}deg)` }">
+          <div class="group handdrawn-mask bg-secondary-100 p-4 pt-6">
             <img
               v-if="item.cover"
               class="handdrawn-mask aspect-[3/2] w-full object-cover"
@@ -51,23 +54,47 @@ const random = () => Math.random() * 4 - 2
               v-else
               class="handdrawn-mask aspect-[3/2] w-full bg-secondary-400"
             />
+
+            <div class="mt-4 px-2">
+              <NuxtLink
+                :to="{ path: `/${item.id}` }"
+                class="text-2xl leading-none text-primary-700 font-heading-condensed group-hover:text-underline"
+              >
+                <span class="absolute inset-0" />
+                {{ item.title }}
+              </NuxtLink>
+
+              <p class="text-stone-500 font-serif leading-tight font-350 mt-2">
+                {{ item.description }}
+              </p>
+            </div>
+
+            <img
+              class="pin"
+              src="~/assets/img/pin-shadow-128.png"
+              width="128"
+              height="151"
+              alt=""
+              aria-hidden="true"
+            />
           </div>
 
-          <div class="px-2">
-            <NuxtLink
-              :to="{ path: `/${item.id}` }"
-              class="text-2xl leading-none text-primary-700 font-heading-condensed group-hover:text-underline"
-            >
-              <span class="absolute inset-0" />
-              {{ item.title }}
-            </NuxtLink>
-
-            <p class="text-stone-500 font-serif leading-tight font-350">
-              {{ item.description }}
-            </p>
-          </div>
+          <img
+            class="absolute pointer-events-none -top-2 left-[calc(50%+1rem)] -translate-x-1/2 w-6"
+            src="~/assets/img/pin-128.png"
+            width="128"
+            height="151"
+            alt=""
+            aria-hidden="true"
+          />
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.pin {
+  --at-apply: 'absolute pointer-events-none -top-2 left-[calc(50%+1rem)] -translate-x-1/2 w-6';
+}
+</style>

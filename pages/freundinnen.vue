@@ -7,7 +7,6 @@ const { data } = await useKql({
     title: true,
     description: true,
     text: 'page.text.toBlocks',
-    layouts: 'page.layout.toLayouts',
     backers: 'page.backers.toStructure',
     images: {
       query: 'page.images',
@@ -18,22 +17,15 @@ const { data } = await useKql({
 
 // Make current page data globally available
 const page = setCurrentPage(() => data.value?.result)
-
-const hasLayouts = computed(() => !!page.value?.layouts?.length)
 </script>
 
 <template>
   <div
-    :class="[
-      'padding-content mx-auto space-y-6 pt-36 pb-12',
-      hasLayouts ? 'max-w-screen-xl' : 'max-w-screen-md',
-    ]"
+    :class="['padding-content max-w-screen-md mx-auto space-y-6 pt-36 pb-12']"
   >
     <h1 class="page-title hyphenate md:w-3/4">
       {{ page?.title }}
     </h1>
-
-    <KirbyLayouts v-if="hasLayouts" :layouts="page.layouts ?? []" />
 
     <KirbyBlocks
       :blocks="page?.text ?? []"
@@ -44,7 +36,7 @@ const hasLayouts = computed(() => !!page.value?.layouts?.length)
       <div
         v-for="(item, index) in page.backers"
         :key="index"
-        class="relative bg-secondary-100 p-3"
+        class="handdrawn-mask relative bg-secondary-100 p-3"
       >
         <div class="flex justify-center mb-2">
           <img
