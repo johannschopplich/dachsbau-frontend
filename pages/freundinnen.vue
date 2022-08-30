@@ -61,6 +61,7 @@ const hasLayouts = computed(() => !!page.value?.layouts?.length)
         <component
           :is="item.website ? 'a' : 'p'"
           :href="item.website"
+          :target="item.website ? '_blank' : undefined"
           class="text-secondary-800 text-xl leading-none font-heading-condensed"
         >
           <div class="absolute inset-0" />
