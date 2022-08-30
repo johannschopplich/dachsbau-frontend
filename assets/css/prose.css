@@ -71,7 +71,7 @@
   color: var(--un-prose-captions);
   font-size: 0.875em;
   line-height: 1.25;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
 }
 
 .prose :where(code) {
@@ -190,10 +190,11 @@
 }
 
 .prose :where(a code) {
-  --at-apply: 'text-primary-500';
+  color: #5a6b8d; /* primary-500 */
   text-decoration-line: none;
 }
 
 .prose :where(figcaption) {
-  --at-apply: 'px-2 text-secondary-700';
+  color: #696737; /* secondary-700 */
+  text-align: right;
 }
