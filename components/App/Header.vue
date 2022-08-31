@@ -56,8 +56,6 @@ async function close(path: string) {
       <img
         class="h-[1em] mt-[-0.125em]"
         src="~/assets/img/dachsbau-logo-64.png"
-        width="64"
-        height="83"
         alt="Dachsbau Tautenhain Logo"
       />
 
