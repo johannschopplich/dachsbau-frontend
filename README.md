@@ -1,6 +1,6 @@
 # Dachsbau Frontend
 
-Frontend for [Dachsbau Tautenhain](https://dachsbau-tautenhain.de). The backend code is [over here](https://johannschopplich.com/github/dachsbau-backend).
+Frontend for [Dachsbau Tautenhain](https://dachsbau-tautenhain.de). The backend code is [over here](https://github.com/johannschopplich/dachsbau-backend).
 
 This repository uses Nuxt 3 for the frontend and fetches content from a [headless Kirby](https://github.com/johannschopplich/kirby-headless-starter) instance. The frontend is built upon the > [kirby-nuxt-starterkit](https://github.com/johannschopplich/kirby-nuxt-starterkit).
 
