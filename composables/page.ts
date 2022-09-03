@@ -49,10 +49,12 @@ function usePageMeta(page: Record<string, any>) {
       { property: 'og:description', content: description.value },
       { property: 'og:url', content: url.value },
       { property: 'og:type', content: 'website' },
+      { property: 'og:image', content: site.value?.cover?.url },
       { name: 'twitter:title', content: title.value },
       { name: 'twitter:description', content: description.value },
       { name: 'twitter:url', content: url.value },
       { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:image', content: site.value?.cover?.url },
     ],
   })
 }

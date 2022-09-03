@@ -31,16 +31,8 @@ export default defineNuxtModule({
               select: ['id', 'title', 'isListed'],
             },
             cover: {
-              query: 'site.content.cover.toFile',
-              select: [
-                'id',
-                'filename',
-                'url',
-                'width',
-                'height',
-                'srcset',
-                'alt',
-              ],
+              query: 'site.cover.toFile.resize(800)',
+              select: ['id', 'filename', 'url'],
             },
             footer: {
               query: 'site.footer.toPages',
