@@ -23,8 +23,8 @@
     "@sindresorhus/slugify": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
-    "@unocss/nuxt": "^0.45.13",
-    "@unocss/preset-wind": "^0.45.13",
+    "@unocss/nuxt": "^0.45.14",
+    "@unocss/preset-wind": "^0.45.14",
     "@vueuse/nuxt": "^9.1.1",
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
@@ -34,9 +34,9 @@
     "nuxt-kql": "^0.12.2",
     "prettier": "^2.7.1",
     "simple-git-hooks": "^2.8.0",
-    "typescript": "^4.7.4",
-    "unocss": "^0.45.13",
-    "vue-tsc": "^0.40.4"
+    "typescript": "^4.8.2",
+    "unocss": "^0.45.14",
+    "vue-tsc": "^0.40.5"
   },
   "pnpm": {
     "peerDependencyRules": {

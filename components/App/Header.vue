@@ -14,7 +14,7 @@ const contentContainer = inject(containerInjectionKey)!
 const isLocked = useScrollLock(contentContainer)
 
 const navItems = computed(() =>
-  (site.value?.children ?? []).filter((i) => i.isListed)
+  (site.value?.children ?? []).filter((i: Record<string, any>) => i.isListed)
 )
 
 // On Suspense resolved event
@@ -23,7 +23,7 @@ nuxtApp.hook('page:finish', () => {
 })
 
 function toggleMenu() {
-  contentContainer.value?.scrollTo({ top: 0, left: 0 })
+  contentContainer.value?.scrollTo({ top: 0 })
   isLocked.value = !isLocked.value
   isOpen.value = !isOpen.value
 }

@@ -43,7 +43,7 @@ const page = setCurrentPage(() => data.value?.result)
             v-if="item.logo?.length"
             class="h-10"
             :srcset="
-                page.images.find((i: any) => i.filename === item.logo?.[0])?.srcset
+                page.images.find((i: Record<string, any>) => i.filename === item.logo?.[0])?.srcset
               "
             :alt="`Logo für ${item.title}`"
           />

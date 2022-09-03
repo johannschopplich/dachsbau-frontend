@@ -6,9 +6,9 @@ export default defineNuxtModule({
   meta: {
     name: 'kirby',
     configKey: 'kirby',
-    compatibility: {
-      nuxt: '^3.0.0',
-    },
+    // compatibility: {
+    //   nuxt: '^3.0.0',
+    // },
   },
   defaults: {
     prefetchSite: false,

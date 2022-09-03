@@ -1,14 +1,24 @@
 <script setup lang="ts">
 import { containerInjectionKey } from '~/types'
 
-const site = useSite()
-
 const { data } = await useKql({
-  query: 'kirby.page("angebote").children.listed',
+  query: 'kirby.page("home")',
   select: {
     id: true,
-    title: true,
-    description: true,
+    intro: true,
+    contact: true,
+    children: {
+      query: 'kirby.page("angebote").children.listed',
+      select: {
+        id: true,
+        title: true,
+        description: true,
+        cover: {
+          query: 'page.content.cover.toFile',
+          select: ['id', 'filename', 'url', 'width', 'height', 'srcset', 'alt'],
+        },
+      },
+    },
     cover: {
       query: 'page.content.cover.toFile',
       select: ['id', 'filename', 'url', 'width', 'height', 'srcset', 'alt'],
@@ -17,7 +27,7 @@ const { data } = await useKql({
 })
 
 // Make current page data globally available
-setCurrentPage(() => data.value?.result)
+const page = setCurrentPage(() => data.value?.result)
 
 const contentContainer = inject(containerInjectionKey)!
 const animationStack = reactive(new Map<number, boolean>())
@@ -74,9 +84,7 @@ onMounted(() => {
         class="relative h-full max-w-screen-md padding-content mx-auto grid grid-rows-[1fr_auto_1fr] gap-4"
       >
         <div />
-        <p class="title text-center">
-          Praxis für Yoga, systemische Beratung und Frauenbegleitung
-        </p>
+        <p class="title text-center" v-html="page.intro" />
         <div class="w-2px bg-primary-500 mx-auto"></div>
       </div>
     </div>
@@ -89,9 +97,9 @@ onMounted(() => {
         class="w-[50vw] h-full mx-auto scale-[calc(1+0.5*var(--screen-ratio))] transform-origin-bottom rounded-tr-full rounded-tl-full flex items-end overflow-hidden md:w-[40vw] lg:w-[30vw]"
       >
         <img
-          v-if="site.cover"
+          v-if="page.cover"
           class="w-full h-[calc(200%-(100%*var(--screen-ratio)))] object-cover object-bottom"
-          :srcset="site.cover.srcset"
+          :srcset="page.cover.srcset"
           sizes="
             (min-width: 768px) 50vw,
             100vw"
@@ -112,7 +120,7 @@ onMounted(() => {
       <div class="max-w-screen-lg padding-content mx-auto py-12">
         <div class="space-y-12">
           <div
-            v-for="(item, index) in data?.result"
+            v-for="(item, index) in page?.children ?? []"
             :key="index"
             class="group flex flex-col gap-4 sm:flex-row sm:gap-12"
             @mouseenter="animationStack.set(index, true)"
@@ -182,11 +190,7 @@ onMounted(() => {
           <div
             class="prose text-secondary-900 font-serif md:text-xl md:font-350"
           >
-            <p>
-              Madlen und Martin Simon<br />
-              Dorfstr. 81<br />
-              07639 Tautenhain
-            </p>
+            <p v-html="page.contact" />
           </div>
         </div>
       </div>
