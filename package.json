@@ -1,6 +1,6 @@
 {
   "private": true,
-  "packageManager": "pnpm@7.9.4",
+  "packageManager": "pnpm@7.9.5",
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.7",
-    "@nuxt/kit": "npm:@nuxt/kit-edge@latest",
+    "@nuxt/kit": "^3.0.0-rc.9",
     "@sindresorhus/slugify": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
@@ -30,7 +30,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-vue": "^9.4.0",
     "lint-staged": "^13.0.3",
-    "nuxt": "npm:nuxt3@latest",
+    "nuxt": "^3.0.0-rc.9",
     "nuxt-kql": "^0.12.2",
     "prettier": "^2.7.1",
     "simple-git-hooks": "^2.8.0",
