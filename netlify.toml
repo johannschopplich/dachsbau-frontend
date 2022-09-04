@@ -10,3 +10,9 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[redirects]]
+  from = "https://dachsbau.netlify.app/*"
+  to = "https://dachsbau-tautenhain.de/:splat"
+  status = 301
+  force = true
