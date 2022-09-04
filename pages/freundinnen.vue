@@ -8,9 +8,15 @@ const { data } = await useKql({
     description: true,
     text: 'page.text.toBlocks',
     backers: 'page.backers.toStructure',
+    // Get all images for the Kirby image block
     images: {
       query: 'page.images',
       select: ['id', 'filename', 'url', 'width', 'height', 'srcset', 'alt'],
+    },
+    // Social media preview
+    cover: {
+      query: 'page.cover.or(site.cover).toFile.resize(1200)',
+      select: ['url'],
     },
   },
 })

@@ -14,14 +14,19 @@ const { data } = await useKql({
         title: true,
         description: true,
         cover: {
-          query: 'page.content.cover.toFile',
-          select: ['id', 'filename', 'url', 'width', 'height', 'srcset', 'alt'],
+          query: 'page.cover.toFile',
+          select: ['srcset'],
         },
       },
     },
+    heroImage: {
+      query: 'page.cover.toFile',
+      select: ['srcset'],
+    },
+    // Social media preview
     cover: {
-      query: 'page.content.cover.toFile',
-      select: ['id', 'filename', 'url', 'width', 'height', 'srcset', 'alt'],
+      query: 'page.cover.or(site.cover).toFile.resize(1200)',
+      select: ['url'],
     },
   },
 })
@@ -97,9 +102,9 @@ onMounted(() => {
         class="w-[50vw] h-full mx-auto scale-[calc(1+0.5*var(--screen-ratio))] transform-origin-bottom rounded-tr-full rounded-tl-full flex items-end overflow-hidden md:w-[40vw] lg:w-[30vw]"
       >
         <img
-          v-if="page.cover"
+          v-if="page.heroImage"
           class="w-full h-[calc(200%-(100%*var(--screen-ratio)))] object-cover object-bottom"
-          :srcset="page.cover.srcset"
+          :srcset="page.heroImage.srcset"
           sizes="
             (min-width: 768px) 50vw,
             100vw"

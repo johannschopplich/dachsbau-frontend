@@ -16,13 +16,13 @@ export default defineNuxtPlugin(async () => {
           query: 'site.children',
           select: ['id', 'title', 'isListed'],
         },
-        cover: {
-          query: 'site.cover.toFile.resize(1200)',
-          select: ['id', 'filename', 'url'],
-        },
         footer: {
           query: 'site.footer.toPages',
           select: ['id', 'title'],
+        },
+        cover: {
+          query: 'site.cover.toFile.resize(1200)',
+          select: ['url'],
         },
       },
     })

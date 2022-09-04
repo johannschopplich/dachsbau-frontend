@@ -31,30 +31,27 @@ function usePageMeta(page: Record<string, any>) {
       ? withHttps(useRequestHeaders().host || '/')
       : window.location.origin)
 
-  const title = computed(() =>
-    page.value?.title
-      ? `${page.value?.title} – ${site.value.title}`
-      : site.value.title
-  )
-  const description = computed(
-    () => page.value?.description || site.value.description
-  )
-  const url = computed(() => resolveURL(origin, route.path))
+  const title = page?.title
+    ? `${page?.title} – ${site.value.title}`
+    : site.value.title
+  const description = page?.description || site.value.description
+  const url = resolveURL(origin, route.path)
+  const image = page?.cover?.url ?? site.value?.cover?.url
 
   useHead({
-    title: title.value,
+    title,
     meta: [
-      { name: 'description', content: description.value },
-      { property: 'og:title', content: title.value },
-      { property: 'og:description', content: description.value },
-      { property: 'og:url', content: url.value },
+      { name: 'description', content: description },
+      { property: 'og:title', content: title },
+      { property: 'og:description', content: description },
+      { property: 'og:url', content: url },
       { property: 'og:type', content: 'website' },
-      { property: 'og:image', content: site.value?.cover?.url },
-      { name: 'twitter:title', content: title.value },
-      { name: 'twitter:description', content: description.value },
-      { name: 'twitter:url', content: url.value },
+      { property: 'og:image', content: image },
+      { name: 'twitter:title', content: title },
+      { name: 'twitter:description', content: description },
+      { name: 'twitter:url', content: url },
       { name: 'twitter:card', content: 'summary' },
-      { name: 'twitter:image', content: site.value?.cover?.url },
+      { name: 'twitter:image', content: image },
     ],
   })
 }

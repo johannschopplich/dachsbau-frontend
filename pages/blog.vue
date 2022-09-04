@@ -12,8 +12,8 @@ const { data } = await useKql({
         title: true,
         description: true,
         cover: {
-          query: 'page.content.cover.toFile',
-          select: ['id', 'filename', 'url', 'width', 'height', 'srcset', 'alt'],
+          query: 'page.cover.toFile',
+          select: ['width', 'height', 'srcset'],
         },
       },
     },
@@ -51,6 +51,7 @@ function random() {
               :width="item.cover.width"
               :height="item.cover.height"
               sizes="(min-width: 768px) 16rem, (min-width: 640px) 50vw, 100vw"
+              alt=""
             />
             <div
               v-else

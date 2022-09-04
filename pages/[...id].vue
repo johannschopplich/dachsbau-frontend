@@ -9,9 +9,15 @@ const select = {
   description: true,
   text: 'page.text.toBlocks',
   layouts: 'page.layout.toLayouts',
+  // Get all images for the Kirby image block
   images: {
     query: 'page.images',
     select: ['id', 'filename', 'url', 'width', 'height', 'srcset', 'alt'],
+  },
+  // Social media preview
+  cover: {
+    query: 'page.cover.or(site.cover).toFile.resize(1200)',
+    select: ['url'],
   },
 }
 
