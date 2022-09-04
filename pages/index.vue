@@ -141,6 +141,7 @@ onMounted(() => {
                 v-if="item.cover"
                 class="handdrawn-mask aspect-[3/2] w-full object-cover"
                 :srcset="item.cover.srcset"
+                sizes="(min-width: 768px) 32rem, (min-width: 640px) 50vw, 100vw"
                 :alt="`Titelbild für ${item.title}`"
               />
               <div
