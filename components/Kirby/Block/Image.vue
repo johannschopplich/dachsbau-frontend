@@ -7,9 +7,10 @@ const props = defineProps<{
 }>()
 
 const page = useCurrentPage()
+
 // Explicitly not using `computed` here
-const image = (page.value?.images as KirbyImage[])?.find(
-  (i) => i.filename === props.block.content.image?.[0]
+const image = page.value?.images?.find(
+  (i: KirbyImage) => i.filename === props.block.content.image?.[0]
 )
 
 const figure = ref<HTMLElement | undefined>()
