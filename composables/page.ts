@@ -24,18 +24,13 @@ export function setCurrentPage<
 function usePageMeta(page: Record<string, any>) {
   const site = useSite()
   const route = useRoute()
-  const { deployUrl } = useRuntimeConfig().public
-  const origin =
-    deployUrl ||
-    (process.server
-      ? withHttps(useRequestHeaders().host || '/')
-      : window.location.origin)
+  const { siteUrl } = useRuntimeConfig().public
 
   const title = page?.title
     ? `${page?.title} – ${site.value.title}`
     : site.value.title
   const description = page?.description || site.value.description
-  const url = resolveURL(origin, route.path)
+  const url = resolveURL(siteUrl, route.path)
   const image = page?.cover?.url ?? site.value?.cover?.url
 
   useHead({
