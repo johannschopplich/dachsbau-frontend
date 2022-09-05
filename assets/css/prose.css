@@ -187,7 +187,8 @@
 }
 
 .prose :where(a:hover) {
-  text-decoration-color: #5a6b8d; /* primary-500 */
+  color: #5a6b8d; /* primary-500 */
+  text-decoration-color: currentColor;
 }
 
 .prose :where(a code) {
