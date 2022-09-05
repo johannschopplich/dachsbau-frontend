@@ -7,7 +7,7 @@ export default <RouterConfig>{
       document.querySelector<HTMLDivElement>('#scroll-container')!
 
     return new Promise((resolve) => {
-      // On Suspense resolved event
+      // Handle Suspense resolution
       nuxtApp.hook('page:finish', () => {
         // Timeout for page transition
         setTimeout(() => {
@@ -19,7 +19,6 @@ export default <RouterConfig>{
           } else {
             // Handle scrolling inside the fixed app container
             container.scrollTo(savedPosition ?? { top: 0 })
-
             resolve(savedPosition ?? { top: 0 })
           }
         }, 150)

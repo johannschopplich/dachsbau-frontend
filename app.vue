@@ -15,6 +15,14 @@ onClickOutside(container, () => {
   container.value?.focus()
 })
 
+if (process.client && matchMedia('(hover: none)').matches) {
+  // Set actual vh on mobile
+  document.documentElement.style.setProperty(
+    '--vh',
+    `${window.innerHeight * 0.01}px`
+  )
+}
+
 onMounted(() => {
   const { height } = useElementSize(container)
 
