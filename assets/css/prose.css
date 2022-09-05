@@ -14,11 +14,6 @@
   margin-bottom: calc(1 * var(--un-prose-space-y));
 }
 
-/* .prose
-  :where(p:not(:first-child), ul:not(:first-child), ol:not(:first-child), pre:not(:first-child), blockquote:not(:first-child), figure:not(:first-child), table:not(:first-child)) {
-  margin-bottom: calc(1 * var(--un-prose-space-y));
-} */
-
 .prose
   :where(h1:not(:first-child), h2:not(:first-child), h3:not(:first-child), h4:not(:first-child), h5:not(:first-child), h6:not(:first-child)) {
   margin-top: calc(2 * var(--un-prose-space-y));
@@ -180,23 +175,21 @@
 }
 
 .prose :where(a) {
+  --at-apply: 'decoration-primary-600';
   text-decoration-line: underline;
-  text-decoration-color: #4a5874; /* primary-600 */
   text-decoration-thickness: var(--decoration-width);
   text-underline-offset: var(--decoration-width);
 }
 
 .prose :where(a:hover) {
-  color: #5a6b8d; /* primary-500 */
-  text-decoration-color: currentColor;
+  --at-apply: 'text-primary-500 decoration-current';
 }
 
 .prose :where(a code) {
-  color: #5a6b8d; /* primary-500 */
+  --at-apply: 'text-primary-500';
   text-decoration-line: none;
 }
 
 .prose :where(figcaption) {
-  color: #696737; /* secondary-700 */
-  text-align: right;
+  --at-apply: 'text-secondary-700 text-right';
 }
