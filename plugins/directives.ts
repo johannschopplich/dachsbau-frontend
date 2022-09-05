@@ -9,7 +9,7 @@ export default defineNuxtPlugin((nuxtApp) => {
    * wrapping `<div>` element with its raw inner HTML
    */
   vueApp.directive('hoist', {
-    created(el) {
+    mounted(el) {
       // Return if no child elements of type element nodes are found
       if (![...el.childNodes].some((i) => i.nodeType === 1)) return
 
