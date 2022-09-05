@@ -20,7 +20,7 @@ const { data } = await useKql({
       },
     },
     heroImage: {
-      query: 'page.cover.toFile',
+      query: 'page.heroImage.toFile',
       select: ['srcset'],
     },
     // Social media preview
