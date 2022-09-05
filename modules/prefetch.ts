@@ -45,7 +45,7 @@ export default defineNuxtModule({
       }
     }
 
-    const site = siteResponse?.result
+    const site = siteResponse?.result as Record<string, any> | undefined
 
     addTemplate({
       filename: 'kirby.ts',
