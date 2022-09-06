@@ -1,4 +1,4 @@
-import { resolveURL, withHttps } from 'ufo'
+import { resolveURL } from 'ufo'
 import type { MaybeComputedRef } from '@vueuse/core'
 
 export function useCurrentPage<
