@@ -1,5 +1,5 @@
-import { defineConfig, transformerDirectives } from 'unocss'
-import { presetWind, theme as themeWind } from '@unocss/preset-wind'
+import { defineConfig, presetWind, transformerDirectives } from 'unocss'
+import { theme as themeWind } from '@unocss/preset-wind'
 
 export default defineConfig({
   theme: {

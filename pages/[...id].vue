@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { KirbyQueryResponse } from '#nuxt-kql'
-import type { KirbyDefaultPage, KirbyDefaultPageQuery } from '~/types'
+import type { KirbyDefaultPage } from '~/types'
 
 const route = useRoute()
-const select = {
+const defaultQuery = {
   id: true,
   title: true,
   description: true,
@@ -22,25 +22,24 @@ const select = {
 }
 
 const { data: defaultData } = await useKql<
-  KirbyDefaultPage,
-  KirbyDefaultPageQuery
+  KirbyQueryResponse<KirbyDefaultPage>
 >({
   query: `kirby.page("${route.path}")`,
-  select,
+  select: defaultQuery,
 })
 
-let data = ref<KirbyQueryResponse | null>(defaultData.value)
+let data = ref<KirbyQueryResponse<KirbyDefaultPage> | null>(defaultData.value)
 
 if (!data.value?.result) {
   const { data: errorData } = await useKql({
     query: 'kirby.page("error")',
-    select,
+    select: defaultQuery,
   })
   data.value = errorData.value
 }
 
 // Make current page data globally available
-const page = setCurrentPage(() => data.value?.result)
+const page = setCurrentPage(() => data.value?.result as KirbyDefaultPage)
 
 const hasLayouts = computed(() => !!page.value?.layouts?.length)
 </script>
