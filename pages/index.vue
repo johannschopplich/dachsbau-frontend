@@ -181,22 +181,31 @@ onMounted(() => {
 
     <div class="w-full h-[var(--h-content)]">
       <div
-        class="h-full max-w-screen-md padding-content mx-auto flex items-center justify-center"
+        class="h-full max-w-screen-md mx-auto padding-content flex items-center justify-center"
       >
-        <div>
-          <h2 class="title relative mb-6">
+        <div class="flex gap-12 items-end">
+          <div>
+            <h2 class="title relative mb-6">
+              <img
+                class="absolute top-1/2 -left-2 right-0 -translate-y-1/2 scale-150 pointer-events-none"
+                src="~/assets/img/menu-hover-01.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <span>Kontakt</span>
+            </h2>
+            <div
+              class="prose text-secondary-900 font-serif md:text-xl md:font-350"
+            >
+              <p v-html="page.contact" />
+            </div>
+          </div>
+          <div class="flex-shrink-0">
             <img
-              class="absolute top-1/2 -left-2 right-0 -translate-y-1/2 scale-150 pointer-events-none"
-              src="~/assets/img/menu-hover-01.svg"
-              alt=""
-              aria-hidden="true"
+              class="h-[12rem] -mb-2 md:h-[16rem]"
+              src="~/assets/img/dachsbau-mueffels.png"
+              alt="Meerschweinchen im Dachsbau"
             />
-            <span>Kontakt</span>
-          </h2>
-          <div
-            class="prose text-secondary-900 font-serif md:text-xl md:font-350"
-          >
-            <p v-html="page.contact" />
           </div>
         </div>
       </div>
