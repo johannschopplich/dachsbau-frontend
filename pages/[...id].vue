@@ -59,7 +59,7 @@ const hasLayouts = computed(() => !!page.value?.layouts?.length)
 
     <KirbyBlocks
       :blocks="page?.text ?? []"
-      class="prose text-secondary-900 font-serif md:text-xl md:font-350"
+      class="prose text-secondary-900 md:font-350 font-serif md:text-xl"
     />
   </div>
 </template>

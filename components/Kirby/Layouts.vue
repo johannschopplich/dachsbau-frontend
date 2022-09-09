@@ -18,7 +18,7 @@ function span(width: `${string}/${string}`, columns = 12) {
       v-for="layout in layouts"
       :id="layout.id"
       :key="layout.id"
-      class="grid gap-y-4 md:grid-cols-12 md:gap-x-16 md:gap-y-16"
+      class="grid gap-y-4 md:grid-cols-12 md:gap-16"
     >
       <div
         v-for="(column, index) in layout.columns"
@@ -29,7 +29,7 @@ function span(width: `${string}/${string}`, columns = 12) {
       >
         <KirbyBlocks
           :blocks="column.blocks"
-          class="prose text-secondary-900 font-serif md:text-xl md:font-350"
+          class="prose text-secondary-900 md:font-350 font-serif md:text-xl"
         />
       </div>
     </section>

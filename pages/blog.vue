@@ -31,11 +31,11 @@ function random() {
 
 <template>
   <div class="pt-36 pb-12">
-    <div class="max-w-screen-md padding-content mx-auto mb-6">
+    <div class="padding-content mx-auto mb-6 max-w-screen-md">
       <h1 class="page-title hyphenate md:w-3/4">Blog</h1>
     </div>
 
-    <div class="max-w-screen-lg padding-content mx-auto">
+    <div class="padding-content mx-auto max-w-screen-lg">
       <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
         <div
           v-for="(item, index) in page?.posts ?? []"
@@ -55,19 +55,19 @@ function random() {
             />
             <div
               v-else
-              class="handdrawn-mask aspect-[3/2] w-full bg-secondary-400"
+              class="handdrawn-mask bg-secondary-400 aspect-[3/2] w-full"
             />
 
             <div class="mt-4 px-2">
               <NuxtLink
                 :to="{ path: `/${item.id}` }"
-                class="text-2xl leading-none text-primary-700 font-heading-condensed group-hover:text-underline"
+                class="text-primary-700 font-heading-condensed group-hover:text-underline text-2xl leading-none"
               >
                 <span class="absolute inset-0" />
                 {{ item.title }}
               </NuxtLink>
 
-              <p class="text-stone-600 font-serif leading-tight font-350 mt-2">
+              <p class="font-350 mt-2 font-serif leading-tight text-stone-600">
                 {{ item.description }}
               </p>
             </div>
@@ -83,7 +83,7 @@ function random() {
           </div>
 
           <img
-            class="absolute pointer-events-none -top-2 left-[calc(50%+1rem)] -translate-x-1/2 w-6"
+            class="pointer-events-none absolute -top-2 left-[calc(50%+1rem)] w-6 -translate-x-1/2"
             src="~/assets/img/pin-128.png"
             width="128"
             height="151"

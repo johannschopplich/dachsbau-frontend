@@ -47,21 +47,21 @@ async function close(path: string) {
 
 <template>
   <header
-    class="absolute top-6 left-4 right-4 flex justify-between items-start sm:left-6 sm:right-6 md:right-initial"
+    class="md:right-initial absolute inset-x-4 top-6 flex items-start justify-between sm:inset-x-6"
   >
     <NuxtLink
       to="/"
-      class="group block flex gap-2 text-size-xl leading-none text-primary-700 font-heading-condensed z-10 md:text-size-2xl md:leading-tight"
+      class="group text-size-xl text-primary-700 font-heading-condensed md:text-size-2xl z-10 flex gap-2 leading-none md:leading-tight"
     >
       <img
-        class="h-[1em] mt-[-0.125em]"
+        class="mt-[-0.125em] h-[1em]"
         src="~/assets/img/dachsbau-logo-64.png"
         alt="Dachsbau Tautenhain Logo"
       />
 
       <div class="relative">
         <img
-          class="absolute left-0 right-0 -bottom-1/6 opacity-0 group-hover:opacity-100 md:-bottom-1/2 pointer-events-none"
+          class="-bottom-1/6 pointer-events-none absolute inset-x-0 opacity-0 group-hover:opacity-100 md:-bottom-1/2"
           src="~/assets/img/menu-hover-04.svg"
           alt=""
           aria-hidden="true"
@@ -106,7 +106,7 @@ async function close(path: string) {
         v-for="item in navItems"
         :key="item.id"
         :to="{ path: `/${item.id}` }"
-        class="text-size-4xl leading-tight font-heading-condensed text-white hover:text-secondary-600 md:text-size-2xl md:text-primary-700"
+        class="text-size-4xl font-heading-condensed hover:text-secondary-600 md:text-size-2xl md:text-primary-700 leading-tight text-white"
         @click="close(`/${item.id}`)"
       >
         {{ item.title }}

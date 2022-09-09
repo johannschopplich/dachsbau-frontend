@@ -14,13 +14,13 @@ const output = useTransition(strokeDashBase, {
 
 <template>
   <div
-    class="absolute left-0 -top-1 w-full h-full scale-110 opacity-0 group-hover:opacity-100"
+    class="absolute left-0 -top-1 h-full w-full scale-110 opacity-0 group-hover:opacity-100"
     aria-hidden="true"
   >
     <svg
       viewBox="0 0 400 200"
       fill="none"
-      class="w-full h-full overflow-visible"
+      class="h-full w-full overflow-visible"
       preserveAspectRatio="none"
     >
       <path

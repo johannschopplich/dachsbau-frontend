@@ -35,16 +35,16 @@ const page = setCurrentPage(() => data.value?.result)
 
     <KirbyBlocks
       :blocks="page?.text ?? []"
-      class="prose text-secondary-900 font-serif md:text-xl md:font-350"
+      class="prose text-secondary-900 md:font-350 font-serif md:text-xl"
     />
 
-    <div v-if="page.backers" class="grid gap-2 grid-cols-2 md:grid-cols-3">
+    <div v-if="page.backers" class="grid grid-cols-2 gap-2 md:grid-cols-3">
       <div
         v-for="(item, index) in page.backers"
         :key="index"
-        class="handdrawn-mask relative bg-secondary-100 p-3"
+        class="handdrawn-mask bg-secondary-100 relative p-3"
       >
-        <div class="flex justify-center mb-2">
+        <div class="mb-2 flex justify-center">
           <img
             v-if="item.logo?.length"
             class="h-10"
@@ -60,12 +60,12 @@ const page = setCurrentPage(() => data.value?.result)
           :is="item.website ? 'a' : 'p'"
           :href="item.website"
           :target="item.website ? '_blank' : undefined"
-          class="text-secondary-800 text-xl leading-none font-heading-condensed"
+          class="text-secondary-800 font-heading-condensed text-xl leading-none"
         >
           <div class="absolute inset-0" />
           {{ item.title }}
         </component>
-        <p class="text-secondary-600 text-sm font-serif" v-html="item.text" />
+        <p class="text-secondary-600 font-serif text-sm" v-html="item.text" />
       </div>
     </div>
   </div>

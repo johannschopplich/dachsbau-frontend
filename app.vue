@@ -37,7 +37,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <Html class="min-w-[320px] bg-primary-700" lang="de">
+  <Html class="bg-primary-700 min-w-[320px]" lang="de">
     <Head>
       <Link rel="icon" href="/favicon.png" type="image/png" sizes="32x32" />
       <Link rel="stylesheet" href="/fonts/Fraunces.css" />
@@ -76,7 +76,7 @@ onMounted(() => {
       <div
         id="scroll-container"
         ref="container"
-        class="fixed inset-[var(--frame-width)] min-w-[320px] bg-secondary-200 overflow-x-hidden overflow-y-scroll rounded-3xl focus:outline-none"
+        class="bg-secondary-200 fixed inset-[var(--frame-width)] min-w-[320px] overflow-x-hidden overflow-y-scroll rounded-3xl focus:outline-none"
         tabindex="-1"
       >
         <NuxtLayout>

@@ -3,13 +3,13 @@ const site = useSite()
 </script>
 
 <template>
-  <footer class="sticky top-[var(--h-screen)] padding-content py-6">
-    <div class="flex flex-col sm:flex-row sm:gap-4 sm:justify-center">
+  <footer class="padding-content sticky top-[var(--h-screen)] py-6">
+    <div class="flex flex-col sm:flex-row sm:justify-center sm:gap-4">
       <NuxtLink
         v-for="item in site?.footer ?? []"
         :key="item.id"
         :to="{ path: `/${item.id}` }"
-        class="text-lg font-heading-condensed text-primary-700 hover:text-secondary-500 md:text-xl"
+        class="font-heading-condensed text-primary-700 hover:text-secondary-500 text-lg md:text-xl"
       >
         {{ item.title }}
       </NuxtLink>

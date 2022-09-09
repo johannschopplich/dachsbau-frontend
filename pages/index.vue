@@ -64,9 +64,9 @@ onMounted(() => {
 
 <template>
   <div>
-    <div class="relative w-full h-[var(--h-content)]">
+    <div class="relative h-[var(--h-content)] w-full">
       <div
-        class="absolute top-1/6 left-0 right-0 flex items-center justify-center translate-y-[calc(100%*var(--screen-ratio))] pointer-events-none md:top-1/10"
+        class="top-1/6 md:top-1/10 pointer-events-none absolute inset-x-0 flex translate-y-[calc(100%*var(--screen-ratio))] items-center justify-center"
         aria-hidden="true"
       >
         <img
@@ -86,7 +86,7 @@ onMounted(() => {
       </div>
 
       <div
-        class="relative h-full max-w-screen-md padding-content mx-auto grid grid-rows-[1fr_auto_1fr] gap-4"
+        class="padding-content relative mx-auto grid h-full max-w-screen-md grid-rows-[1fr_auto_1fr] gap-4"
       >
         <div />
         <p class="title text-center" v-html="page.intro" />
@@ -99,30 +99,30 @@ onMounted(() => {
       aria-hidden="true"
     >
       <div
-        class="w-[50vw] h-full mx-auto scale-[calc(1+0.5*var(--screen-ratio))] transform-origin-bottom rounded-tr-full rounded-tl-full flex items-end overflow-hidden md:w-[40vw] lg:w-[30vw]"
+        class="transform-origin-bottom mx-auto flex h-full w-[50vw] scale-[calc(1+0.5*var(--screen-ratio))] items-end overflow-hidden rounded-t-full md:w-[40vw] lg:w-[30vw]"
       >
         <img
           v-if="page.heroImage"
-          class="w-full h-[calc(200%-(100%*var(--screen-ratio)))] object-cover object-bottom"
+          class="h-[calc(200%-(100%*var(--screen-ratio)))] w-full object-cover object-bottom"
           :srcset="page.heroImage.srcset"
           sizes="
             (min-width: 768px) 50vw,
             100vw"
           alt=""
         />
-        <div v-else class="w-full h-full bg-secondary-400" />
+        <div v-else class="bg-secondary-400 h-full w-full" />
       </div>
     </div>
 
-    <div class="py-12 space-y-12">
+    <div class="space-y-12 py-12">
       <div
-        class="h-[calc(0.25*var(--h-content))] w-2px bg-primary-500 mx-auto"
+        class="w-2px bg-primary-500 mx-auto h-[calc(0.25*var(--h-content))]"
       />
       <p class="title text-center">Angebote</p>
     </div>
 
     <div class="bg-primary-700">
-      <div class="max-w-screen-lg padding-content mx-auto py-12">
+      <div class="padding-content mx-auto max-w-screen-lg py-12">
         <div class="space-y-12">
           <div
             v-for="(item, index) in page?.children ?? []"
@@ -146,13 +146,13 @@ onMounted(() => {
               />
               <div
                 v-else
-                class="handdrawn-mask aspect-[3/2] w-full h-full bg-secondary-400"
+                class="handdrawn-mask bg-secondary-400 aspect-[3/2] h-full w-full"
               />
             </NuxtLink>
 
             <NuxtLink
               :to="{ path: `/${item.id}` }"
-              class="block flex justify-center px-4 sm:w-1/2 sm:px-0 sm:items-center"
+              class="flex justify-center px-4 sm:w-1/2 sm:items-center sm:px-0"
             >
               <div>
                 <div class="relative inline-block">
@@ -161,14 +161,14 @@ onMounted(() => {
                   />
 
                   <span
-                    class="relative text-2xl font-heading-condensed text-secondary-200 md:text-4xl"
+                    class="font-heading-condensed text-secondary-200 relative text-2xl md:text-4xl"
                   >
                     {{ item.title }}
                   </span>
                 </div>
 
                 <div
-                  class="font-serif text-secondary-200 md:text-xl md:font-350"
+                  class="text-secondary-200 md:font-350 font-serif md:text-xl"
                 >
                   {{ item.description }}
                 </div>
@@ -179,15 +179,15 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class="w-full h-[var(--h-content)]">
+    <div class="h-[var(--h-content)] w-full">
       <div
-        class="h-full max-w-screen-md mx-auto padding-content flex items-center justify-center"
+        class="padding-content mx-auto flex h-full max-w-screen-md items-center justify-center"
       >
-        <div class="flex gap-12 items-end">
+        <div class="flex items-end gap-12">
           <div>
             <h2 class="title relative mb-6 w-min">
               <img
-                class="absolute top-1/2 -left-2 right-0 -translate-y-1/2 scale-150 pointer-events-none"
+                class="pointer-events-none absolute top-1/2 -left-2 right-0 -translate-y-1/2 scale-150"
                 src="~/assets/img/menu-hover-01.svg"
                 alt=""
                 aria-hidden="true"
@@ -195,14 +195,14 @@ onMounted(() => {
               <span>Kontakt</span>
             </h2>
             <div
-              class="prose text-secondary-900 font-serif md:text-xl md:font-350"
+              class="prose text-secondary-900 md:font-350 font-serif md:text-xl"
             >
               <p v-html="page.contact" />
             </div>
           </div>
           <div class="flex-shrink-0">
             <img
-              class="h-[12rem] -mb-2 md:h-[16rem]"
+              class="-mb-2 h-[12rem] md:h-[16rem]"
               src="~/assets/img/dachsbau-mueffels.png"
               alt="Meerschweinchen im Dachsbau"
             />
