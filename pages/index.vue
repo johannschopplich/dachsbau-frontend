@@ -185,7 +185,7 @@ onMounted(() => {
       >
         <div class="flex gap-12 items-end">
           <div>
-            <h2 class="title relative mb-6">
+            <h2 class="title relative mb-6 w-min">
               <img
                 class="absolute top-1/2 -left-2 right-0 -translate-y-1/2 scale-150 pointer-events-none"
                 src="~/assets/img/menu-hover-01.svg"
