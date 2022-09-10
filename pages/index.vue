@@ -183,7 +183,7 @@ onMounted(() => {
       <div
         class="padding-content mx-auto flex h-full max-w-screen-md items-center justify-center"
       >
-        <div class="flex items-end gap-12">
+        <div class="flex items-end gap-3 md:gap-12">
           <div>
             <h2 class="title relative mb-6 w-min">
               <img
