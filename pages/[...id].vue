@@ -51,9 +51,10 @@ const hasLayouts = computed(() => !!page.value?.layouts?.length)
       hasLayouts ? 'max-w-screen-xl' : 'max-w-screen-md',
     ]"
   >
-    <h1 class="page-title hyphenate md:w-3/4">
-      {{ page?.title }}
-    </h1>
+    <h1
+      class="page-title hyphenate md:w-3/4"
+      v-html="page?.title?.replace(/(dachs)$/, '&shy;$1')"
+    />
 
     <KirbyLayouts v-if="hasLayouts" :layouts="page.layouts ?? []" />
 

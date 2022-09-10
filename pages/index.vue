@@ -70,7 +70,7 @@ onMounted(() => {
         aria-hidden="true"
       >
         <img
-          class="hero-bg w-[min(75vw,22rem)] opacity-25"
+          class="animate-bounce-mellow w-[min(75vw,22rem)] opacity-25"
           srcset="
             ~/assets/img/dachsbau-hof-512.png   512w,
             ~/assets/img/dachsbau-hof-1024.png 1024w
@@ -218,11 +218,11 @@ onMounted(() => {
   --at-apply: 'text-4xl font-heading text-primary-500 md:text-6xl';
 }
 
-.hero-bg {
-  animation: hero-bounce 4s infinite;
+.animate-bounce-mellow {
+  animation: bounce-mellow 4s infinite;
 }
 
-@keyframes hero-bounce {
+@keyframes bounce-mellow {
   0% {
     transform: translateY(0) scaleX(1);
   }
