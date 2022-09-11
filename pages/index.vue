@@ -81,7 +81,7 @@ onMounted(() => {
           "
           width="1024"
           height="649"
-          alt="Dachsbau Tautenhain Skizze"
+          alt=""
         />
       </div>
 
