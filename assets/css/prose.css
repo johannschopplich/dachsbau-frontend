@@ -191,5 +191,5 @@
 }
 
 .prose :where(figcaption) {
-  --at-apply: 'text-secondary-700 text-right';
+  --at-apply: 'text-secondary-700 text-size-[0.75em] mt-0 text-right';
 }
