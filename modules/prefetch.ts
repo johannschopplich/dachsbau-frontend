@@ -15,11 +15,10 @@ export default defineNuxtModule({
   },
   async setup(options) {
     const logger = useLogger()
+    const start = Date.now()
     let siteResponse: KirbyQueryResponse | undefined
 
     if (options.prefetchSite) {
-      logger.info('Prefetching site data...')
-
       try {
         siteResponse = await kql({
           query: 'site',
@@ -40,6 +39,8 @@ export default defineNuxtModule({
             },
           },
         })
+
+        logger.info(`Prefetched Kirby site data in ${Date.now() - start}ms`)
       } catch (e) {
         logger.error("Couldn't prefetch site data")
       }
