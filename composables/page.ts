@@ -36,7 +36,6 @@ function usePageMeta(page: Record<string, any>) {
   useHead({
     title,
     meta: [
-      { rel: 'canonical', href: url },
       { name: 'description', content: description },
       { property: 'og:title', content: title },
       { property: 'og:description', content: description },
@@ -49,5 +48,6 @@ function usePageMeta(page: Record<string, any>) {
       { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:image', content: image },
     ],
+    link: [{ rel: 'canonical', href: url }],
   })
 }
