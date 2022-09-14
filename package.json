@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.7",
-    "@nuxt/kit": "^3.0.0-rc.9",
+    "@nuxt/kit": "^3.0.0-rc.10",
     "@sindresorhus/slugify": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
@@ -31,7 +31,7 @@
     "eslint-plugin-tailwindcss": "^3.6.1",
     "eslint-plugin-vue": "^9.4.0",
     "lint-staged": "^13.0.3",
-    "nuxt": "^3.0.0-rc.9",
+    "nuxt": "^3.0.0-rc.10",
     "nuxt-kql": "^0.14.5",
     "prettier": "^2.7.1",
     "simple-git-hooks": "^2.8.0",
