@@ -1,6 +1,6 @@
-import { site } from '#build/kql'
-import type { Site } from '#build/kql'
+import { kirbySite } from '#build/kql'
+import type { KirbySite } from '#build/kql'
 
 export function useSite() {
-  return useState<Partial<Site>>('kql.site', () => site)
+  return useState<Partial<KirbySite>>('kql.site', () => kirbySite)
 }

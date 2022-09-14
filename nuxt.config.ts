@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     prefix: 'api/kql',
     auth: 'bearer',
     prefetch: {
-      site: {
+      kirbySite: {
         query: 'site',
         select: {
           title: true,
