@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { KirbyQueryResponse } from '#nuxt-kql'
+import type { KirbyQueryRequest, KirbyQueryResponse } from '#nuxt-kql'
 import type { KirbyDefaultPage } from '~/types'
 
 const route = useRoute()
-const defaultQuery = {
+const defaultQuery: KirbyQueryRequest['select'] = {
   id: true,
   title: true,
   description: true,
