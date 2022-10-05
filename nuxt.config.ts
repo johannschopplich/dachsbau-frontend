@@ -8,8 +8,10 @@ export default defineNuxtConfig({
   },
 
   kql: {
-    prefix: 'api/kql',
+    // Enable token-based authentication
     auth: 'bearer',
+
+    // Prefetch queries at build-time
     prefetch: {
       kirbySite: {
         query: 'site',

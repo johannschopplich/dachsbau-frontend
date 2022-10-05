@@ -1,6 +1,6 @@
 {
   "private": true,
-  "packageManager": "pnpm@7.12.2",
+  "packageManager": "pnpm@7.13.1",
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
@@ -18,23 +18,23 @@
     "pre-commit": "pnpm exec lint-staged"
   },
   "devDependencies": {
-    "@sindresorhus/slugify": "^2.1.0",
-    "@typescript-eslint/eslint-plugin": "^5.38.1",
-    "@typescript-eslint/parser": "^5.38.1",
-    "@unocss/nuxt": "^0.45.25",
-    "@unocss/preset-wind": "^0.45.25",
+    "@sindresorhus/slugify": "^2.1.1",
+    "@typescript-eslint/eslint-plugin": "^5.39.0",
+    "@typescript-eslint/parser": "^5.39.0",
+    "@unocss/nuxt": "^0.45.26",
+    "@unocss/preset-wind": "^0.45.26",
     "@vueuse/nuxt": "^9.3.0",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-tailwindcss": "^3.6.2",
-    "eslint-plugin-vue": "^9.5.1",
+    "eslint-plugin-vue": "^9.6.0",
     "lint-staged": "^13.0.3",
     "nuxt": "^3.0.0-rc.11",
-    "nuxt-kql": "^0.21.6",
+    "nuxt-kql": "^0.21.7",
     "prettier": "^2.7.1",
     "simple-git-hooks": "^2.8.0",
     "typescript": "^4.8.4",
-    "unocss": "^0.45.25",
+    "unocss": "^0.45.26",
     "vue-tsc": "^0.40.13"
   },
   "pnpm": {
