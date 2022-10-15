@@ -65,11 +65,6 @@ onMounted(() => {
         crossorigin="anonymous"
       />
       <Meta name="theme-color" content="#3A455B" />
-      <Script
-        defer
-        data-domain="dachsbau-tautenhain.de"
-        src="https://plausible.io/js/plausible.js"
-      />
     </Head>
 
     <Body>
