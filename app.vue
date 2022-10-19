@@ -5,6 +5,7 @@ import '~/assets/css/main.css'
 import '~/assets/css/components.css'
 import '~/assets/css/prose.css'
 
+const route = useRoute()
 const nav = useNavState()
 const container = ref<HTMLElement | undefined>()
 provide(containerInjectionKey, container)
@@ -25,6 +26,18 @@ if (process.client && matchMedia('(hover: none)').matches) {
 
 onMounted(() => {
   const { height } = useElementSize(container)
+  const { y } = useScroll(container)
+  const scrollPositions = useSavedPositions()
+
+  // Save the scroll position, since the fixed container
+  // will return the same value always
+  watchDebounced(
+    y,
+    () => {
+      scrollPositions.set(route.fullPath, { top: y.value })
+    },
+    { debounce: 100 }
+  )
 
   // Manually set `--h-content`, because somehow `100vh` on Android is too tall
   watchEffect(() =>
