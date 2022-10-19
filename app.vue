@@ -1,21 +1,16 @@
 <script setup lang="ts">
-import { containerInjectionKey, navStateInjectionKey } from '~/types'
-
 import '~/assets/css/main.css'
 import '~/assets/css/components.css'
 import '~/assets/css/prose.css'
 
 const route = useRoute()
-const navState = ref({ isOpen: false })
-const container = ref<HTMLElement | undefined>()
-
-provide(containerInjectionKey, container)
-provide(navStateInjectionKey, navState)
+const navState = useAppState()
+const appContainer = useAppContainer()
 
 // Force scrolling inside container on mobile when clicking
 // on the (thin) frame border accidentally
-onClickOutside(container, () => {
-  container.value?.focus()
+onClickOutside(appContainer, () => {
+  appContainer.value?.focus()
 })
 
 if (process.client && matchMedia('(hover: none)').matches) {
@@ -27,8 +22,8 @@ if (process.client && matchMedia('(hover: none)').matches) {
 }
 
 onMounted(() => {
-  const { height } = useElementSize(container)
-  const { y } = useScroll(container)
+  const { height } = useElementSize(appContainer)
+  const { y } = useScroll(appContainer)
   const scrollPositions = useSavedPositions()
 
   // Save the scroll position, since the fixed container
@@ -85,7 +80,7 @@ onMounted(() => {
     <Body>
       <div
         id="scroll-container"
-        ref="container"
+        ref="appContainer"
         class="bg-secondary-200 fixed inset-[var(--frame-width)] min-w-[320px] overflow-x-hidden overflow-y-scroll rounded-3xl focus:outline-none"
         tabindex="-1"
       >

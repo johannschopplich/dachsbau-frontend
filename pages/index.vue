@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { containerInjectionKey } from '~/types'
-
 const { data } = await useKql({
   query: 'kirby.page("home")',
   select: {
@@ -34,12 +32,12 @@ const { data } = await useKql({
 // Make current page data globally available
 const page = setCurrentPage(() => data.value?.result)
 
-const contentContainer = inject(containerInjectionKey)!
+const appContainer = useAppContainer()
 const animationStack = reactive(new Map<number, boolean>())
 
 onMounted(() => {
   const { height } = useWindowSize()
-  const { y } = useScroll(contentContainer, {
+  const { y } = useScroll(appContainer, {
     onScroll() {
       resume()
     },

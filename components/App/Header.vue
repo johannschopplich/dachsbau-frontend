@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import { promiseTimeout, toRefs } from '@vueuse/core'
-import { containerInjectionKey, navStateInjectionKey } from '~/types'
 
 const nuxtApp = useNuxtApp()
 const route = useRoute()
 const site = useSite()
 
-const contentContainer = inject(containerInjectionKey)!
-const navState = inject(navStateInjectionKey)!
+const appContainer = useAppContainer()
+const navState = useAppState()
 const { isOpen } = toRefs(navState)
 const isRedirecting = ref(false)
 
-const isLocked = useScrollLock(contentContainer)
+const isLocked = useScrollLock(appContainer)
 
 const navItems = computed(() =>
   (site.value?.children ?? []).filter((i: Record<string, any>) => i.isListed)
@@ -23,7 +22,7 @@ nuxtApp.hook('page:finish', () => {
 })
 
 function toggleMenu() {
-  contentContainer.value?.scrollTo({ top: 0 })
+  appContainer.value?.scrollTo({ top: 0 })
   isLocked.value = !isLocked.value
   isOpen.value = !isOpen.value
 }
