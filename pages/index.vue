@@ -202,6 +202,7 @@ onMounted(() => {
           </div>
           <div class="flex-shrink-0">
             <img
+              loading="lazy"
               class="-mb-2 h-[12rem] md:h-[16rem]"
               src="~/assets/img/dachsbau-mueffels.png"
               alt="Meerschweinchen im Dachsbau"
