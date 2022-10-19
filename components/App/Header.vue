@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { promiseTimeout, toRefs } from '@vueuse/core'
-import { containerInjectionKey } from '~/types'
+import { containerInjectionKey, navStateInjectionKey } from '~/types'
 
 const nuxtApp = useNuxtApp()
 const route = useRoute()
 const site = useSite()
 
-const nav = useNavState()
-const { isOpen } = toRefs(nav)
+const contentContainer = inject(containerInjectionKey)!
+const navState = inject(navStateInjectionKey)!
+const { isOpen } = toRefs(navState)
 const isRedirecting = ref(false)
 
-const contentContainer = inject(containerInjectionKey)!
 const isLocked = useScrollLock(contentContainer)
 
 const navItems = computed(() =>

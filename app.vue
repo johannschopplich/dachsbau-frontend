@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { containerInjectionKey } from '~/types'
+import { containerInjectionKey, navStateInjectionKey } from '~/types'
 
 import '~/assets/css/main.css'
 import '~/assets/css/components.css'
 import '~/assets/css/prose.css'
 
 const route = useRoute()
-const nav = useNavState()
+const navState = ref({ isOpen: false })
 const container = ref<HTMLElement | undefined>()
+
 provide(containerInjectionKey, container)
+provide(navStateInjectionKey, navState)
 
 // Force scrolling inside container on mobile when clicking
 // on the (thin) frame border accidentally
@@ -93,7 +95,7 @@ onMounted(() => {
         </NuxtLayout>
       </div>
 
-      <div v-show="!nav.isOpen" class="pointer-events-none">
+      <div v-show="!navState.isOpen" class="pointer-events-none">
         <img
           class="fixed right-0 bottom-0 w-[min(10rem,30vw)] md:right-1 md:bottom-1"
           src="~/assets/img/dachs-im-rahmen-320.png"
