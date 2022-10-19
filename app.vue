@@ -15,14 +15,16 @@ onClickOutside(appContainer, () => {
 
 // Set actual vh on mobile – not in app.vue but embedded script to
 // avoid layout shift before hydration
-useHead({
-  script: [
-    {
-      children:
-        "matchMedia('(hover: none)').matches && document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)",
-    },
-  ],
-})
+if (process.server) {
+  useHead({
+    script: [
+      {
+        children:
+          "matchMedia('(hover: none)').matches && document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)",
+      },
+    ],
+  })
+}
 
 onMounted(() => {
   const { height } = useElementSize(appContainer)
