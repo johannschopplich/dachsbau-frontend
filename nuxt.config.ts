@@ -39,6 +39,10 @@ export default defineNuxtConfig({
     preflight: true,
   },
 
+  experimental: {
+    inlineSSRStyles: false,
+  },
+
   nitro: {
     prerender: {
       // crawlLinks: true,
