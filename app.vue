@@ -6,9 +6,6 @@ import '~/assets/css/prose.css'
 const navState = useAppState()
 const appContainer = useAppContainer()
 
-// Initialize custom scroll position store
-useScrollPosition(appContainer)
-
 // Force scrolling inside container on mobile when clicking
 // on the (thin) frame border accidentally
 onClickOutside(appContainer, () => {
