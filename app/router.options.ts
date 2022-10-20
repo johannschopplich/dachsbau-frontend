@@ -5,6 +5,8 @@ export default <RouterConfig>{
   // Handle scrolling inside the fixed app container
   scrollBehavior(to) {
     const nuxtApp = useNuxtApp()
+    const container =
+      document.querySelector<HTMLDivElement>('#scroll-container')!
 
     return new Promise((resolve) => {
       // Handle Suspense resolution
@@ -18,6 +20,9 @@ export default <RouterConfig>{
         if (to.hash) {
           position = { el: to.hash }
           document.querySelector(to.hash)?.scrollIntoView()
+        } else {
+          // Always scroll to top
+          container.scrollTo(position)
         }
 
         resolve(position)
