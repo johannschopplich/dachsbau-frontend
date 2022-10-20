@@ -21,8 +21,7 @@ const { data } = await useKql({
   },
 })
 
-// Make current page data globally available
-const page = setCurrentPage(() => data.value?.result)
+const page = storePageData(() => data.value?.result)
 </script>
 
 <template>

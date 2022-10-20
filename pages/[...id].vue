@@ -38,8 +38,7 @@ if (!data.value?.result) {
   data.value = errorData.value
 }
 
-// Make current page data globally available
-const page = setCurrentPage(() => data.value?.result as KirbyDefaultPage)
+const page = storePageData(() => data.value?.result as KirbyDefaultPage)
 
 const hasLayouts = computed(() => !!page.value?.layouts?.length)
 </script>
