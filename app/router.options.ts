@@ -5,7 +5,7 @@ export default <RouterConfig>{
   // Handle scrolling inside the fixed app container
   scrollBehavior(to) {
     const nuxtApp = useNuxtApp()
-    const savedPositions = useSavedPositions()
+    const savedPositions = useScrollPositionMap()
     const container =
       document.querySelector<HTMLDivElement>('#scroll-container')!
 

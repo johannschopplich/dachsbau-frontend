@@ -3,9 +3,11 @@ import '~/assets/css/main.css'
 import '~/assets/css/components.css'
 import '~/assets/css/prose.css'
 
-const route = useRoute()
 const navState = useAppState()
 const appContainer = useAppContainer()
+
+// Initialize custom scroll position store
+useScrollPosition(appContainer)
 
 // Force scrolling inside container on mobile when clicking
 // on the (thin) frame border accidentally
@@ -28,18 +30,6 @@ if (process.server) {
 
 onMounted(() => {
   const { height } = useElementSize(appContainer)
-  const { y } = useScroll(appContainer)
-  const scrollPositions = useSavedPositions()
-
-  // Save the scroll position, since the fixed container
-  // will return the same value always
-  watchDebounced(
-    y,
-    () => {
-      scrollPositions.set(route.fullPath, { top: y.value })
-    },
-    { debounce: 100 }
-  )
 
   // Manually set `--h-content`, because somehow `100vh` on Android is too tall
   watchEffect(() =>

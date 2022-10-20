@@ -32,7 +32,7 @@ button {
 
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 150ms ease;
+  transition: opacity 100ms ease-in-out;
 }
 
 .page-enter-from,
