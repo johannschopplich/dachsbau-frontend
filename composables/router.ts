@@ -1,7 +1,7 @@
 import type { MaybeComputedRef } from '@vueuse/core'
 import type { ScrollPosition } from '~/types'
 
-const scrollMap = new Map<string, ScrollPosition>()
+const scrollMap = new Map<number, ScrollPosition>()
 let isInitialized = false
 
 /**
@@ -16,18 +16,18 @@ export function useScrollPosition(
 ) {
   if (isInitialized) return
 
-  onMounted(() => {
-    const route = useRoute()
-    useScroll(element, {
-      onStop: (event) => {
-        scrollMap.set(route.fullPath, {
-          top: (event.target as HTMLElement)?.scrollTop,
-        })
-      },
-    })
+  const { y } = useScroll(element)
 
-    isInitialized = true
-  })
+  addRouteMiddleware(
+    'scroll-position',
+    () => {
+      const { position } = window.history.state || {}
+      scrollMap.set(position, { top: y.value })
+    },
+    { global: true }
+  )
+
+  isInitialized = true
 }
 
 export function useScrollPositionMap() {

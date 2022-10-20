@@ -13,7 +13,9 @@ export default <RouterConfig>{
       // Handle Suspense resolution
       nuxtApp.hooks.hookOnce('page:transition:finish', async () => {
         await nextTick()
-        let position: ScrollPosition = savedPositions.get(to.fullPath) || {
+        let position: ScrollPosition = savedPositions.get(
+          window.history.state.position
+        ) || {
           left: 0,
           top: 0,
         }
