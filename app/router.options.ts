@@ -10,7 +10,7 @@ export default <RouterConfig>{
 
     return new Promise((resolve) => {
       // Handle Suspense resolution
-      nuxtApp.hooks.hookOnce('page:transition:finish', async () => {
+      nuxtApp.hooks.hookOnce('page:finish', async () => {
         await nextTick()
         let position: ScrollPosition = {
           left: 0,

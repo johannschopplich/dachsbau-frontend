@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { promiseTimeout, toRefs } from '@vueuse/core'
+import { toRefs } from '@vueuse/core'
 
 const nuxtApp = useNuxtApp()
 const route = useRoute()
@@ -38,7 +38,6 @@ async function close(path: string) {
 
   isRedirecting.value = true
   await until(isRedirecting).toBe(false)
-  await promiseTimeout(150)
   isOpen.value = false
   isLocked.value = false
 }
