@@ -124,6 +124,7 @@
 }
 
 .prose :where(hr) {
+  height: 0;
   margin: calc(2 * var(--un-prose-space-y)) 0;
   border: 1px solid var(--un-prose-hr, currentColor);
 }
