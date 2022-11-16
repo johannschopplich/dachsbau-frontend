@@ -12,7 +12,7 @@ const defaultQuery: KirbyQueryRequest['select'] = {
   // Get all images for the Kirby image block
   images: {
     query: 'page.images',
-    select: ['id', 'filename', 'url', 'width', 'height', 'srcset', 'alt'],
+    select: ['id', 'uuid', 'url', 'width', 'height', 'srcset', 'alt'],
   },
   // Social media preview
   cover: {

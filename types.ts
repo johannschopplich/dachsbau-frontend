@@ -5,7 +5,7 @@ export type ScrollPosition = Awaited<ReturnType<RouterScrollBehavior>>
 
 export interface KirbyImage {
   id: string
-  filename: string
+  uuid: string
   url: string
   width: string
   height: string
