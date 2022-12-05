@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  modules: ['@unocss/nuxt', '@vueuse/nuxt', 'nuxt-kql', 'nuxt-plausible'],
+  modules: ['@nuxtjs/plausible', '@unocss/nuxt', '@vueuse/nuxt', 'nuxt-kql'],
 
   runtimeConfig: {
     public: {
