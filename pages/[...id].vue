@@ -8,7 +8,7 @@ const defaultQuery: KirbyQueryRequest['select'] = {
   title: true,
   description: true,
   text: 'page.text.toResolvedBlocks',
-  layouts: 'page.layout.toLayouts',
+  layouts: 'page.layout.toResolvedLayouts',
   // Social media preview
   cover: {
     query: 'page.cover.or(site.cover).toFile.resize(1200)',
