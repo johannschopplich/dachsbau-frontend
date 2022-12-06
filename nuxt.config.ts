@@ -33,6 +33,12 @@ export default defineNuxtConfig({
         },
       },
     },
+
+    experimental: {
+      server: {
+        cache: true,
+      },
+    },
   },
 
   unocss: {
