@@ -14,7 +14,7 @@ specifiers:
   eslint-plugin-vue: ^9.8.0
   lint-staged: ^13.1.0
   nuxt: ^3.0.0
-  nuxt-kql: ^0.23.0
+  nuxt-kql: ^0.23.3
   prettier: ^2.8.0
   simple-git-hooks: ^2.8.1
   typescript: ^4.9.3
@@ -35,7 +35,7 @@ devDependencies:
   eslint-plugin-vue: 9.8.0_eslint@8.29.0
   lint-staged: 13.1.0
   nuxt: 3.0.0_s5ps7njkmjlaqajutnox5ntcla
-  nuxt-kql: 0.23.0
+  nuxt-kql: 0.23.3
   prettier: 2.8.0
   simple-git-hooks: 2.8.1
   typescript: 4.9.3
@@ -4223,8 +4223,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /nuxt-kql/0.23.0:
-    resolution: {integrity: sha512-qvjqOi7SVFT0EaUiedvdOPdFShY45zCWlpWg9N/6jluFEMLsDCuWIUK13eoLG6cTLZZIfISBuHEFZlC1xHBFdA==}
+  /nuxt-kql/0.23.3:
+    resolution: {integrity: sha512-ZFVX5lprm0e+REckvkJu3BYHKgPk5LZYy67Wmnd4veMMnQMtwoO+5TpmsVuPj98ySW7iBCrIllhj/n9zM/IYXQ==}
     dependencies:
       '@nuxt/kit': 3.0.0
       '@vueuse/core': 9.6.0
