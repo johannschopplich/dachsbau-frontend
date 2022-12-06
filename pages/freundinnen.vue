@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { KirbyImage } from '~/types'
-
 const route = useRoute()
 const { data } = await useKql({
   query: `kirby.page("${route.path}")`,
@@ -8,12 +6,11 @@ const { data } = await useKql({
     id: true,
     title: true,
     description: true,
-    text: 'page.text.toBlocks',
+    text: 'page.text.toResolvedBlocks',
     backers: 'page.backers.toStructure',
-    // Get all images for the Kirby image block
-    images: {
+    logos: {
       query: 'page.images',
-      select: ['id', 'uuid', 'url', 'width', 'height', 'srcset', 'alt'],
+      select: ['uuid', 'url'],
     },
     // Social media preview
     cover: {
@@ -39,7 +36,7 @@ const page = storePageData(() => data.value?.result)
       class="prose text-secondary-900 md:font-350 font-serif md:text-xl"
     />
 
-    <div v-if="page.backers" class="grid grid-cols-2 gap-2 md:grid-cols-3">
+    <div v-if="page?.backers" class="grid grid-cols-2 gap-2 md:grid-cols-3">
       <div
         v-for="(item, index) in page.backers"
         :key="index"
@@ -49,7 +46,7 @@ const page = storePageData(() => data.value?.result)
           <img
             v-if="item.logo?.length"
             class="h-10"
-            :src="page.images.find(({ uuid }: KirbyImage) => uuid === item.logo?.[0])?.url"
+            :src="page.logos.find(({ uuid }: any) => uuid === item.logo?.[0])?.url"
             :alt="`Logo für ${item.title}`"
           />
           <div v-else class="h-10" />

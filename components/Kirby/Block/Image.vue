@@ -2,16 +2,19 @@
 import type { KirbyBlock } from '#nuxt-kql'
 import type { KirbyImage } from '~/types'
 
-const props = defineProps<{
-  block: KirbyBlock<'image'>
+defineProps<{
+  block: KirbyBlock<
+    'resolved-image',
+    {
+      location: string
+      image: KirbyImage
+      src: string
+      alt: string
+      caption: string
+      link: string
+    }
+  >
 }>()
-
-const page = usePageData()
-
-// Explicitly not using `computed` here
-const image = page.value?.images?.find(
-  ({ uuid }: KirbyImage) => uuid === props.block.content.image?.[0]
-)
 
 const figure = ref<HTMLElement | undefined>()
 const { width } = useElementSize(figure)
@@ -22,11 +25,11 @@ const { width } = useElementSize(figure)
     <img
       class="handdrawn-mask"
       :src="block.content.location === 'web' ? block.content.src : undefined"
-      :srcset="image?.srcset"
-      :width="image?.width"
-      :height="image?.height"
+      :srcset="block.content.image.srcset"
+      :width="block.content.image.width"
+      :height="block.content.image.height"
       :sizes="`${width}px`"
-      :alt="block.content.alt || image?.alt"
+      :alt="block.content.alt || block.content.image.alt"
     />
 
     <figcaption v-if="block.content.caption" v-html="block.content.caption" />
