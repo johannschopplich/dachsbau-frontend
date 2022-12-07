@@ -49,7 +49,7 @@ async function close(path: string) {
   >
     <NuxtLink
       to="/"
-      class="group text-size-xl text-primary-700 font-heading-condensed md:text-size-2xl z-10 flex gap-2 leading-none md:leading-tight"
+      class="text-size-xl text-primary-700 font-heading-condensed md:text-size-2xl group z-10 flex gap-2 leading-none md:leading-tight"
     >
       <img
         class="mt-[-0.125em] h-[1em]"

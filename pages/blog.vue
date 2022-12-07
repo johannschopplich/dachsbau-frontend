@@ -42,7 +42,7 @@ function random() {
           class="relative transform"
           :style="`--un-rotate: ${random()}deg`"
         >
-          <div class="group handdrawn-mask bg-secondary-100 p-4 pt-6">
+          <div class="handdrawn-mask bg-secondary-100 group p-4 pt-6">
             <img
               v-if="item.cover"
               class="handdrawn-mask aspect-[3/2] w-full object-cover"

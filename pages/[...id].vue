@@ -23,7 +23,7 @@ const { data: defaultData } = await useKql<
   select: defaultQuery,
 })
 
-let data = ref<KirbyQueryResponse<KirbyDefaultPage> | null>(defaultData.value)
+const data = ref<KirbyQueryResponse<KirbyDefaultPage> | null>(defaultData.value)
 
 if (!data.value?.result) {
   const { data: errorData } = await useKql({
