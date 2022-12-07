@@ -34,10 +34,8 @@ export default defineNuxtConfig({
       },
     },
 
-    experimental: {
-      server: {
-        cache: true,
-      },
+    server: {
+      cache: true,
     },
   },
 
