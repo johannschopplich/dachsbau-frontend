@@ -33,7 +33,7 @@ if (!data.value?.result) {
   data.value = errorData.value
 }
 
-const page = storePageData(() => data.value?.result as KirbyDefaultPage)
+const page = setPage(() => data.value?.result as KirbyDefaultPage)
 
 const hasLayouts = computed(() => !!page.value?.layouts?.length)
 </script>

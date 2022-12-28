@@ -20,7 +20,7 @@ const { data } = await useKql({
   },
 })
 
-const page = storePageData(() => data.value?.result)
+const page = setPage(() => data.value?.result)
 </script>
 
 <template>

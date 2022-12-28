@@ -29,7 +29,7 @@ const { data } = await useKql({
   },
 })
 
-const page = storePageData(() => data.value?.result)
+const page = setPage(() => data.value?.result)
 
 const appContainer = useAppContainer()
 const animationStack = reactive(new Map<number, boolean>())
@@ -151,9 +151,7 @@ onMounted(() => {
             >
               <div>
                 <div class="relative inline-block">
-                  <HomeAnimatedDash
-                    :is-active="animationStack.get(index) ?? false"
-                  />
+                  <HomeAnimatedDash :is-active="animationStack.get(index)" />
 
                   <span
                     class="font-heading-condensed text-secondary-200 relative text-2xl md:text-4xl"

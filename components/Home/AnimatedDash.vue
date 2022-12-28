@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
-  isActive: boolean
+  isActive?: boolean
 }>()
 
 const strokeDashBase = computed(() => (props.isActive ? 100 : 0))

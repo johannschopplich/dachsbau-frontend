@@ -1,24 +1,22 @@
-import { resolveURL } from 'ufo'
+import { joinURL } from 'ufo'
 import type { MaybeComputedRef } from '@vueuse/core'
 
 /**
  * Returns the currently active page
  */
-export function usePageData<
-  T extends Record<string, any> = Record<string, any>
->() {
+export function usePage<T extends Record<string, any> = Record<string, any>>() {
   return useState<T>('kql.page', () => ({} as T))
 }
 
 /**
  * Sets the currently active page
  */
-export function storePageData<
-  T extends Record<string, any> = Record<string, any>
->(data: MaybeComputedRef<T>) {
+export function setPage<T extends Record<string, any> = Record<string, any>>(
+  data: MaybeComputedRef<T>
+) {
   const _data = computed(() => resolveUnref(data))
   const site = useSite()
-  const page = usePageData<T>()
+  const page = usePage<T>()
 
   watch(
     _data,
@@ -29,7 +27,7 @@ export function storePageData<
         ? `${value?.title} – ${site.value.title}`
         : site.value.title
       const description = value?.description || site.value.description
-      const url = resolveURL(useRuntimeConfig().public.siteUrl, useRoute().path)
+      const url = joinURL(useRuntimeConfig().public.siteUrl, useRoute().path)
       const image = value?.cover?.url ?? site.value?.cover?.url
 
       // Store page data

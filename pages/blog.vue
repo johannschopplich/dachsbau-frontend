@@ -20,7 +20,7 @@ const { data } = await useKql({
   },
 })
 
-const page = storePageData(() => data.value?.result)
+const page = setPage(() => data.value?.result)
 
 // Random number between -1 and 1
 function random() {
