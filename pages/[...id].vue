@@ -1,40 +1,36 @@
 <script setup lang="ts">
-import type { KirbyQueryRequest, KirbyQueryResponse } from '#nuxt-kql'
+import type { KirbyQueryResponse } from '#nuxt-kql'
 import type { KirbyDefaultPage } from '~/types'
 
-const defaultQuery: KirbyQueryRequest['select'] = {
-  id: true,
-  title: true,
-  description: true,
-  text: 'page.text.toResolvedBlocks',
-  layouts: 'page.layout.toResolvedLayouts',
-  // Social media preview
-  cover: {
-    query: 'page.cover.or(site.cover).toFile.resize(1200)',
-    select: ['url'],
-  },
-}
-
-const { data: defaultData } = await useKql<
-  KirbyQueryResponse<KirbyDefaultPage>
->({
-  query: `kirby.page("${useRoute().path}")`,
-  select: defaultQuery,
-})
-
-const data = ref<KirbyQueryResponse<KirbyDefaultPage> | null>(defaultData.value)
+const data = ref(
+  (await usePageDataById<KirbyDefaultPage>(useRoute().path)).value
+)
 
 if (!data.value?.result) {
-  const { data: errorData } = await useKql({
-    query: 'kirby.page("error")',
-    select: defaultQuery,
-  })
-  data.value = errorData.value
+  data.value = (await usePageDataById('error')).value
 }
 
 const page = setPage(() => data.value?.result as KirbyDefaultPage)
-
 const hasLayouts = computed(() => !!page.value?.layouts?.length)
+
+async function usePageDataById<T = any>(id: string) {
+  const { data } = await useKql<KirbyQueryResponse<T>>({
+    query: `kirby.page("${id}")`,
+    select: {
+      id: true,
+      title: true,
+      description: true,
+      text: 'page.text.toResolvedBlocks',
+      layouts: 'page.layout.toResolvedLayouts',
+      // Social media preview
+      cover: {
+        query: 'page.cover.or(site.cover).toFile.resize(1200)',
+        select: ['url'],
+      },
+    },
+  })
+  return data
+}
 </script>
 
 <template>
