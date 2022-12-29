@@ -2,7 +2,6 @@
 import type { KirbyQueryRequest, KirbyQueryResponse } from '#nuxt-kql'
 import type { KirbyDefaultPage } from '~/types'
 
-const route = useRoute()
 const defaultQuery: KirbyQueryRequest['select'] = {
   id: true,
   title: true,
@@ -19,7 +18,7 @@ const defaultQuery: KirbyQueryRequest['select'] = {
 const { data: defaultData } = await useKql<
   KirbyQueryResponse<KirbyDefaultPage>
 >({
-  query: `kirby.page("${route.path}")`,
+  query: `kirby.page("${useRoute().path}")`,
   select: defaultQuery,
 })
 
