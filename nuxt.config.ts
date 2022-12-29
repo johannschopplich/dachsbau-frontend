@@ -1,5 +1,13 @@
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/plausible', '@unocss/nuxt', '@vueuse/nuxt', 'nuxt-kql'],
+  modules: [
+    '@nuxtjs/plausible',
+    '@unocss/nuxt',
+    '@vueuse/nuxt',
+    'nuxt-kql',
+    'nuxt-schema-org',
+    'nuxt-simple-robots',
+    'nuxt-simple-sitemap',
+  ],
 
   runtimeConfig: {
     public: {
@@ -45,6 +53,10 @@ export default defineNuxtConfig({
 
   experimental: {
     inlineSSRStyles: false,
+  },
+
+  sitemap: {
+    hostname: process.env.NUXT_PUBLIC_SITE_URL,
   },
 
   nitro: {

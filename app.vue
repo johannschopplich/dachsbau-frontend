@@ -15,14 +15,19 @@ onClickOutside(appContainer, () => {
 // Set actual vh on mobile – not in app.vue but embedded script to
 // avoid layout shift before hydration
 if (process.server) {
-  useHead({
-    script: [
-      {
-        children:
-          "matchMedia('(hover: none)').matches && document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)",
-      },
-    ],
-  })
+  useHead(
+    {
+      script: [
+        {
+          children:
+            "matchMedia('(hover: none)').matches && document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)",
+        },
+      ],
+    },
+    {
+      mode: 'server',
+    }
+  )
 }
 
 onMounted(() => {
@@ -77,7 +82,7 @@ onMounted(() => {
         tabindex="-1"
       >
         <NuxtLayout>
-          <NuxtLoadingIndicator color="#5A6B8D" />
+          <!-- <NuxtLoadingIndicator color="#5A6B8D" /> -->
           <NuxtPage />
         </NuxtLayout>
       </div>
