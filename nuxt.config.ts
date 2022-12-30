@@ -51,9 +51,9 @@ export default defineNuxtConfig({
     preflight: true,
   },
 
-  sitemap: {
-    hostname: process.env.NUXT_PUBLIC_SITE_URL,
-  },
+  // sitemap: {
+  //   hostname: process.env.NUXT_PUBLIC_SITE_URL,
+  // },
 
   experimental: {
     inlineSSRStyles: false,
