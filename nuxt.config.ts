@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     'nuxt-kql',
     'nuxt-schema-org',
     'nuxt-simple-robots',
-    'nuxt-simple-sitemap',
+    // 'nuxt-simple-sitemap',
   ],
 
   runtimeConfig: {
@@ -51,17 +51,17 @@ export default defineNuxtConfig({
     preflight: true,
   },
 
-  experimental: {
-    inlineSSRStyles: false,
-  },
-
   sitemap: {
     hostname: process.env.NUXT_PUBLIC_SITE_URL,
   },
 
+  experimental: {
+    inlineSSRStyles: false,
+  },
+
   nitro: {
     prerender: {
-      crawlLinks: true,
+      // crawlLinks: true,
       routes: ['/'],
     },
   },
