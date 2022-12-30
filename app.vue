@@ -82,7 +82,7 @@ onMounted(() => {
         tabindex="-1"
       >
         <NuxtLayout>
-          <!-- <NuxtLoadingIndicator color="#5A6B8D" /> -->
+          <NuxtLoadingIndicator color="#5A6B8D" />
           <NuxtPage />
         </NuxtLayout>
       </div>
