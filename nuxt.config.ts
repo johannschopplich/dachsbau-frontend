@@ -6,7 +6,6 @@ export default defineNuxtConfig({
     'nuxt-kql',
     'nuxt-schema-org',
     'nuxt-simple-robots',
-    // 'nuxt-simple-sitemap',
   ],
 
   runtimeConfig: {
@@ -50,10 +49,6 @@ export default defineNuxtConfig({
   unocss: {
     preflight: true,
   },
-
-  // sitemap: {
-  //   hostname: process.env.NUXT_PUBLIC_SITE_URL,
-  // },
 
   experimental: {
     inlineSSRStyles: false,
