@@ -23,7 +23,7 @@ const { data } = await useKql({
     },
     // Social media preview
     cover: {
-      query: 'page.cover.or(site.cover).toFile.resize(1200)',
+      query: 'page.cover.or(site.cover).toFile?.resize(1200)',
       select: ['url'],
     },
   },

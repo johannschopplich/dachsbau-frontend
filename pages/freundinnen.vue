@@ -5,7 +5,7 @@ const { data } = await useKql({
     id: true,
     title: true,
     description: true,
-    text: 'page.text.toResolvedBlocks',
+    text: 'page.text.toBlocks',
     backers: 'page.backers.toStructure',
     logos: {
       query: 'page.images',
@@ -13,7 +13,7 @@ const { data } = await useKql({
     },
     // Social media preview
     cover: {
-      query: 'page.cover.or(site.cover).toFile.resize(1200)',
+      query: 'page.cover.or(site.cover).toFile?.resize(1200)',
       select: ['url'],
     },
   },

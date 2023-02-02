@@ -30,7 +30,7 @@ export default defineNuxtConfig({
             select: ['id', 'title', 'isListed'],
           },
           cover: {
-            query: 'site.cover.toFile.resize(1200)',
+            query: 'site.cover.toFile?.resize(1200)',
             select: ['url'],
           },
           footer: {
