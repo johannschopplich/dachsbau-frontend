@@ -5,7 +5,7 @@ const { data } = await useKql({
     id: true,
     title: true,
     description: true,
-    text: 'page.text.toBlocks',
+    text: 'page.text.toResolvedBlocks',
     backers: 'page.backers.toStructure',
     logos: {
       query: 'page.images',

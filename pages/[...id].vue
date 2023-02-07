@@ -20,8 +20,8 @@ async function usePageDataById<T = any>(id: string) {
       id: true,
       title: true,
       description: true,
-      text: 'page.text.toBlocks',
-      layouts: 'page.layout.toLayouts',
+      text: 'page.text.toResolvedBlocks',
+      layouts: 'page.layout.toResolvedLayouts',
       // Social media preview
       cover: {
         query: 'page.cover.or(site.cover).toFile?.resize(1200)',
