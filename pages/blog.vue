@@ -1,6 +1,7 @@
 <script setup lang="ts">
+const { id } = usePathSegments()
 const { data } = await useKql({
-  query: `kirby.page("${useRoute().path}")`,
+  query: `kirby.page("${id}")`,
   select: {
     title: true,
     description: true,

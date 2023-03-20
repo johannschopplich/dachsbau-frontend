@@ -1,6 +1,7 @@
 <script setup lang="ts">
+const { id } = usePathSegments()
 const { data } = await useKql({
-  query: `kirby.page("${useRoute().path}")`,
+  query: `kirby.page("${id}")`,
   select: {
     id: true,
     title: true,
@@ -23,9 +24,7 @@ const page = setPage(() => data.value?.result)
 </script>
 
 <template>
-  <div
-    :class="['padding-content max-w-screen-md mx-auto space-y-6 pt-36 pb-12']"
-  >
+  <div class="padding-content mx-auto max-w-screen-md space-y-6 pt-36 pb-12">
     <h1 class="page-title hyphenate md:w-3/4">
       {{ page?.title }}
     </h1>

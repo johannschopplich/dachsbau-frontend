@@ -1,36 +1,20 @@
 <script setup lang="ts">
+import { getPageQuery } from '~/queries'
 import type { KirbyQueryResponse } from '#nuxt-kql'
 import type { KirbyDefaultPage } from '~/types'
 
+const { id } = usePathSegments()
 const data = ref(
-  (await usePageDataById<KirbyDefaultPage>(useRoute().path)).value
+  (await useKql<KirbyQueryResponse<KirbyDefaultPage>>(getPageQuery(id))).data
+    .value
 )
 
 if (!data.value?.result) {
-  data.value = (await usePageDataById('error')).value
+  data.value = (await useKql(getPageQuery('error'))).data.value
 }
 
 const page = setPage(() => data.value?.result as KirbyDefaultPage)
 const hasLayouts = computed(() => !!page.value?.layouts?.length)
-
-async function usePageDataById<T = any>(id: string) {
-  const { data } = await useKql<KirbyQueryResponse<T>>({
-    query: `kirby.page("${id}")`,
-    select: {
-      id: true,
-      title: true,
-      description: true,
-      text: 'page.text.toResolvedBlocks',
-      layouts: 'page.layout.toResolvedLayouts',
-      // Social media preview
-      cover: {
-        query: 'page.cover.or(site.cover).toFile?.resize(1200)',
-        select: ['url'],
-      },
-    },
-  })
-  return data
-}
 </script>
 
 <template>
