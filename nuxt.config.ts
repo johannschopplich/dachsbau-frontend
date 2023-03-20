@@ -1,3 +1,5 @@
+import { siteQuery } from './queries'
+
 export default defineNuxtConfig({
   modules: [
     '@nuxtjs/plausible',
@@ -20,25 +22,7 @@ export default defineNuxtConfig({
 
     // Prefetch queries at build-time
     prefetch: {
-      kirbySite: {
-        query: 'site',
-        select: {
-          title: true,
-          description: true,
-          children: {
-            query: 'site.children',
-            select: ['id', 'title', 'isListed'],
-          },
-          cover: {
-            query: 'site.cover.toFile?.resize(1200)',
-            select: ['url'],
-          },
-          footer: {
-            query: 'site.footer.toPages',
-            select: ['id', 'title'],
-          },
-        },
-      },
+      kirbySite: siteQuery,
     },
 
     server: {
@@ -56,7 +40,7 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      // crawlLinks: true,
+      crawlLinks: true,
       routes: ['/'],
     },
   },
