@@ -13,7 +13,7 @@ defineProps<{
       caption: string
       link: string
       resolved: {
-        image: KirbyImage
+        image: KirbyImage[]
       }
     }
   >
@@ -28,11 +28,11 @@ const { width } = useElementSize(figure)
     <img
       class="handdrawn-mask"
       :src="block.content.location === 'web' ? block.content.src : undefined"
-      :srcset="block.content.resolved.image.srcset"
-      :width="block.content.resolved.image.width"
-      :height="block.content.resolved.image.height"
+      :srcset="block.content.resolved.image?.[0].srcset"
+      :width="block.content.resolved.image?.[0].width"
+      :height="block.content.resolved.image?.[0].height"
       :sizes="`${width}px`"
-      :alt="block.content.alt || block.content.resolved.image.alt"
+      :alt="block.content.alt || block.content.resolved.image?.[0].alt"
     />
 
     <figcaption v-if="block.content.caption" v-html="block.content.caption" />
