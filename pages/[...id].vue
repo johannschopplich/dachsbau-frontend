@@ -1,27 +1,22 @@
 <script setup lang="ts">
 import { getPageQuery } from '~/queries'
-import type { KirbyQueryResponse } from '#nuxt-kql'
-import type { KirbyDefaultPage } from '~/types'
+import type { KirbyPageResponse } from '~/queries'
 
 const { id } = usePathSegments()
-const data = ref(
-  (await useKql<KirbyQueryResponse<KirbyDefaultPage>>(getPageQuery(id))).data
-    .value
-)
+const data = ref((await useKql<KirbyPageResponse>(getPageQuery(id))).data.value)
 
 if (!data.value?.result) {
   data.value = (await useKql(getPageQuery('error'))).data.value
 }
 
-const page = setPage(() => data.value?.result as KirbyDefaultPage)
-const hasLayouts = computed(() => !!page.value?.layouts?.length)
+const page = setPage(() => data.value?.result)
 </script>
 
 <template>
   <div
     :class="[
       'padding-content mx-auto space-y-6 pt-36 pb-12',
-      hasLayouts ? 'max-w-screen-xl' : 'max-w-screen-md',
+      page?.layouts?.length ? 'max-w-screen-xl' : 'max-w-screen-md',
     ]"
   >
     <h1
@@ -29,10 +24,11 @@ const hasLayouts = computed(() => !!page.value?.layouts?.length)
       v-html="page?.title?.replace(/(dachs)$/, '&shy;$1')"
     />
 
-    <KirbyLayouts v-if="hasLayouts" :layouts="page.layouts ?? []" />
+    <KirbyLayouts v-if="page?.layouts?.length" :layouts="page.layouts" />
 
     <KirbyBlocks
-      :blocks="page?.text ?? []"
+      v-else-if="page?.text?.length"
+      :blocks="page.text"
       class="prose text-secondary-900 md:font-350 font-serif md:text-xl"
     />
   </div>

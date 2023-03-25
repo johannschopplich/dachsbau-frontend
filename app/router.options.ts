@@ -1,5 +1,7 @@
+import type { RouterScrollBehavior } from 'vue-router'
 import type { RouterConfig } from '@nuxt/schema'
-import type { ScrollPosition } from '~/types'
+
+type ScrollPosition = Awaited<ReturnType<RouterScrollBehavior>>
 
 export default <RouterConfig>{
   // Handle scrolling inside the fixed app container

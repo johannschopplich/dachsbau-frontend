@@ -1,4 +1,16 @@
 import type { KirbyQuerySchema } from '#nuxt-kql'
+import type { KirbyBlock, KirbyLayout, KirbyQueryResponse } from '#nuxt-kql'
+
+export type KirbyPageResponse = KirbyQueryResponse<{
+  id: string
+  title: string
+  description: string
+  text: KirbyBlock[]
+  layouts: KirbyLayout[]
+  cover?: {
+    url: string
+  }
+}>
 
 export function getPageQuery(pageId: string): KirbyQuerySchema {
   return {

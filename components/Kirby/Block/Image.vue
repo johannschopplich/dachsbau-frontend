@@ -1,6 +1,15 @@
+<script lang="ts">
+export interface ResolvedKirbyImage {
+  url: string
+  width: number
+  height: number
+  srcset: string
+  alt: string | null
+}
+</script>
+
 <script setup lang="ts">
 import type { KirbyBlock } from '#nuxt-kql'
-import type { KirbyImage } from '~/types'
 
 defineProps<{
   block: KirbyBlock<
@@ -13,7 +22,7 @@ defineProps<{
       caption: string
       link: string
       resolved: {
-        image: KirbyImage[]
+        image: ResolvedKirbyImage[]
       }
     }
   >
@@ -32,7 +41,7 @@ const { width } = useElementSize(figure)
       :width="block.content.resolved.image?.[0].width"
       :height="block.content.resolved.image?.[0].height"
       :sizes="`${width}px`"
-      :alt="block.content.alt || block.content.resolved.image?.[0].alt"
+      :alt="block.content.alt || block.content.resolved.image?.[0].alt || ''"
     />
 
     <figcaption v-if="block.content.caption" v-html="block.content.caption" />
