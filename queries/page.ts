@@ -25,6 +25,10 @@ export function getPageQuery(pageId: string): KirbyQuerySchema {
       description: true,
       text: 'page.text.toResolvedBlocks',
       layouts: 'page.layout.toResolvedLayouts',
+      images: {
+        query: 'page.files.template("image")',
+        select: ['uuid', 'url'],
+      },
       // Social media preview
       cover: {
         query: 'page.cover.or(site.cover).toFile?.resize(1200)',

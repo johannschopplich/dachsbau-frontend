@@ -16,7 +16,7 @@ setPage(page)
 <template>
   <div
     :class="[
-      'padding-content mx-auto space-y-6 pt-36 pb-12',
+      'padding-content mx-auto space-y-6 pb-12 pt-36',
       page?.layouts?.length ? 'max-w-screen-xl' : 'max-w-screen-md',
     ]"
   >

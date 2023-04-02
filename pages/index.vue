@@ -182,7 +182,7 @@ onMounted(() => {
           <div>
             <h2 class="title relative mb-6 w-min">
               <img
-                class="pointer-events-none absolute top-1/2 -left-2 right-0 -translate-y-1/2 scale-150"
+                class="pointer-events-none absolute -left-2 right-0 top-1/2 -translate-y-1/2 scale-150"
                 src="~/assets/img/menu-hover-01.svg"
                 alt=""
                 aria-hidden="true"

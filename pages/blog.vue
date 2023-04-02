@@ -31,7 +31,7 @@ function random() {
 </script>
 
 <template>
-  <div class="pt-36 pb-12">
+  <div class="pb-12 pt-36">
     <div class="padding-content mx-auto mb-6 max-w-screen-md">
       <h1 class="page-title hyphenate md:w-3/4">Blog</h1>
     </div>
