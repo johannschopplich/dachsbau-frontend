@@ -9,7 +9,8 @@ if (!data.value?.result) {
   data.value = (await useKql(getPageQuery('error'))).data.value
 }
 
-const page = setPage(() => data.value?.result)
+const page = data.value?.result
+setPage(page)
 </script>
 
 <template>

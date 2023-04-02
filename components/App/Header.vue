@@ -6,8 +6,8 @@ const route = useRoute()
 const site = useSite()
 
 const appContainer = useAppContainer()
-const navState = useAppState()
-const { isOpen } = toRefs(navState)
+const appState = useAppState()
+const { nav } = toRefs(appState)
 const isRedirecting = ref(false)
 
 const isLocked = useScrollLock(appContainer)
@@ -24,21 +24,21 @@ nuxtApp.hook('page:finish', () => {
 function toggleMenu() {
   appContainer.value?.scrollTo({ top: 0 })
   isLocked.value = !isLocked.value
-  isOpen.value = !isOpen.value
+  nav.value.isOpen = !nav.value.isOpen
 }
 
 async function close(path: string) {
   if (isRedirecting.value) return
 
   if (path === route.path) {
-    isOpen.value = false
+    nav.value.isOpen = false
     isLocked.value = false
     return
   }
 
   isRedirecting.value = true
   await until(isRedirecting).toBe(false)
-  isOpen.value = false
+  nav.value.isOpen = false
   isLocked.value = false
 }
 </script>
@@ -74,29 +74,29 @@ async function close(path: string) {
     <button
       :class="[
         'group appearance-none relative cursor-pointer text-size-xl leading-none font-heading-condensed z-20 md:text-size-xl md:hidden',
-        isOpen ? 'text-white' : 'text-primary-700',
+        nav.isOpen ? 'text-white' : 'text-primary-700',
       ]"
-      :aria-expanded="isOpen"
-      :aria-label="isOpen ? 'Menu schließen' : 'Menu öffnen'"
+      :aria-expanded="nav.isOpen"
+      :aria-label="nav.isOpen ? 'Menu schließen' : 'Menu öffnen'"
       @click="toggleMenu()"
     >
       <img
         :class="[
           'absolute inset-0 scale-200 opacity-0 pointer-events-none group-hover:opacity-100',
-          isOpen && 'hidden',
+          nav.isOpen && 'hidden',
         ]"
         src="~/assets/img/menu-hover-03.svg"
         alt=""
         aria-hidden="true"
       />
-      <span class="relative">{{ isOpen ? 'Schließen' : 'Menü' }}</span>
+      <span class="relative">{{ nav.isOpen ? 'Schließen' : 'Menü' }}</span>
     </button>
   </header>
 
   <nav
     :class="[
       'navigation absolute top-0 left-0 right-0 px-6 bg-primary-600 flex justify-center items-center z-10 md:top-6 md:left-initial md:bg-transparent md:rounded-none',
-      isOpen && 'is-open',
+      nav.isOpen && 'is-open',
     ]"
   >
     <ul class="flex flex-col gap-4 md:flex-row">
@@ -114,7 +114,7 @@ async function close(path: string) {
     <div
       :class="[
         'fixed bottom-0 left-6 transition-transform-250 pointer-events-none md:hidden',
-        isOpen
+        nav.isOpen
           ? 'translate-y-[20%] rotate-15 transition-delay-250'
           : 'translate-y-[100%] rotate-0 opacity-0 invisible',
       ]"

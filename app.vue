@@ -3,7 +3,7 @@ import '~/assets/css/main.css'
 import '~/assets/css/components.css'
 import '~/assets/css/prose.css'
 
-const navState = useAppState()
+const appState = useAppState()
 const appContainer = useAppContainer()
 
 // Force scrolling inside container on mobile when clicking
@@ -15,19 +15,14 @@ onClickOutside(appContainer, () => {
 // Set actual vh on mobile – not in app.vue but embedded script to
 // avoid layout shift before hydration
 if (process.server) {
-  useHead(
-    {
-      script: [
-        {
-          children:
-            "matchMedia('(hover: none)').matches && document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)",
-        },
-      ],
-    },
-    {
-      mode: 'server',
-    }
-  )
+  useServerHead({
+    script: [
+      {
+        children:
+          "matchMedia('(hover: none)').matches && document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)",
+      },
+    ],
+  })
 }
 
 onMounted(() => {
@@ -87,9 +82,9 @@ onMounted(() => {
         </NuxtLayout>
       </div>
 
-      <div v-show="!navState.isOpen" class="pointer-events-none">
+      <div v-show="!appState.nav.isOpen" class="pointer-events-none">
         <img
-          class="fixed right-0 bottom-0 w-[min(10rem,30vw)] md:right-1 md:bottom-1"
+          class="fixed bottom-0 right-0 w-[min(10rem,30vw)] md:bottom-1 md:right-1"
           src="~/assets/img/dachs-im-rahmen-320.png"
           alt=""
         />

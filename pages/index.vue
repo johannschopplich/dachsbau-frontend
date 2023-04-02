@@ -3,6 +3,7 @@ const { data } = await useKql({
   query: 'kirby.page("home")',
   select: {
     id: true,
+    intendedTemplate: true,
     intro: true,
     contact: true,
     children: {
@@ -29,7 +30,8 @@ const { data } = await useKql({
   },
 })
 
-const page = setPage(() => data.value?.result)
+const page = data.value?.result
+setPage(page)
 
 const appContainer = useAppContainer()
 const animationStack = reactive(new Map<number, boolean>())

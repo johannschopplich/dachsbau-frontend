@@ -1,5 +1,7 @@
 export function useAppState() {
-  return useState('app.state', () => ({ isOpen: false }))
+  return useState('app.state', () => ({
+    nav: { isOpen: false },
+  }))
 }
 
 export function useAppContainer() {

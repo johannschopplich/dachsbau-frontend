@@ -4,6 +4,7 @@ const { data } = await useKql({
   query: `kirby.page("${id}")`,
   select: {
     title: true,
+    intendedTemplate: true,
     description: true,
     posts: {
       query: 'page.children.listed',
@@ -20,7 +21,8 @@ const { data } = await useKql({
   },
 })
 
-const page = setPage(() => data.value?.result)
+const page = data.value?.result
+setPage(page)
 
 // Random number between -1 and 1
 function random() {

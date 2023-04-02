@@ -4,12 +4,13 @@ const { data } = await useKql({
   query: `kirby.page("${id}")`,
   select: {
     id: true,
+    intendedTemplate: true,
     title: true,
     description: true,
     text: 'page.text.toResolvedBlocks',
     backers: 'page.backers.toStructure',
-    logos: {
-      query: 'page.images',
+    images: {
+      query: 'page.files.template("image")',
       select: ['uuid', 'url'],
     },
     // Social media preview
@@ -20,7 +21,10 @@ const { data } = await useKql({
   },
 })
 
-const page = setPage(() => data.value?.result)
+const page = data.value?.result
+setPage(page)
+
+const resolver = createUuidResolver(page.images)
 </script>
 
 <template>
@@ -44,7 +48,7 @@ const page = setPage(() => data.value?.result)
           <img
             v-if="item.logo?.length"
             class="h-10"
-            :src="page.logos.find(({ uuid }: any) => uuid === item.logo?.[0])?.url"
+            :src="resolver(item.logo?.[0])?.url"
             :alt="`Logo für ${item.title}`"
           />
           <div v-else class="h-10" />
