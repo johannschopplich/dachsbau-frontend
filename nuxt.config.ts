@@ -24,10 +24,6 @@ export default defineNuxtConfig({
     prefetch: {
       kirbySite: siteQuery,
     },
-
-    server: {
-      cache: true,
-    },
   },
 
   unocss: {
@@ -41,7 +37,7 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      crawlLinks: true,
+      // crawlLinks: true,
       routes: ['/'],
     },
   },
