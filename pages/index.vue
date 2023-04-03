@@ -130,7 +130,7 @@ onMounted(() => {
             @click="animationStack.clear(), animationStack.set(index, true)"
           >
             <NuxtLink
-              :to="{ path: `/${item.id}` }"
+              :to="`/${item.id}`"
               :class="['sm:w-1/2', index % 2 === 1 && 'sm:order-2']"
               :aria-label="item.title"
             >
@@ -148,7 +148,7 @@ onMounted(() => {
             </NuxtLink>
 
             <NuxtLink
-              :to="{ path: `/${item.id}` }"
+              :to="`/${item.id}`"
               class="flex justify-center px-4 sm:w-1/2 sm:items-center sm:px-0"
             >
               <div>

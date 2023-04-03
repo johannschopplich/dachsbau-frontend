@@ -6,6 +6,7 @@ import {
   LazyKirbyBlockList,
   LazyKirbyBlockQuote,
   LazyKirbyBlockSectionBackers,
+  LazyKirbyBlockSectionBlog,
   LazyKirbyBlockText,
 } from '#components'
 import type { KirbyBlock } from '#nuxt-kql'
@@ -25,6 +26,7 @@ const blockComponents: Partial<Record<string, Component>> = {
   text: LazyKirbyBlockText,
   // Custom blocks
   'section-backers': LazyKirbyBlockSectionBackers,
+  'section-blog': LazyKirbyBlockSectionBlog,
 }
 
 const router = useRouter()
