@@ -73,7 +73,7 @@ async function close(path: string) {
 
     <button
       :class="[
-        'group appearance-none relative cursor-pointer text-size-xl leading-none font-heading-condensed z-20 md:text-size-xl md:hidden',
+        'text-size-xl font-heading-condensed md:text-size-xl group relative z-20 cursor-pointer appearance-none leading-none md:hidden',
         nav.isOpen ? 'text-white' : 'text-primary-700',
       ]"
       :aria-expanded="nav.isOpen"
@@ -82,7 +82,7 @@ async function close(path: string) {
     >
       <img
         :class="[
-          'absolute inset-0 scale-200 opacity-0 pointer-events-none group-hover:opacity-100',
+          'scale-200 pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100',
           nav.isOpen && 'hidden',
         ]"
         src="~/assets/img/menu-hover-03.svg"
@@ -95,7 +95,7 @@ async function close(path: string) {
 
   <nav
     :class="[
-      'navigation absolute top-0 left-0 right-0 px-6 bg-primary-600 flex justify-center items-center z-10 md:top-6 md:left-initial md:bg-transparent md:rounded-none',
+      'navigation bg-primary-600 md:left-initial absolute inset-x-0 top-0 z-10 flex items-center justify-center px-6 md:top-6 md:rounded-none md:bg-transparent',
       nav.isOpen && 'is-open',
     ]"
   >
@@ -103,7 +103,7 @@ async function close(path: string) {
       <NuxtLink
         v-for="item in navItems"
         :key="item.id"
-        :to="{ path: `/${item.id}` }"
+        :to="`/${item.id}`"
         class="text-size-4xl font-heading-condensed hover:text-secondary-600 md:text-size-2xl md:text-primary-700 leading-tight text-white"
         @click="close(`/${item.id}`)"
       >
@@ -113,10 +113,10 @@ async function close(path: string) {
 
     <div
       :class="[
-        'fixed bottom-0 left-6 transition-transform-250 pointer-events-none md:hidden',
+        'transition-transform-250 pointer-events-none fixed bottom-0 left-6 md:hidden',
         nav.isOpen
-          ? 'translate-y-[20%] rotate-15 transition-delay-250'
-          : 'translate-y-[100%] rotate-0 opacity-0 invisible',
+          ? 'rotate-15 transition-delay-250 translate-y-[20%]'
+          : 'invisible translate-y-[100%] rotate-0 opacity-0',
       ]"
       aria-hidden="true"
     >

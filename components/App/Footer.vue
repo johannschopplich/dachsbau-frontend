@@ -8,7 +8,7 @@ const site = useSite()
       <NuxtLink
         v-for="item in site?.footer ?? []"
         :key="item.id"
-        :to="{ path: `/${item.id}` }"
+        :to="`/${item.id}`"
         class="font-heading-condensed text-primary-700 hover:text-secondary-500 text-lg md:text-xl"
       >
         {{ item.title }}

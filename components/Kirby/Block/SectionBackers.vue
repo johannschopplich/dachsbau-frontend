@@ -20,7 +20,7 @@ const resolver = createUuidResolver(page.value.images)
 </script>
 
 <template>
-  <div class="grid grid-cols-2 gap-2 md:grid-cols-3">
+  <div class="not-prose grid grid-cols-2 gap-2 md:grid-cols-3">
     <div
       v-for="(item, index) in block.content.backers"
       :key="index"
@@ -40,7 +40,10 @@ const resolver = createUuidResolver(page.value.images)
         :is="item.website ? 'a' : 'p'"
         :href="item.website ? item.website : undefined"
         :target="item.website ? '_blank' : undefined"
-        class="text-secondary-800 font-heading-condensed text-xl leading-none"
+        :class="[
+          'text-secondary-800 font-heading-condensed text-xl leading-none',
+          item.website && 'hover:text-underline',
+        ]"
       >
         <span class="absolute inset-0" />
         {{ item.title }}
