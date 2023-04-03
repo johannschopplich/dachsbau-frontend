@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { promiseTimeout } from '@vueuse/core'
+
 const { data } = await useKql({
   query: 'kirby.page("home")',
   select: {
@@ -33,6 +35,9 @@ const { data } = await useKql({
 const page = data.value?.result
 setPage(page)
 
+const isTouchscreen = process.client
+  ? matchMedia('(hover: none), (pointer: coarse)').matches
+  : false
 const appContainer = useAppContainer()
 const animationStack = reactive(new Map<number, boolean>())
 
@@ -57,6 +62,18 @@ onMounted(() => {
     )
   }
 })
+
+/**
+ * Delay the navigation to the next page by 500ms on mobile devices to allow
+ * the animation to finish
+ */
+async function delayedNavigateTo(...args: Parameters<typeof navigateTo>) {
+  if (isTouchscreen) {
+    await promiseTimeout(500)
+  }
+
+  await navigateTo(...args)
+}
 </script>
 
 <template>
@@ -124,11 +141,17 @@ onMounted(() => {
           <div
             v-for="(item, index) in page?.children ?? []"
             :key="index"
-            class="group flex flex-col gap-4 sm:flex-row sm:gap-12"
+            class="group relative flex flex-col gap-4 sm:flex-row sm:gap-12"
             @mouseenter="animationStack.set(index, true)"
             @mouseleave="animationStack.set(index, false)"
-            @click="animationStack.clear(), animationStack.set(index, true)"
           >
+            <!-- Hijack the click event to prevent the animation from
+            being interrupted on mobile devices -->
+            <div
+              class="absolute inset-0 z-10 cursor-pointer"
+              @click="delayedNavigateTo(`/${item.id}`)"
+            />
+
             <NuxtLink
               :to="`/${item.id}`"
               :class="['sm:w-1/2', index % 2 === 1 && 'sm:order-2']"
