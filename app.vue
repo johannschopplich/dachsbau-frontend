@@ -52,20 +52,6 @@ onMounted(() => {
         type="font/woff2"
         crossorigin="anonymous"
       />
-      <Link
-        rel="preload"
-        href="/fonts/VCHenriettaCondensed-Regular.woff2"
-        as="font"
-        type="font/woff2"
-        crossorigin="anonymous"
-      />
-      <Link
-        rel="preload"
-        href="/fonts/VCHenriettaCondensed-Medium.woff2"
-        as="font"
-        type="font/woff2"
-        crossorigin="anonymous"
-      />
       <Meta name="theme-color" content="#3A455B" />
     </Head>
 
@@ -76,10 +62,17 @@ onMounted(() => {
         class="bg-secondary-200 fixed inset-[var(--frame-width)] min-w-[320px] overflow-x-hidden overflow-y-scroll rounded-3xl focus:outline-none"
         tabindex="-1"
       >
-        <NuxtLayout>
-          <NuxtLoadingIndicator color="#5A6B8D" />
-          <NuxtPage />
-        </NuxtLayout>
+        <NuxtLoadingIndicator color="#5A6B8D" />
+
+        <div class="relative h-full">
+          <AppHeader />
+
+          <main>
+            <NuxtPage />
+          </main>
+
+          <AppFooter />
+        </div>
       </div>
 
       <div v-show="!appState.nav.isOpen" class="pointer-events-none">
