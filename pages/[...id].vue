@@ -3,13 +3,14 @@ import { getPageQuery } from '~/queries'
 import type { KirbyPageResponse } from '~/queries'
 
 const { id } = usePathSegments()
-const data = ref((await useKql<KirbyPageResponse>(getPageQuery(id))).data.value)
+let data = (await useKql<KirbyPageResponse>(getPageQuery(id))).data.value
 
-if (!data.value?.result) {
-  data.value = (await useKql(getPageQuery('error'))).data.value
+if (!data?.result) {
+  data = (await useKql(getPageQuery('error'))).data.value
+  setResponseStatus(useRequestEvent(), 404)
 }
 
-const page = data.value?.result
+const page = data?.result
 setPage(page)
 </script>
 
