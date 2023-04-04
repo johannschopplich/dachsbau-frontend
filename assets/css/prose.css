@@ -203,11 +203,11 @@
 }
 
 .prose :where(figure.pulled-left):not(:where(.not-prose, .not-prose *)) {
-  --at-apply: 'sm:float-left sm:mr-[1.25rem] sm:w-[45%] lg:ml-[-20%]';
+  --at-apply: 'sm:float-left sm:mr-[1.25rem] sm:ml-[-2rem] sm:w-[45%] lg:ml-[-20%]';
 }
 
 .prose :where(figure.pulled-right):not(:where(.not-prose, .not-prose *)) {
-  --at-apply: 'sm:float-right sm:ml-[1.25rem] sm:w-[45%] lg:mr-[-20%]';
+  --at-apply: 'sm:float-right sm:mr-[-2rem] sm:ml-[1.25rem] sm:w-[45%] lg:mr-[-20%]';
 }
 
 .prose :where(figcaption):not(:where(.not-prose, .not-prose *)) {
