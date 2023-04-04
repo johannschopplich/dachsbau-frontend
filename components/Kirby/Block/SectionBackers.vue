@@ -16,7 +16,6 @@ defineProps<{
 }>()
 
 const page = usePage()
-const resolver = createUuidResolver(page.value.images)
 </script>
 
 <template>
@@ -27,12 +26,14 @@ const resolver = createUuidResolver(page.value.images)
       class="handdrawn-mask bg-secondary-100 relative p-3"
     >
       <div class="mb-2 flex justify-center">
-        <img
+        <KirbyUuidResolver
           v-if="item.logo?.length"
-          class="h-10"
-          :src="resolver(item.logo?.[0])?.url"
-          :alt="`Logo von ${item.title}`"
-        />
+          v-slot="{ item: image }"
+          :collection="page.images"
+          :uuid="item.logo[0]"
+        >
+          <img class="h-10" :src="image.url" :alt="`Logo von ${item.title}`" />
+        </KirbyUuidResolver>
         <div v-else class="h-10" />
       </div>
 
