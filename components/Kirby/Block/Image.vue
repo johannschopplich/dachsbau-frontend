@@ -21,6 +21,7 @@ defineProps<{
       alt: string
       caption: string
       link: string
+      size?: '' | 'normal' | 'outset' | 'pulled-left' | 'pulled-right'
       resolved: {
         image: ResolvedKirbyImage[]
       }
@@ -33,7 +34,7 @@ const { width } = useElementSize(figure)
 </script>
 
 <template>
-  <figure ref="figure">
+  <figure ref="figure" :class="[block.content.size]">
     <img
       class="handdrawn-mask"
       :src="block.content.location === 'web' ? block.content.src : undefined"
