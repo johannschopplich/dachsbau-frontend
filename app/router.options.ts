@@ -1,5 +1,5 @@
 import type { RouterScrollBehavior } from 'vue-router'
-import type { RouterConfig } from '@nuxt/schema'
+import type { RouterConfig } from 'nuxt/schema'
 
 type ScrollPosition = Awaited<ReturnType<RouterScrollBehavior>>
 

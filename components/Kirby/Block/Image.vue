@@ -11,7 +11,7 @@ export interface ResolvedKirbyImage {
 <script setup lang="ts">
 import type { KirbyBlock } from '#nuxt-kql'
 
-defineProps<{
+const props = defineProps<{
   block: KirbyBlock<
     'resolved-image',
     {
@@ -31,6 +31,10 @@ defineProps<{
 
 const figure = ref<HTMLElement | undefined>()
 const { width } = useElementSize(figure)
+
+const image = computed<Partial<ResolvedKirbyImage>>(
+  () => props.block.content.resolved.image?.[0] ?? {}
+)
 </script>
 
 <template>
@@ -38,11 +42,11 @@ const { width } = useElementSize(figure)
     <img
       class="handdrawn-mask"
       :src="block.content.location === 'web' ? block.content.src : undefined"
-      :srcset="block.content.resolved.image?.[0].srcset"
-      :width="block.content.resolved.image?.[0].width"
-      :height="block.content.resolved.image?.[0].height"
+      :srcset="image.srcset"
+      :width="image.width"
+      :height="image.height"
       :sizes="`${width}px`"
-      :alt="block.content.alt || block.content.resolved.image?.[0].alt || ''"
+      :alt="block.content.alt || image.alt || ''"
     />
 
     <figcaption v-if="block.content.caption" v-html="block.content.caption" />
