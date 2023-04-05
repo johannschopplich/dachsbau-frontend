@@ -13,7 +13,7 @@ const isRedirecting = ref(false)
 const isLocked = useScrollLock(appContainer)
 
 const navItems = computed(() =>
-  (site.value?.children ?? []).filter((i: Record<string, any>) => i.isListed)
+  (site.value.children ?? []).filter((i: Record<string, any>) => i.isListed)
 )
 
 // On Suspense resolved event

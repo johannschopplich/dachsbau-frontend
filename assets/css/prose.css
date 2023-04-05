@@ -203,13 +203,13 @@
 }
 
 .prose :where(figure.pulled-left):not(:where(.not-prose, .not-prose *)) {
-  --at-apply: 'sm:float-left sm:mr-[1.25rem] sm:ml-[-2rem] sm:w-[45%] lg:ml-[-20%]';
+  --at-apply: 'sm:float-left sm:mr-[1.25rem] sm:w-[45%] lg:ml-[-2rem]';
 }
 
 .prose :where(figure.pulled-right):not(:where(.not-prose, .not-prose *)) {
-  --at-apply: 'sm:float-right sm:mr-[-2rem] sm:ml-[1.25rem] sm:w-[45%] lg:mr-[-20%]';
+  --at-apply: 'sm:float-right sm:ml-[1.25rem] sm:w-[45%] lg:mr-[-2rem]';
 }
 
 .prose :where(figcaption):not(:where(.not-prose, .not-prose *)) {
-  --at-apply: 'text-secondary-700 text-size-[0.75em] mt-0 text-right';
+  --at-apply: 'text-secondary-700 text-size-[0.75em] text-right';
 }
