@@ -3,7 +3,7 @@ import type { RouterConfig } from '@nuxt/schema'
 
 type ScrollPosition = Awaited<ReturnType<RouterScrollBehavior>>
 
-export default <RouterConfig>{
+export default {
   // Handle scrolling inside the fixed app container
   scrollBehavior(to) {
     const nuxtApp = useNuxtApp()
@@ -31,4 +31,4 @@ export default <RouterConfig>{
       })
     })
   },
-}
+} satisfies RouterConfig
