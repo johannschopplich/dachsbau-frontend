@@ -2,8 +2,12 @@
 import { getPageQuery } from '~/queries'
 import type { KirbyPageResponse } from '~/queries'
 
-const { id } = usePathSegments()
-let data = (await useKql<KirbyPageResponse>(getPageQuery(id))).data.value
+// Use current slug or fall back to the homepage
+const { slug } = useRoute().params
+const pageUri =
+  (Array.isArray(slug) ? slug.filter(Boolean).join('/') : slug) || 'home'
+
+let data = (await useKql<KirbyPageResponse>(getPageQuery(pageUri))).data.value
 
 if (!data?.result) {
   data = (await useKql(getPageQuery('error'))).data.value
