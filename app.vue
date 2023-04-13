@@ -11,35 +11,10 @@ const appContainer = useAppContainer()
 onClickOutside(appContainer, () => {
   appContainer.value?.focus()
 })
-
-// Set actual vh on mobile – not in app.vue but embedded script to
-// avoid layout shift before hydration
-if (process.server) {
-  useServerHead({
-    script: [
-      {
-        children:
-          "matchMedia('(hover: none)').matches && document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)",
-      },
-    ],
-  })
-}
-
-onMounted(() => {
-  const { height } = useElementSize(appContainer)
-
-  // Manually set `--h-content`, because somehow `100vh` on Android is too tall
-  watchEffect(() =>
-    document.documentElement.style.setProperty(
-      '--h-content',
-      `${height.value}px`
-    )
-  )
-})
 </script>
 
 <template>
-  <Html class="bg-primary-700 min-w-[320px]" lang="de">
+  <Html class="min-w-[320px] bg-primary-700" lang="de">
     <Head>
       <Link rel="icon" href="/favicon.png" type="image/png" sizes="32x32" />
       <Link rel="stylesheet" href="/fonts/Fraunces.css" />
@@ -59,7 +34,7 @@ onMounted(() => {
       <div
         id="scroll-container"
         ref="appContainer"
-        class="bg-secondary-200 fixed inset-[var(--frame-width)] min-w-[320px] overflow-x-hidden overflow-y-scroll rounded-3xl focus:outline-none"
+        class="fixed inset-[var(--frame-width)] min-w-[320px] overflow-x-hidden overflow-y-scroll rounded-3xl bg-secondary-200 focus:outline-none"
         tabindex="-1"
       >
         <NuxtLoadingIndicator color="#5A6B8D" />
