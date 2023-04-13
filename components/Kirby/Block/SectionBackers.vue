@@ -23,7 +23,7 @@ const page = usePage()
     <div
       v-for="(item, index) in block.content.backers"
       :key="index"
-      class="handdrawn-mask bg-secondary-100 relative p-3"
+      class="handdrawn-mask relative bg-secondary-100 p-3"
     >
       <div class="mb-2 flex justify-center">
         <KirbyUuidResolver
@@ -41,15 +41,13 @@ const page = usePage()
         :is="item.website ? 'a' : 'p'"
         :href="item.website ? item.website : undefined"
         :target="item.website ? '_blank' : undefined"
-        :class="[
-          'text-secondary-800 font-heading-condensed text-xl leading-none',
-          item.website && 'hover:text-underline',
-        ]"
+        class="font-heading-condensed text-xl leading-none text-secondary-800"
+        :class="[item.website && 'hover:text-underline']"
       >
         <span class="absolute inset-0" />
         {{ item.title }}
       </component>
-      <p class="text-secondary-600 font-serif text-sm" v-html="item.text" />
+      <p class="font-serif text-sm text-secondary-600" v-html="item.text" />
     </div>
   </div>
 </template>

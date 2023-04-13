@@ -29,7 +29,7 @@ function span(width: `${string}/${string}`, columns = 12) {
       >
         <KirbyBlocks
           :blocks="column.blocks"
-          class="prose text-secondary-900 md:font-350 font-serif md:text-xl"
+          class="prose font-serif text-secondary-900 md:text-xl md:font-350"
         />
       </div>
     </section>

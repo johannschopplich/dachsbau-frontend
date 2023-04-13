@@ -20,13 +20,11 @@ setPage(page)
 
 <template>
   <div
-    :class="[
-      'padding-content mx-auto space-y-6 pb-12 pt-36',
-      page?.layouts?.length ? 'max-w-screen-xl' : 'max-w-screen-md',
-    ]"
+    class="mx-auto pb-12 pt-36 space-y-6 padding-content"
+    :class="[page?.layouts?.length ? 'max-w-screen-xl' : 'max-w-screen-md']"
   >
     <h1
-      class="page-title hyphenate md:w-3/4"
+      class="hyphenate md:w-3/4 page-title"
       v-html="page?.title?.replace(/(dachs)$/, '&shy;$1')"
     />
 
@@ -35,7 +33,7 @@ setPage(page)
     <KirbyBlocks
       v-else-if="page?.text?.length"
       :blocks="page.text"
-      class="prose text-secondary-900 md:font-350 font-serif md:text-xl"
+      class="prose font-serif text-secondary-900 md:text-xl md:font-350"
     />
   </div>
 </template>

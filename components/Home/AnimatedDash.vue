@@ -14,7 +14,7 @@ const output = useTransition(strokeDashBase, {
 
 <template>
   <div
-    class="absolute -top-1 left-0 h-full w-full scale-110 opacity-0 group-hover:opacity-100"
+    class="absolute left-0 h-full w-full scale-110 opacity-0 -top-1 group-hover:opacity-100"
     aria-hidden="true"
   >
     <svg

@@ -78,9 +78,10 @@ async function delayedNavigateTo(...args: Parameters<typeof navigateTo>) {
 
 <template>
   <div>
-    <div class="relative h-[var(--h-content)] w-full">
+    <div class="relative h-[var(--content-height)] w-full">
       <div
-        class="top-1/6 md:top-1/10 pointer-events-none absolute inset-x-0 flex translate-y-[calc(100%*var(--screen-ratio))] items-center justify-center"
+        class="pointer-events-none absolute inset-x-0 top-1/6 flex translate-y-$translate items-center justify-center md:top-1/10"
+        style="--translate: calc(100% * var(--screen-ratio))"
         aria-hidden="true"
       >
         <img
@@ -100,43 +101,47 @@ async function delayedNavigateTo(...args: Parameters<typeof navigateTo>) {
       </div>
 
       <div
-        class="padding-content relative mx-auto grid h-full max-w-screen-md grid-rows-[1fr_auto_1fr] gap-4"
+        class="relative grid grid-rows-[1fr_auto_1fr] mx-auto h-full max-w-screen-md gap-4 padding-content"
       >
         <div />
         <p class="title text-center" v-html="page.intro" />
-        <div class="w-2px bg-primary-500 mx-auto"></div>
+        <div class="mx-auto w-2px bg-primary-500"></div>
       </div>
     </div>
 
     <div
-      class="animated-bg-container h-[calc(var(--h)*var(--h-content))] w-full"
+      class="animated-bg-container h-$height w-full"
+      style="--height: calc(var(--h) * var(--content-height))"
       aria-hidden="true"
     >
       <div
-        class="transform-origin-bottom mx-auto flex h-full w-[50vw] scale-[calc(1+0.5*var(--screen-ratio))] items-end overflow-hidden rounded-t-full md:w-[40vw] lg:w-[30vw]"
+        class="mx-auto h-full w-[50vw] flex transform-origin-bottom scale-$scale items-end overflow-hidden rounded-t-full lg:w-[30vw] md:w-[40vw]"
+        style="--scale: calc(1 + 0.5 * var(--screen-ratio))"
       >
         <img
           v-if="page.heroImage"
-          class="h-[calc(200%-(100%*var(--screen-ratio)))] w-full object-cover object-bottom"
+          class="h-$height w-full object-cover object-bottom"
+          style="--height: calc(200% - (100% * var(--screen-ratio)))"
           :srcset="page.heroImage.srcset"
           sizes="
             (min-width: 768px) 50vw,
             100vw"
           alt=""
         />
-        <div v-else class="bg-secondary-400 h-full w-full" />
+        <div v-else class="h-full w-full bg-secondary-400" />
       </div>
     </div>
 
-    <div class="space-y-12 py-12">
+    <div class="py-12 space-y-12">
       <div
-        class="w-2px bg-primary-500 mx-auto h-[calc(0.25*var(--h-content))]"
+        class="mx-auto h-$height w-2px bg-primary-500"
+        style="--height: calc(0.25 * var(--content-height))"
       />
       <p class="title text-center">Angebote</p>
     </div>
 
     <div class="bg-primary-700">
-      <div class="padding-content mx-auto max-w-screen-lg py-12">
+      <div class="mx-auto max-w-screen-lg py-12 padding-content">
         <div class="space-y-12">
           <div
             v-for="(item, index) in page?.children ?? []"
@@ -166,7 +171,7 @@ async function delayedNavigateTo(...args: Parameters<typeof navigateTo>) {
               />
               <div
                 v-else
-                class="handdrawn-mask bg-secondary-400 aspect-[3/2] h-full w-full"
+                class="handdrawn-mask aspect-[3/2] h-full w-full bg-secondary-400"
               />
             </NuxtLink>
 
@@ -179,14 +184,14 @@ async function delayedNavigateTo(...args: Parameters<typeof navigateTo>) {
                   <HomeAnimatedDash :is-active="animationStack.get(index)" />
 
                   <span
-                    class="font-heading-condensed text-secondary-200 relative text-2xl md:text-4xl"
+                    class="relative font-heading-condensed text-2xl text-secondary-200 md:text-4xl"
                   >
                     {{ item.title }}
                   </span>
                 </div>
 
                 <div
-                  class="text-secondary-200 md:font-350 font-serif md:text-xl"
+                  class="font-serif text-secondary-200 md:text-xl md:font-350"
                 >
                   {{ item.description }}
                 </div>
@@ -197,15 +202,15 @@ async function delayedNavigateTo(...args: Parameters<typeof navigateTo>) {
       </div>
     </div>
 
-    <div class="h-[var(--h-content)] w-full">
+    <div class="h-[var(--content-height)] w-full">
       <div
-        class="padding-content mx-auto flex h-full max-w-screen-md items-center justify-end sm:justify-center"
+        class="mx-auto h-full max-w-screen-md flex items-center justify-end sm:justify-center padding-content"
       >
         <div class="flex items-end gap-3 md:gap-12">
           <div>
             <h2 class="title relative mb-6 w-min">
               <img
-                class="pointer-events-none absolute -left-2 right-0 top-1/2 -translate-y-1/2 scale-150"
+                class="pointer-events-none absolute right-0 top-1/2 scale-150 -left-2 -translate-y-1/2"
                 src="~/assets/img/menu-hover-01.svg"
                 alt=""
                 aria-hidden="true"
@@ -213,7 +218,7 @@ async function delayedNavigateTo(...args: Parameters<typeof navigateTo>) {
               <span>Kontakt</span>
             </h2>
             <div
-              class="prose text-secondary-900 md:font-350 font-serif md:text-xl"
+              class="prose font-serif text-secondary-900 md:text-xl md:font-350"
             >
               <p v-html="page.contact" />
             </div>
@@ -221,7 +226,7 @@ async function delayedNavigateTo(...args: Parameters<typeof navigateTo>) {
           <div class="flex-shrink-0">
             <img
               loading="lazy"
-              class="-mb-2 h-[12rem] md:h-[16rem]"
+              class="h-[12rem] -mb-2 md:h-[16rem]"
               src="~/assets/img/dachsbau-mueffels.png"
               alt="Meerschweinchen im Dachsbau"
             />

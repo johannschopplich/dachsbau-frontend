@@ -11,10 +11,7 @@ const { nav } = toRefs(appState)
 const isRedirecting = ref(false)
 
 const isLocked = useScrollLock(appContainer)
-
-const navItems = computed(() =>
-  (site.value.children ?? []).filter((i: Record<string, any>) => i.isListed)
-)
+const navItems = computed(() => site.value.children.filter((i) => i.isListed))
 
 // On Suspense resolved event
 nuxtApp.hook('page:finish', () => {
@@ -45,11 +42,11 @@ async function close(path: string) {
 
 <template>
   <header
-    class="md:right-initial absolute inset-x-4 top-6 flex items-start justify-between sm:inset-x-6"
+    class="absolute inset-x-4 top-6 flex items-start justify-between sm:inset-x-6 md:right-initial"
   >
     <NuxtLink
       to="/"
-      class="text-size-xl text-primary-700 font-heading-condensed md:text-size-2xl group z-10 flex gap-2 leading-none md:leading-tight"
+      class="group z-10 flex gap-2 font-heading-condensed text-size-xl leading-none text-primary-700 md:text-size-2xl md:leading-tight"
     >
       <img
         class="mt-[-0.125em] h-[1em]"
@@ -59,7 +56,7 @@ async function close(path: string) {
 
       <div class="relative">
         <img
-          class="-bottom-1/6 pointer-events-none absolute inset-x-0 opacity-0 group-hover:opacity-100 md:-bottom-1/2"
+          class="pointer-events-none absolute inset-x-0 opacity-0 -bottom-1/6 group-hover:opacity-100 md:-bottom-1/2"
           src="~/assets/img/menu-hover-04.svg"
           alt=""
           aria-hidden="true"
@@ -72,19 +69,15 @@ async function close(path: string) {
     </NuxtLink>
 
     <button
-      :class="[
-        'text-size-xl font-heading-condensed md:text-size-xl group relative z-20 cursor-pointer appearance-none leading-none md:hidden',
-        nav.isOpen ? 'text-white' : 'text-primary-700',
-      ]"
+      class="group relative z-20 cursor-pointer appearance-none font-heading-condensed text-size-xl leading-none md:hidden md:text-size-xl"
+      :class="[nav.isOpen ? 'text-white' : 'text-primary-700']"
       :aria-expanded="nav.isOpen"
       :aria-label="nav.isOpen ? 'Menu schließen' : 'Menu öffnen'"
       @click="toggleMenu()"
     >
       <img
-        :class="[
-          'scale-200 pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100',
-          nav.isOpen && 'hidden',
-        ]"
+        class="pointer-events-none absolute inset-0 scale-200 opacity-0 group-hover:opacity-100"
+        :class="[nav.isOpen && 'hidden']"
         src="~/assets/img/menu-hover-03.svg"
         alt=""
         aria-hidden="true"
@@ -94,17 +87,15 @@ async function close(path: string) {
   </header>
 
   <nav
-    :class="[
-      'navigation bg-primary-600 md:left-initial absolute inset-x-0 top-0 z-10 flex items-center justify-center px-6 md:top-6 md:rounded-none md:bg-transparent',
-      nav.isOpen && 'is-open',
-    ]"
+    class="navigation absolute inset-x-0 top-0 z-10 flex items-center justify-center bg-primary-600 px-6 md:left-initial md:top-6 md:rounded-none md:bg-transparent"
+    :class="[nav.isOpen && 'is-open']"
   >
     <ul class="flex flex-col gap-4 md:flex-row">
       <NuxtLink
         v-for="item in navItems"
         :key="item.id"
         :to="`/${item.id}`"
-        class="text-size-4xl font-heading-condensed hover:text-secondary-600 md:text-size-2xl md:text-primary-700 leading-tight text-white"
+        class="font-heading-condensed text-size-4xl leading-tight text-white md:text-size-2xl hover:text-secondary-600 md:text-primary-700"
         @click="close(`/${item.id}`)"
       >
         {{ item.title }}
@@ -112,8 +103,8 @@ async function close(path: string) {
     </ul>
 
     <div
+      class="pointer-events-none fixed bottom-0 left-6 transition-transform-250 md:hidden"
       :class="[
-        'transition-transform-250 pointer-events-none fixed bottom-0 left-6 md:hidden',
         nav.isOpen
           ? 'rotate-15 transition-delay-250 translate-y-[20%]'
           : 'invisible translate-y-[100%] rotate-0 opacity-0',
