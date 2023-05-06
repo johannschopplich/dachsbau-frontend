@@ -84,7 +84,7 @@ function handleAnchors(
 <template>
   <div ref="content">
     <template v-for="(block, index) in blocks" :key="index">
-      <component :is="blockComponents[block.type]" :block="block" />
+      <component :is="(blockComponents[block.type] as any)" :block="block" />
     </template>
   </div>
 </template>
