@@ -28,7 +28,6 @@ export default defineNuxtConfig({
 
   unocss: {
     preflight: true,
-    wind: true,
   },
 
   nitro: {
