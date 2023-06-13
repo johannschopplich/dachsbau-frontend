@@ -11,7 +11,10 @@ export function usePage<T extends Record<string, any> = Record<string, any>>() {
  * Sets the currently active page and updates the document head
  */
 export function setPage<T extends Record<string, any>>(page?: T) {
-  if (!page) return
+  if (!page) {
+    usePageState().value = 'ready'
+    return
+  }
 
   usePage().value = page
 
