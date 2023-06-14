@@ -7,13 +7,20 @@ const { slug } = useRoute().params
 const pageUri =
   (Array.isArray(slug) ? slug.filter(Boolean).join('/') : slug) || 'home'
 
-let data = (await useKql<KirbyPageResponse>(getPageQuery(pageUri))).data.value
+const { data: pageData } = await useKql<KirbyPageResponse>(
+  getPageQuery(pageUri)
+)
 
+let data = pageData.value
+
+// If page content is empty, load the error page
 if (!data?.result) {
-  data = (await useKql(getPageQuery('error'))).data.value
+  const { data: pageData } = await useKql(getPageQuery('error'))
+  data = pageData.value
   setResponseStatus(useRequestEvent(), 404)
 }
 
+// Store page data
 const page = data?.result
 setPage(page)
 </script>
