@@ -9,15 +9,19 @@ import {
   LazyKirbyBlockSectionBlog,
   LazyKirbyBlockText,
 } from '#components'
-import type { KirbyBlock } from '#nuxt-kql'
+import type { ComponentPublicInstance } from 'vue'
+import type { KirbyBlock } from 'kirby-fest'
 
 defineProps<{
   blocks: KirbyBlock<string>[]
 }>()
 
-type Component = abstract new (...args: any) => any
+type ComponentConstructor<
+  T extends ComponentPublicInstance<Props> = ComponentPublicInstance<any>,
+  Props = any
+> = new (...args: any[]) => T
 
-const blockComponents: Partial<Record<string, Component>> = {
+const blockComponents: Record<string, ComponentConstructor> = {
   heading: LazyKirbyBlockHeading,
   image: LazyKirbyBlockImage,
   line: LazyKirbyBlockLine,
@@ -67,8 +71,8 @@ function handleAnchors(
   ) {
     const url = new URL(link.href)
     const { origin, pathname: path, hash } = url
-
     if (origin !== window.location.origin) return
+
     event.preventDefault()
 
     if (hash && (!path || path === route.path)) {
@@ -84,7 +88,7 @@ function handleAnchors(
 <template>
   <div ref="content">
     <template v-for="(block, index) in blocks" :key="index">
-      <component :is="(blockComponents[block.type] as any)" :block="block" />
+      <component :is="blockComponents[block.type]" :block="block" />
     </template>
   </div>
 </template>
