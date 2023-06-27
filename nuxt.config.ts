@@ -37,6 +37,10 @@ export default defineNuxtConfig({
     },
   },
 
+  experimental: {
+    inlineSSRStyles: false,
+  },
+
   typescript: {
     typeCheck: true,
     shim: false,
