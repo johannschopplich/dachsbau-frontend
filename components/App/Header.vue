@@ -46,7 +46,7 @@ async function close(path: string) {
   >
     <NuxtLink
       to="/"
-      class="group z-10 flex gap-2 font-heading-condensed text-size-xl leading-none text-primary-700 md:text-size-2xl md:leading-tight"
+      class="group z-10 flex gap-2 text-size-xl leading-none font-heading-condensed text-primary-700 md:text-size-2xl md:leading-tight"
     >
       <img
         class="mt-[-0.125em] h-[1em]"
@@ -69,7 +69,7 @@ async function close(path: string) {
     </NuxtLink>
 
     <button
-      class="group relative z-20 cursor-pointer appearance-none font-heading-condensed text-size-xl leading-none md:hidden md:text-size-xl"
+      class="group relative z-20 cursor-pointer appearance-none text-size-xl leading-none font-heading-condensed md:hidden md:text-size-xl"
       :class="[nav.isOpen ? 'text-white' : 'text-primary-700']"
       :aria-expanded="nav.isOpen"
       :aria-label="nav.isOpen ? 'Menu schließen' : 'Menu öffnen'"
@@ -95,7 +95,7 @@ async function close(path: string) {
         v-for="item in navItems"
         :key="item.id"
         :to="`/${item.id}`"
-        class="font-heading-condensed text-size-4xl leading-tight text-white md:text-size-2xl hover:text-secondary-600 md:text-primary-700"
+        class="text-size-4xl leading-tight font-heading-condensed text-white md:text-size-2xl hover:text-secondary-600 md:text-primary-700"
         @click="close(`/${item.id}`)"
       >
         {{ item.title }}

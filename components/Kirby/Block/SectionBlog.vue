@@ -52,14 +52,14 @@ function random() {
         <div class="mt-4 px-2">
           <NuxtLink
             :to="`/${item.id}`"
-            class="font-heading-condensed text-2xl leading-none text-primary-700 group-hover:text-underline"
+            class="text-2xl leading-none font-heading-condensed text-primary-700 group-hover:text-underline"
           >
             <span class="absolute inset-0" />
             {{ item.title }}
           </NuxtLink>
 
           <p
-            class="mt-2 font-serif text-size-base leading-tight text-stone-600"
+            class="mt-2 text-size-base leading-tight font-serif text-stone-600"
           >
             {{ item.description }}
           </p>

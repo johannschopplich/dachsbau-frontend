@@ -41,13 +41,13 @@ const page = usePage()
         :is="item.website ? 'a' : 'p'"
         :href="item.website ? item.website : undefined"
         :target="item.website ? '_blank' : undefined"
-        class="font-heading-condensed text-xl leading-none text-secondary-800"
+        class="text-xl leading-none font-heading-condensed text-secondary-800"
         :class="[item.website && 'hover:text-underline']"
       >
         <span class="absolute inset-0" />
         {{ item.title }}
       </component>
-      <p class="font-serif text-sm text-secondary-600" v-html="item.text" />
+      <p class="text-sm font-serif text-secondary-600" v-html="item.text" />
     </div>
   </div>
 </template>

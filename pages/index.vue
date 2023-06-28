@@ -184,7 +184,7 @@ async function delayedNavigateTo(...args: Parameters<typeof navigateTo>) {
                   <HomeAnimatedDash :is-active="animationStack.get(index)" />
 
                   <span
-                    class="relative font-heading-condensed text-2xl text-secondary-200 md:text-4xl"
+                    class="relative text-2xl font-heading-condensed text-secondary-200 md:text-4xl"
                   >
                     {{ item.title }}
                   </span>
