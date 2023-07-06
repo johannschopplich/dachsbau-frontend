@@ -8,7 +8,7 @@ const pageUri =
   (Array.isArray(slug) ? slug.filter(Boolean).join('/') : slug) || 'home'
 
 const { data: pageData } = await useKql<KirbyPageResponse>(
-  getPageQuery(pageUri)
+  getPageQuery(pageUri),
 )
 
 let data = pageData.value

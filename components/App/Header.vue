@@ -132,7 +132,9 @@ async function close(path: string) {
   }
 
   .navigation.is-open {
-    transition: height 250ms var(--timing-fn), opacity 250ms var(--timing-fn);
+    transition:
+      height 250ms var(--timing-fn),
+      opacity 250ms var(--timing-fn);
   }
 
   .navigation ul {
@@ -143,7 +145,8 @@ async function close(path: string) {
   .navigation.is-open ul {
     opacity: 1;
     transform: translateY(0);
-    transition: transform 250ms var(--timing-fn) 250ms,
+    transition:
+      transform 250ms var(--timing-fn) 250ms,
       opacity 500ms var(--timing-fn) 250ms;
   }
 }

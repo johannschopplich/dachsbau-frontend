@@ -58,7 +58,7 @@ onMounted(() => {
   function setScreenRatioVar() {
     document.documentElement.style.setProperty(
       '--screen-ratio',
-      y.value < height.value ? `${y.value / height.value}` : '1'
+      y.value < height.value ? `${y.value / height.value}` : '1',
     )
   }
 })
