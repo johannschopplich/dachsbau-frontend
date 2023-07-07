@@ -12,7 +12,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      siteUrl: '',
+      siteUrl: 'https://dachsbau-tautenhain.de',
     },
   },
 
@@ -30,19 +30,11 @@ export default defineNuxtConfig({
     preflight: true,
   },
 
-  nitro: {
-    prerender: {
-      // crawlLinks: true,
-      routes: ['/'],
-    },
-  },
-
   experimental: {
     inlineSSRStyles: false,
   },
 
   typescript: {
-    typeCheck: 'build',
     shim: false,
     tsConfig: {
       compilerOptions: {
