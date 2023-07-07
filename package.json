@@ -9,6 +9,8 @@
     "lint": "eslint . --ignore-path .gitignore",
     "lint:fix": "eslint . --fix --ignore-path .gitignore",
     "format": "prettier \"**/*.{css,html,json,md,mjs,ts,vue,yml}\" --write",
+    "format:check": "prettier \"**/*.{css,html,json,md,mjs,ts,vue,yml}\" --check",
+    "test:types": "vue-tsc --noEmit",
     "prepare": "simple-git-hooks && nuxi prepare"
   },
   "lint-staged": {
