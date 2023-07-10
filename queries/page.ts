@@ -17,7 +17,7 @@ export type KirbyPageResponse = KirbyQueryResponse<KirbyPageData>
 
 export function getPageQuery(pageId: string): KirbyQuerySchema {
   return {
-    query: `kirby.page("${pageId}")`,
+    query: `page("${pageId}")`,
     select: {
       id: true,
       intendedTemplate: true,
