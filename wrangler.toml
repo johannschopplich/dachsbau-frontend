@@ -1,6 +1,5 @@
 name = "dachsbau-frontend"
 main = "./.output/server/index.mjs"
-workers_dev = true
 compatibility_date = "2023-07-07"
 
 [site]
