@@ -17,12 +17,12 @@ onClickOutside(appContainer, () => {
   <Html class="min-w-[320px] bg-primary-700" lang="de">
     <Head>
       <Link rel="icon" href="/favicon.png" type="image/png" sizes="32x32" />
-      <Link rel="stylesheet" href="/fonts/Fraunces.css" />
-      <Link rel="stylesheet" href="/fonts/Henrietta.css" />
-      <Link rel="stylesheet" href="/fonts/HenriettaCondensed.css" />
+      <Link rel="stylesheet" href="~/assets/fonts/Fraunces.css" />
+      <Link rel="stylesheet" href="~/assets/fonts/Henrietta.css" />
+      <Link rel="stylesheet" href="~/assets/fonts/HenriettaCondensed.css" />
       <Link
         rel="preload"
-        href="/fonts/VCHenrietta-Regular.woff2"
+        href="~/assets/fonts/VCHenrietta-Regular.woff2"
         as="font"
         type="font/woff2"
         crossorigin="anonymous"
