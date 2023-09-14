@@ -6,7 +6,6 @@ export default defineNuxtConfig({
     '@unocss/nuxt',
     '@vueuse/nuxt',
     'nuxt-kql',
-    'nuxt-schema-org',
     'nuxt-simple-robots',
   ],
 
@@ -31,16 +30,12 @@ export default defineNuxtConfig({
   },
 
   experimental: {
+    typescriptBundlerResolution: true,
     inlineSSRStyles: false,
   },
 
   typescript: {
     typeCheck: 'build',
     shim: false,
-    tsConfig: {
-      compilerOptions: {
-        moduleResolution: 'bundler',
-      },
-    },
   },
 })
