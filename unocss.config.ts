@@ -1,7 +1,7 @@
 import { defineConfig, presetWind, transformerDirectives } from 'unocss'
-import { theme as themeWind } from '@unocss/preset-wind'
+import type { Theme } from '@unocss/preset-wind'
 
-export default defineConfig({
+export default defineConfig<Theme>({
   theme: {
     // Color combination: https://coolors.co/3a455b-e7e6d1-f08a4b-9e2b25-646f4b
     colors: {
@@ -33,9 +33,10 @@ export default defineConfig({
       },
     },
     fontFamily: {
-      heading: `Henrietta,${themeWind?.fontFamily?.sans}`,
-      'heading-condensed': `Henrietta Condensed,${themeWind?.fontFamily?.sans}`,
-      serif: 'Fraunces,serif',
+      heading: 'Henrietta, ui-sans-serif, system-ui, sans-serif',
+      'heading-condensed':
+        'Henrietta Condensed, ui-sans-serif, system-ui, sans-serif',
+      serif: 'Fraunces, serif',
     },
   },
   rules: [
