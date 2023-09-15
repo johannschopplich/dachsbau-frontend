@@ -1,5 +1,9 @@
-import type { KirbyQuerySchema } from '#nuxt-kql'
-import type { KirbyBlock, KirbyLayout, KirbyQueryResponse } from '#nuxt-kql'
+import type {
+  KirbyBlock,
+  KirbyLayout,
+  KirbyQueryResponse,
+  KirbyQuerySchema,
+} from '#nuxt-kql'
 
 export interface KirbyPageData {
   id: string
