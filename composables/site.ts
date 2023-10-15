@@ -1,4 +1,4 @@
-import { kirbySite } from '#build/kql'
+import { kirbySite } from '#nuxt-kql'
 
 /**
  * Access the global site context, similar to Kirby's `$site` global variable
