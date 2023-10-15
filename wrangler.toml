@@ -1,5 +1,7 @@
 name = "dachsbau-frontend"
 main = "./.output/server/index.mjs"
+# Disable `*.workers.dev` subdomain
+workers_dev = false
 compatibility_date = "2023-07-07"
 
 [site]
