@@ -159,7 +159,8 @@ async function delayedNavigateTo(...args: Parameters<typeof navigateTo>) {
 
             <NuxtLink
               :to="`/${item.id}`"
-              :class="['sm:w-1/2', index % 2 === 1 && 'sm:order-2']"
+              class="sm:w-1/2"
+              :class="[index % 2 === 1 && 'sm:order-2']"
               :aria-label="item.title"
             >
               <img
