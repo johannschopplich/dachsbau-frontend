@@ -43,6 +43,7 @@ const animationStack = reactive(new Map<number, boolean>())
 
 onMounted(() => {
   const { height } = useWindowSize()
+  const { pause, resume } = useRafFn(setScreenRatioVar, { immediate: false })
   const { y } = useScroll(appContainer, {
     onScroll() {
       resume()
@@ -52,7 +53,6 @@ onMounted(() => {
     },
   })
 
-  const { pause, resume } = useRafFn(setScreenRatioVar, { immediate: false })
   setScreenRatioVar()
 
   function setScreenRatioVar() {
