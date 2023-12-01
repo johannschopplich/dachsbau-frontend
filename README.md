@@ -24,4 +24,4 @@ All illustrations are drawn by the talented artist [Julia Frank](https://www.ins
 
 The code is licensed under [MIT](./LICENSE), words and images are licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
-© 2022-present [Johann Schopplich](https://github.com/johannschopplich) & [Julia Frank](https://www.instagram.com/mum.mal.mini/)
+© 2022-PRESENT [Johann Schopplich](https://github.com/johannschopplich) & [Julia Frank](https://www.instagram.com/mum.mal.mini/)
