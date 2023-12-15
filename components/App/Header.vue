@@ -46,7 +46,7 @@ async function close(path: string) {
   >
     <NuxtLink
       to="/"
-      class="group z-10 flex gap-2 text-size-xl leading-none font-heading-condensed text-primary-700 md:text-size-2xl md:leading-tight"
+      class="group z-10 flex gap-2 text-size-xl text-primary-700 leading-none font-heading-condensed md:text-size-2xl md:leading-tight"
     >
       <img
         class="mt-[-0.125em] h-[1em]"
@@ -95,7 +95,7 @@ async function close(path: string) {
         v-for="item in navItems"
         :key="item.id"
         :to="`/${item.id}`"
-        class="text-size-4xl leading-tight font-heading-condensed text-white md:text-size-2xl hover:text-secondary-600 md:text-primary-700"
+        class="text-size-4xl text-white leading-tight font-heading-condensed md:text-size-2xl hover:text-secondary-600 md:text-primary-700"
         @click="close(`/${item.id}`)"
       >
         {{ item.title }}

@@ -185,14 +185,14 @@ async function delayedNavigateTo(...args: Parameters<typeof navigateTo>) {
                   <HomeAnimatedDash :is-active="animationStack.get(index)" />
 
                   <span
-                    class="relative text-2xl font-heading-condensed text-secondary-200 md:text-4xl"
+                    class="relative text-2xl text-secondary-200 font-heading-condensed md:text-4xl"
                   >
                     {{ item.title }}
                   </span>
                 </div>
 
                 <div
-                  class="font-serif text-secondary-200 md:text-xl md:font-350"
+                  class="text-secondary-200 font-serif md:text-xl md:font-350"
                 >
                   {{ item.description }}
                 </div>
@@ -219,7 +219,7 @@ async function delayedNavigateTo(...args: Parameters<typeof navigateTo>) {
               <span>Kontakt</span>
             </h2>
             <div
-              class="prose font-serif text-secondary-900 md:text-xl md:font-350"
+              class="prose text-secondary-900 font-serif md:text-xl md:font-350"
             >
               <p v-html="page.contact" />
             </div>

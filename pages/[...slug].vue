@@ -40,7 +40,7 @@ setPage(page)
     <KirbyBlocks
       v-else-if="page?.text?.length"
       :blocks="page.text"
-      class="prose font-serif text-secondary-900 md:text-xl md:font-350"
+      class="prose text-secondary-900 font-serif md:text-xl md:font-350"
     />
   </div>
 </template>

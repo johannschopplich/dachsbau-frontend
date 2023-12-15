@@ -9,7 +9,7 @@ const site = useSite()
         v-for="item in site.footer"
         :key="item.id"
         :to="`/${item.id}`"
-        class="text-lg font-heading-condensed text-primary-700 md:text-xl hover:text-secondary-500"
+        class="text-lg text-primary-700 font-heading-condensed md:text-xl hover:text-secondary-500"
       >
         {{ item.title }}
       </NuxtLink>
