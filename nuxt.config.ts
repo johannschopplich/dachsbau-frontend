@@ -6,7 +6,6 @@ export default defineNuxtConfig({
     '@unocss/nuxt',
     '@vueuse/nuxt',
     'nuxt-kql',
-    'nuxt-simple-robots',
   ],
 
   runtimeConfig: {
@@ -29,10 +28,8 @@ export default defineNuxtConfig({
     preflight: true,
   },
 
-  experimental: {
+  future: {
     typescriptBundlerResolution: true,
-    inlineSSRStyles: false,
-    headNext: true,
   },
 
   typescript: {
