@@ -1,12 +1,7 @@
 import { siteQuery } from './queries'
 
 export default defineNuxtConfig({
-  modules: [
-    '@nuxtjs/plausible',
-    '@unocss/nuxt',
-    '@vueuse/nuxt',
-    'nuxt-kql',
-  ],
+  modules: ['@nuxtjs/plausible', '@unocss/nuxt', '@vueuse/nuxt', 'nuxt-kql'],
 
   runtimeConfig: {
     public: {
