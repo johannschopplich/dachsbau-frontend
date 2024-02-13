@@ -34,7 +34,7 @@ const router = useRouter()
 const route = useRoute()
 const content = ref<HTMLElement | undefined>()
 
-if (process.client) {
+if (import.meta.client) {
   useEventListener(window, 'hashchange', navigate)
   useEventListener(content, 'click', handleAnchors)
 }

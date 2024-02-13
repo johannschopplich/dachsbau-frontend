@@ -35,7 +35,7 @@ const { data } = await useKql({
 const page = data.value?.result
 setPage(page)
 
-const isTouchscreen = process.client
+const isTouchscreen = import.meta.client
   ? matchMedia('(hover: none), (pointer: coarse)').matches
   : false
 const appContainer = useAppContainer()
