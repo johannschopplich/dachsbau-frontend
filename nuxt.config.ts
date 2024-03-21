@@ -22,9 +22,4 @@ export default defineNuxtConfig({
   unocss: {
     preflight: true,
   },
-
-  typescript: {
-    typeCheck: 'build',
-    shim: false,
-  },
 })
