@@ -1,4 +1,6 @@
 import { joinURL } from 'ufo'
+import type { HookResult } from '@nuxt/schema'
+import type { KirbyPageData } from '~/queries'
 
 /**
  * Returns the currently active page, similar to Kirby's `$page` global variable
@@ -10,14 +12,9 @@ export function usePage<T extends Record<string, any> = Record<string, any>>() {
 /**
  * Sets the currently active page and updates the document head
  */
-export function setPage<T extends Record<string, any>>(page?: T) {
-  const pageState = usePageState()
-
-  if (!page) {
-    pageState.value = 'rejected'
-    return
-  }
-
+export function setPage<T extends KirbyPageData & Record<string, any>>(
+  page: T,
+) {
   usePage().value = page
 
   // Build the page meta tags
@@ -57,23 +54,49 @@ export function setPage<T extends Record<string, any>>(page?: T) {
     ...(image && { twitterImage: image }),
   })
 
-  pageState.value = 'resolved'
+  // Resolve components that depend on the full page data
+  const nuxtApp = useNuxtApp()
+  nuxtApp._pageDependenciesRendered = true
+  return nuxtApp.callHook('page-dependencies:rendered')
 }
 
 /**
- * Returns a promise that resolves when the page data has been loaded or rejected
+ * Returns a promise that resolves when the page setup is complete
  */
 export async function hasPage() {
-  const state = usePageState()
+  if (import.meta.server) {
+    const nuxtApp = useNuxtApp()
+    const error = useError()
 
-  await until(state).not.toBe('pending')
+    // Defer rendering the component until the page component has rendered
+    return new Promise<void>((resolve) => {
+      const resolver = () => {
+        resolve()
+      }
 
-  return state.value === 'resolved'
+      // If Nuxt has an error, immediately render the component
+      if (error.value) {
+        return resolver()
+      }
+
+      if (nuxtApp._pageDependenciesRendered) {
+        return resolver()
+      }
+
+      // Called manually by using the `setPage` composable
+      nuxtApp.hooks.hookOnce('page-dependencies:rendered', resolver)
+
+      // When any error happens, resolve
+      nuxtApp.hooks.hookOnce('app:error', resolver)
+      nuxtApp.hooks.hookOnce('vue:error', resolver)
+    })
+  }
+
+  return Promise.resolve()
 }
 
-function usePageState() {
-  return useState<'pending' | 'resolved' | 'rejected'>(
-    'app.state.page',
-    () => 'pending',
-  )
+declare module '#app' {
+  interface RuntimeNuxtHooks {
+    'page-dependencies:rendered': () => HookResult
+  }
 }

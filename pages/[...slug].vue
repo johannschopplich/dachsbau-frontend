@@ -23,7 +23,7 @@ if (!data?.result) {
 
 // Store page data
 const page = data?.result
-setPage(page)
+setPage(page!)
 </script>
 
 <template>
