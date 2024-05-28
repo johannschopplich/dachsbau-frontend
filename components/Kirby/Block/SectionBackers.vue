@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { KirbyBlock } from '#nuxt-kql'
+import type { ResolvedKirbyImage } from '~/types/kirby'
 
 defineProps<{
   block: KirbyBlock<
@@ -11,29 +12,35 @@ defineProps<{
         text: string
         logo: string[]
       }[]
+      resolved?: {
+        backers: {
+          title: string
+          website: string
+          text: string
+          logo: ResolvedKirbyImage | null
+        }[]
+      }
     }
   >
 }>()
-
-const page = usePage()
 </script>
 
 <template>
   <div class="not-prose grid grid-cols-2 gap-2 md:grid-cols-3">
     <div
-      v-for="(item, index) in block.content.backers"
+      v-for="(item, index) in block.content.resolved?.backers"
       :key="index"
       class="handdrawn-mask relative bg-secondary-100 p-3"
     >
       <div class="mb-2 flex justify-center">
-        <KirbyUuidResolver
-          v-if="item.logo?.length"
-          v-slot="{ item: image }"
-          :collection="page.images"
-          :uuid="item.logo[0]"
-        >
-          <img class="h-10" :src="image.url" :alt="`Logo von ${item.title}`" />
-        </KirbyUuidResolver>
+        <img
+          v-if="item.logo"
+          class="h-10 object-contain"
+          :width="item.logo.width"
+          :height="item.logo.height"
+          :src="item.logo.url"
+          :alt="`Logo von ${item.title}`"
+        />
         <div v-else class="h-10" />
       </div>
 
