@@ -27,6 +27,7 @@
     "lint-staged": "^15.2.4",
     "nuxt": "^3.11.2",
     "nuxt-kql": "^1.4.17",
+    "nuxt-lcp-speedup": "^0.8.1",
     "prettier": "^3.2.5",
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.4.5",

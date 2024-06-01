@@ -34,7 +34,7 @@ defineProps<{
     >
       <div class="mb-2 flex justify-center">
         <img
-          v-if="item.logo"
+          v-if="item.logo?.url"
           class="h-10 object-contain"
           :width="item.logo.width"
           :height="item.logo.height"

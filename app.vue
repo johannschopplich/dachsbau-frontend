@@ -10,7 +10,7 @@ import '~/assets/fonts/HenriettaCondensed.css'
 const appState = useAppState()
 const appContainer = useAppContainer()
 
-useHead({
+useServerHead({
   htmlAttrs: {
     class: 'min-w-[320px] bg-primary-700',
     lang: 'de',
