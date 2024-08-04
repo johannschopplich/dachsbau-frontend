@@ -1,11 +1,13 @@
 import { siteQuery } from './queries'
 
 export default defineNuxtConfig({
+  compatibilityDate: '2024-07-10',
+
   modules: [
     '@nuxtjs/plausible',
     '@unocss/nuxt',
     '@vueuse/nuxt',
-    'nuxt-lcp-speedup',
+    'nuxt-vitalizer',
     'nuxt-kql',
   ],
 
