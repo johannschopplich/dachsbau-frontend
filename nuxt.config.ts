@@ -1,7 +1,7 @@
 import { siteQuery } from './queries'
 
 export default defineNuxtConfig({
-  compatibilityDate: '2024-07-10',
+  compatibilityDate: '2024-04-03',
 
   modules: [
     '@nuxtjs/plausible',
