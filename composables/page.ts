@@ -1,5 +1,5 @@
-import { joinURL } from 'ufo'
 import type { HookResult } from '@nuxt/schema'
+import { joinURL } from 'ufo'
 import type { KirbyPageData } from '~/queries'
 
 /**
