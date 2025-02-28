@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { getPageQuery } from '~/queries'
 import type { KirbyPageResponse } from '~/queries'
+import { getPageQuery } from '~/queries'
 
 // Use current slug or fall back to the homepage
 const { slug } = useRoute().params

@@ -1,6 +1,6 @@
 import type { HookResult } from '@nuxt/schema'
-import { joinURL } from 'ufo'
 import type { KirbyPageData } from '~/queries'
+import { joinURL } from 'ufo'
 
 /**
  * Returns the currently active page, similar to Kirby's `$page` global variable

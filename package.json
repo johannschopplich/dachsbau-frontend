@@ -1,7 +1,7 @@
 {
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@9.11.0",
+  "packageManager": "pnpm@10.5.2",
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
@@ -15,22 +15,29 @@
     "prepare": "nuxi prepare"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.7.1",
-    "@nuxtjs/plausible": "^1.0.2",
+    "@antfu/eslint-config": "^4.3.0",
+    "@nuxtjs/plausible": "^1.2.0",
     "@sindresorhus/slugify": "^2.2.1",
-    "@types/node": "^20.16.6",
-    "@unocss/eslint-config": "^0.62.4",
-    "@unocss/nuxt": "^0.62.4",
-    "@unocss/preset-wind": "^0.62.4",
-    "@vueuse/nuxt": "^11.1.0",
-    "eslint": "^9.11.1",
-    "nuxt": "^3.13.2",
-    "nuxt-kql": "^1.5.2",
+    "@types/node": "^22.13.5",
+    "@unocss/eslint-config": "^65.5.0",
+    "@unocss/nuxt": "^65.5.0",
+    "@unocss/preset-wind": "^65.5.0",
+    "@vueuse/nuxt": "^12.7.0",
+    "eslint": "^9.21.0",
+    "nuxt": "^3.15.4",
+    "nuxt-kql": "^1.5.4",
     "nuxt-vitalizer": "^0.10.0",
-    "prettier": "^3.3.3",
-    "typescript": "^5.5.4",
-    "unocss": "^0.62.4",
+    "prettier": "^3.5.2",
+    "typescript": "^5.7.3",
+    "unocss": "^65.5.0",
     "vue-router-better-scroller": "^0.0.0",
-    "vue-tsc": "^2.1.6"
+    "vue-tsc": "^2.2.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "esbuild",
+      "vue-demi"
+    ]
   }
 }
