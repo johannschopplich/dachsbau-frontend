@@ -1,0 +1,40 @@
+.prose {
+  & :where(h1, h2, h3, h4, h5, h6):not(:where(.not-prose, .not-prose *)) {
+    --at-apply: 'text-secondary-600 font-heading font-400';
+  }
+
+  & :where(a):not(:where(.not-prose, .not-prose *)) {
+    text-decoration-line: underline;
+    text-decoration-color: var(--colors-primary-600);
+    text-decoration-thickness: var(--decoration-width);
+    text-underline-offset: var(--decoration-width);
+  }
+
+  & :where(a:hover):not(:where(.not-prose, .not-prose *)) {
+    --at-apply: 'text-primary-500 decoration-current';
+  }
+
+  & :where(a code):not(:where(.not-prose, .not-prose *)) {
+    --at-apply: 'text-primary-500';
+    text-decoration-line: none;
+  }
+
+  &
+    :where(figure.outset, figure.emphasized):not(
+      :where(.not-prose, .not-prose *)
+    ) {
+    --at-apply: 'md:mx-[-2rem]';
+  }
+
+  & :where(figure.pulled-left):not(:where(.not-prose, .not-prose *)) {
+    --at-apply: 'sm:float-left sm:mr-[1.25rem] sm:w-[45%] lg:ml-[-2rem]';
+  }
+
+  & :where(figure.pulled-right):not(:where(.not-prose, .not-prose *)) {
+    --at-apply: 'sm:float-right sm:ml-[1.25rem] sm:w-[45%] lg:mr-[-2rem]';
+  }
+
+  & :where(figcaption):not(:where(.not-prose, .not-prose *)) {
+    --at-apply: 'text-secondary-700 text-size-[0.75em] text-right';
+  }
+}

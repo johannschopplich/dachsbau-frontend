@@ -2,9 +2,9 @@
 
 Frontend for [Dachsbau Tautenhain](https://dachsbau-tautenhain.de). The backend code can be found [on GitHub as well](https://github.com/johannschopplich/dachsbau-backend).
 
-This repository uses Nuxt 3 for the frontend and fetches content from a [headless Kirby](https://github.com/johannschopplich/kirby-headless-starter) instance. The frontend is built upon the [Cacao Kit](https://github.com/johannschopplich/cacao-kit-frontend).
+This repository uses Nuxt 4 for the frontend and fetches content from a [headless Kirby](https://github.com/johannschopplich/kirby-headless-starter) instance. The frontend is built upon the [Cacao Kit](https://github.com/johannschopplich/cacao-kit-frontend).
 
-This website was created for one of my best friends to help her with her new venture of starting her own business. I created [`nuxt-kql`](https://nuxt-kql.byjohann.dev) in the process, since I really wanted to try out Kirby in a headless environment.
+This website was created for one of my best friends to help her with her new venture of starting her own business. It now uses [`nuxt-kirby`](https://nuxt-kirby.byjohann.dev) and [`kirby-types`](https://github.com/johannschopplich/kirby-types) for the headless Kirby integration.
 
 All illustrations are drawn by the talented artist [Julia Frank](https://www.instagram.com/mum.mal.mini/).
 

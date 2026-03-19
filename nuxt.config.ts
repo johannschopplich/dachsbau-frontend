@@ -1,9 +1,9 @@
-import { siteQuery } from './queries'
+import { siteQuery } from './app/queries'
 
 export default defineNuxtConfig({
-  compatibilityDate: '2025-01-01',
+  compatibilityDate: '2025-08-01',
 
-  modules: ['@unocss/nuxt', '@vueuse/nuxt', 'nuxt-vitalizer', 'nuxt-kql'],
+  modules: ['@unocss/nuxt', '@vueuse/nuxt', 'nuxt-kirby'],
 
   runtimeConfig: {
     public: {
@@ -11,11 +11,8 @@ export default defineNuxtConfig({
     },
   },
 
-  kql: {
-    // Enable token-based authentication
+  kirby: {
     auth: 'bearer',
-
-    // Prefetch queries at build-time
     prefetch: {
       kirbySite: siteQuery,
     },
