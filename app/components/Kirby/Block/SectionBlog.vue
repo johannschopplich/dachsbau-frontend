@@ -22,12 +22,13 @@ function random() {
     <div
       v-for="(item, index) in data?.result"
       :key="index"
-      class="transform relative"
+      class="transform transition-transform duration-300 ease-out relative hover:rotate-0 hover:scale-102"
       :style="`--un-rotate: ${random()}deg`"
     >
       <div class="group p-4 pt-6 bg-secondary-100 handdrawn-mask">
-        <img
+        <AppImage
           v-if="item.cover"
+          loading="lazy"
           class="w-full aspect-[3/2] object-cover handdrawn-mask"
           :srcset="item.cover.srcset"
           :width="item.cover.width"

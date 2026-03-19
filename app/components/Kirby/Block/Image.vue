@@ -30,7 +30,8 @@ const image = computed<Partial<ResolvedKirbyImage>>(
 
 <template>
   <figure ref="figure" :class="[block.content.size]">
-    <img
+    <AppImage
+      loading="lazy"
       class="handdrawn-mask"
       :src="block.content.location === 'web' ? block.content.src : undefined"
       :srcset="image.srcset"

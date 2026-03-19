@@ -23,6 +23,8 @@ const appContainer = useAppContainer()
 const animationStack = reactive(new Map<number, boolean>())
 
 onMounted(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
   const { height } = useWindowSize()
   const { pause, resume } = useRafFn(setScreenRatioVar, { immediate: false })
   const { y } = useScroll(appContainer, {
@@ -144,13 +146,14 @@ async function delayedNavigateTo(...args: Parameters<typeof navigateTo>) {
 
             <NuxtLink
               :to="`/${item.uri}`"
-              class="sm:w-1/2"
+              class="overflow-hidden sm:w-1/2"
               :class="[index % 2 === 1 && 'sm:order-2']"
               :aria-label="item.title"
             >
-              <img
+              <AppImage
                 v-if="item.cover"
-                class="w-full aspect-[3/2] object-cover handdrawn-mask"
+                loading="lazy"
+                class="w-full aspect-[3/2] transition-transform duration-500 ease-out object-cover handdrawn-mask group-hover:scale-105"
                 :srcset="item.cover.srcset"
                 sizes="(min-width: 768px) 32rem, (min-width: 640px) 50vw, 100vw"
                 :alt="`Titelbild für ${item.title}`"
