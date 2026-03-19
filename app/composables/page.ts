@@ -20,9 +20,9 @@ export function setPage<T extends KirbySharedPageData & Record<string, any>>(
   // Build the page meta tags
   const { siteUrl } = useRuntimeConfig().public
   const site = useSite()
-  const title = page.title
-    ? `${page.title} – ${site.value.title}`
-    : site.value.title
+  const title =
+    page.customTitle ||
+    (page.title ? `${page.title} – ${site.value.title}` : site.value.title)
   const description = page.description || site.value.description
   const url = joinURL(siteUrl, useRoute().path)
   const image = page?.cover?.url || site.value.cover?.url
@@ -33,26 +33,28 @@ export function setPage<T extends KirbySharedPageData & Record<string, any>>(
     },
   })
 
-  useServerHead({
-    link: [{ rel: 'canonical', href: url }],
-  })
-
   useSeoMeta({
     title,
   })
 
-  useServerSeoMeta({
-    description,
-    ogTitle: title,
-    ogDescription: description,
-    ogUrl: url,
-    ogType: 'website',
-    ...(image && { ogImage: image }),
-    twitterTitle: title,
-    twitterDescription: description,
-    twitterCard: image ? 'summary_large_image' : 'summary',
-    ...(image && { twitterImage: image }),
-  })
+  if (import.meta.server) {
+    useHead({
+      link: [{ rel: 'canonical', href: url }],
+    })
+
+    useSeoMeta({
+      description,
+      ogTitle: title,
+      ogDescription: description,
+      ogUrl: url,
+      ogType: 'website',
+      ...(image && { ogImage: image }),
+      twitterTitle: title,
+      twitterDescription: description,
+      twitterCard: image ? 'summary_large_image' : 'summary',
+      ...(image && { twitterImage: image }),
+    })
+  }
 
   // Resolve components that depend on the full page data
   const nuxtApp = useNuxtApp()

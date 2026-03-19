@@ -47,10 +47,17 @@ onClickOutside(appContainer, () => {
   >
     <NuxtLoadingIndicator color="#5A6B8D" />
 
+    <a
+      href="#main-content"
+      class="sr-only focus:text-xl focus:text-primary-700 focus:font-heading-condensed focus:left-6 focus:top-6 focus:fixed focus:z-50 focus:not-sr-only focus:text-underline"
+    >
+      Zum Inhalt springen
+    </a>
+
     <div class="h-full relative">
       <AppHeader />
 
-      <main>
+      <main id="main-content" tabindex="-1">
         <NuxtPage />
       </main>
 

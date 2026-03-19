@@ -33,7 +33,7 @@ function random() {
           :width="item.cover.width"
           :height="item.cover.height"
           sizes="(min-width: 768px) 16rem, (min-width: 640px) 50vw, 100vw"
-          alt=""
+          :alt="`Titelbild für ${item.title}`"
         />
         <div
           v-else

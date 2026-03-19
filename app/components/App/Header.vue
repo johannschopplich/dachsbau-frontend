@@ -20,6 +20,14 @@ nuxtApp.hook('page:finish', () => {
   isRedirecting.value = false
 })
 
+// Close menu on Escape key
+useEventListener('keydown', (event: KeyboardEvent) => {
+  if (event.key === 'Escape' && nav.value.isOpen) {
+    nav.value.isOpen = false
+    isLocked.value = false
+  }
+})
+
 function toggleMenu() {
   appContainer.value?.scrollTo({ top: 0 })
   isLocked.value = !isLocked.value
@@ -74,6 +82,7 @@ async function close(path: string) {
       class="group text-size-xl leading-none font-heading-condensed appearance-none cursor-pointer relative z-20 md:text-size-xl md:hidden"
       :class="[nav.isOpen ? 'text-white' : 'text-primary-700']"
       :aria-expanded="nav.isOpen"
+      aria-controls="main-navigation"
       :aria-label="nav.isOpen ? 'Menu schließen' : 'Menu öffnen'"
       @click="toggleMenu()"
     >
@@ -89,19 +98,22 @@ async function close(path: string) {
   </header>
 
   <nav
+    id="main-navigation"
+    aria-label="Hauptnavigation"
     class="navigation px-6 bg-primary-600 flex items-center inset-x-0 top-0 justify-center absolute z-10 md:rounded-none md:bg-transparent md:left-initial md:top-6"
     :class="[nav.isOpen && 'is-open']"
   >
     <ul class="flex flex-col gap-4 md:flex-row">
-      <NuxtLink
-        v-for="item in navItems"
-        :key="item.uri"
-        :to="`/${item.uri}`"
-        class="text-size-4xl text-white leading-tight font-heading-condensed md:text-size-2xl hover:text-secondary-600 md:text-primary-700"
-        @click="close(`/${item.uri}`)"
-      >
-        {{ item.title }}
-      </NuxtLink>
+      <li v-for="item in navItems" :key="item.uri">
+        <NuxtLink
+          :to="`/${item.uri}`"
+          :aria-current="route.path === `/${item.uri}` ? 'page' : undefined"
+          class="text-size-4xl text-white leading-tight font-heading-condensed md:text-size-2xl hover:text-secondary-600 md:text-primary-700"
+          @click="close(`/${item.uri}`)"
+        >
+          {{ item.title }}
+        </NuxtLink>
+      </li>
     </ul>
 
     <div

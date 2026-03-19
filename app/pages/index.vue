@@ -44,10 +44,7 @@ onMounted(() => {
   }
 })
 
-/**
- * Delay the navigation to the next page by 500ms on mobile devices to allow
- * the animation to finish
- */
+/** Delays navigation on touch devices to let animations complete. */
 async function delayedNavigateTo(...args: Parameters<typeof navigateTo>) {
   if (isTouchscreen) {
     await promiseTimeout(500)
@@ -59,6 +56,8 @@ async function delayedNavigateTo(...args: Parameters<typeof navigateTo>) {
 
 <template>
   <div>
+    <h1 class="sr-only">Dachsbau Tautenhain</h1>
+
     <div class="h-[var(--content-height)] w-full relative">
       <div
         class="flex pointer-events-none translate-y-$translate items-center inset-x-0 top-1/6 justify-center absolute md:top-1/10"
