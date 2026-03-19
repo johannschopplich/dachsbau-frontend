@@ -17,8 +17,4 @@ export default defineNuxtConfig({
       kirbySite: siteQuery,
     },
   },
-
-  unocss: {
-    preflight: true,
-  },
 })
