@@ -9,11 +9,10 @@ onMounted(() => {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return
   if (img.value.complete && img.value.naturalWidth > 0) return
 
-  img.value.style.opacity = '0'
-
   img.value.addEventListener(
     'load',
     async () => {
+      img.value!.style.opacity = '0'
       const animation = img.value!.animate([{ opacity: 0 }, { opacity: 1 }], {
         duration: 400,
         easing: 'ease',
@@ -25,16 +24,9 @@ onMounted(() => {
     { once: true },
   )
 
-  img.value.addEventListener(
-    'error',
-    () => {
-      img.value!.style.opacity = ''
-    },
-    { once: true },
-  )
 })
 </script>
 
 <template>
-  <img ref="img" v-bind="$attrs" />
+  <img ref="img" class="bg-secondary-200" v-bind="$attrs" />
 </template>
