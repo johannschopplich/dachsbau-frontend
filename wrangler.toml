@@ -1,4 +1,13 @@
 name = "dachsbau"
-pages_build_output_dir = "./dist"
-compatibility_date = "2025-08-01"
+main = "./.output/server/index.mjs"
+compatibility_date = "2026-01-01"
 compatibility_flags = ["nodejs_compat", "no_nodejs_compat_v2"]
+
+[[routes]]
+pattern = "dachsbau-tautenhain.de"
+custom_domain = true
+
+[assets]
+directory = "./.output/public"
+not_found_handling = "single-page-application"
+binding = "ASSETS"
