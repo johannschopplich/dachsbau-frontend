@@ -23,7 +23,6 @@ onMounted(() => {
     },
     { once: true },
   )
-
 })
 </script>
 
