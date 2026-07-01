@@ -1,27 +1,51 @@
-# Dachsbau Frontend
+<div align="center">
 
-Frontend for [Dachsbau Tautenhain](https://dachsbau-tautenhain.de). The backend code can be found [on GitHub as well](https://github.com/johannschopplich/dachsbau-backend).
+# Dachsbau Tautenhain
 
-This repository uses Nuxt 4 for the frontend and fetches content from a [headless Kirby](https://github.com/johannschopplich/kirby-headless-starter) instance. The frontend is built upon the [Cacao Kit](https://github.com/johannschopplich/cacao-kit-frontend).
+Frontend for [dachsbau-tautenhain.de](https://dachsbau-tautenhain.de) – Nuxt on a headless Kirby.
 
-This website was created for one of my best friends to help her with her new venture of starting her own business. It now uses [`nuxt-kirby`](https://nuxt-kirby.byjohann.dev) and [`kirby-types`](https://github.com/johannschopplich/kirby-types) for the headless Kirby integration.
+[Website](https://dachsbau-tautenhain.de) •
+[Backend](https://github.com/johannschopplich/dachsbau-backend)
 
-All illustrations are drawn by the talented artist [Julia Frank](https://www.instagram.com/mum.mal.mini/).
+</div>
 
-## Prerequisites
+## Why
 
-> [📖 Head over to the Kirby Nuxt Starterkit](https://github.com/johannschopplich/kirby-nuxt-starterkit)
+Madlen – one of my closest friends – moved into the Dachsbau in Tautenhain to bundle her skills in one place and turn her passion into a profession. She asked Julia Frank and me to design the Dachsbau concept and build her website: Julia drew the illustrations, from the abstracted four-sided farmstead down to the badger lying in the corner of the screen, and I did code and photography.
 
-## Setup
+The site doubled as a prototype for a best-practice headless Kirby + Nuxt integration: the [kirby-headless-starter](https://github.com/johannschopplich/kirby-headless-starter) and [nuxt-kql](https://nuxt-kql.byjohann.dev) (today [Nuxt Kirby](https://nuxt-kirby.byjohann.dev)) grew out of it.
 
-> [📖 Head over to the Kirby Nuxt Starterkit](https://github.com/johannschopplich/kirby-nuxt-starterkit)
+## How It's Built
 
-## Credits
+- [Nuxt 4](https://nuxt.com) – SSR frontend, deployed to [Cloudflare Workers](https://workers.cloudflare.com)
+- [UnoCSS](https://unocss.dev) + [VueUse](https://vueuse.org) – styling and composables
+- [Nuxt Kirby](https://nuxt-kirby.byjohann.dev) + [kirby-types](https://github.com/johannschopplich/kirby-types) – typed KQL queries against the [headless Kirby backend](https://github.com/johannschopplich/dachsbau-backend)
+- [Cacao Kit](https://github.com/johannschopplich/cacao-kit-frontend) as the base – block-first rendering via a catch-all route
 
-- Illustrations done by the great artist (and one of my favorite person in the world) [Julia Frank](https://www.instagram.com/extra.wagon/).
+## Development
+
+1. Create your `.env` from the example and point it at the backend (`KIRBY_BASE_URL`, `KIRBY_API_TOKEN`):
+
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   pnpm run dev
+   ```
+
+Build with `pnpm run build`. Deployment targets Cloudflare Workers via [`wrangler.toml`](./wrangler.toml).
 
 ## License
 
-The code is licensed under [MIT](./LICENSE), words and images are licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+The code is licensed under [MIT](./LICENSE); words and images are licensed under [CC BY-NC-SA 4.0](./CC-BY-NC-SA-4.0).
 
 © 2022-PRESENT [Johann Schopplich](https://github.com/johannschopplich) & [Julia Frank](https://www.instagram.com/mum.mal.mini/)
