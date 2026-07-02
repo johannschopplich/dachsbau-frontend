@@ -1,7 +1,7 @@
 {
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@10.32.1",
+  "packageManager": "pnpm@11.9.0",
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
@@ -15,27 +15,21 @@
     "prepare": "nuxt prepare"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^7.7.3",
+    "@antfu/eslint-config": "^9.1.0",
     "@sindresorhus/slugify": "^3.0.0",
-    "@types/node": "^24.12.0",
-    "@unocss/eslint-config": "^66.6.7",
-    "@unocss/nuxt": "^66.6.7",
-    "@vueuse/nuxt": "^14.2.1",
+    "@types/node": "^26.1.0",
+    "@unocss/eslint-config": "^66.7.4",
+    "@unocss/nuxt": "^66.7.4",
+    "@vueuse/nuxt": "^14.3.0",
     "culori": "^4.0.2",
-    "eslint": "^10.0.3",
-    "kirby-types": "^1.4.7",
-    "nuxt": "^4.4.2",
+    "eslint": "^10.6.0",
+    "kirby-types": "^1.5.0",
+    "nuxt": "^4.4.8",
     "nuxt-kirby": "^3.0.3",
-    "prettier": "^3.8.1",
-    "typescript": "^5.9.3",
-    "unocss": "^66.6.7",
+    "prettier": "^3.9.4",
+    "typescript": "^6.0.3",
+    "unocss": "^66.7.4",
     "vue-router-better-scroller": "^0.0.0",
-    "vue-tsc": "^3.2.6"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "esbuild"
-    ]
+    "vue-tsc": "^3.3.6"
   }
 }
