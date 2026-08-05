@@ -9,8 +9,8 @@ defineProps<{
 
 const { data } = await useKql<KirbyBlogCardsResponse>(blogCardsQuery)
 
-// Random number between -1 and 1
-function random() {
+// Random rotation between -2 and 2 degrees.
+function randomRotation() {
   return Math.random() * 4 - 2
 }
 </script>
@@ -23,7 +23,7 @@ function random() {
       v-for="(item, index) in data?.result"
       :key="index"
       class="transform transition-transform duration-300 ease-out relative hover:rotate-0 hover:scale-102"
-      :style="`--un-rotate: ${random()}deg`"
+      :style="`--un-rotate: ${randomRotation()}deg`"
     >
       <div class="group p-4 pt-6 bg-secondary-100 handdrawn-mask">
         <AppImage
