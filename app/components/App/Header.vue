@@ -15,12 +15,11 @@ const navItems = computed(
   () => site.value.children?.filter((i) => i.isListed) ?? [],
 )
 
-// On Suspense resolved event
+// `page:finish` fires once the page's Suspense boundary has resolved.
 nuxtApp.hook('page:finish', () => {
   isRedirecting.value = false
 })
 
-// Close menu on Escape key
 useEventListener('keydown', (event: KeyboardEvent) => {
   if (event.key === 'Escape' && nav.value.isOpen) {
     nav.value.isOpen = false

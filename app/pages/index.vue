@@ -138,7 +138,7 @@ async function delayedNavigateTo(...args: Parameters<typeof navigateTo>) {
             @mouseleave="animationStack.set(index, false)"
           >
             <!-- Hijack the click event to prevent the animation from
-            being interrupted on mobile devices -->
+            being interrupted on mobile devices. -->
             <div
               class="cursor-pointer inset-0 absolute z-10"
               @click="delayedNavigateTo(`/${item.uri}`)"

@@ -32,7 +32,7 @@ useServerHead({
 })
 
 // Force scrolling inside container on mobile when clicking
-// on the (thin) frame border accidentally
+// on the (thin) frame border accidentally.
 onClickOutside(appContainer, () => {
   appContainer.value?.focus()
 })
