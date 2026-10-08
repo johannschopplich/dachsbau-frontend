@@ -4,6 +4,7 @@ allowBuilds:
 
 minimumReleaseAgeExclude:
   - '@types/node@26.1.0'
+  - kirby-types@1.8.1
 
 shamefullyHoist: true
 shellEmulator: true

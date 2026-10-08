@@ -17,13 +17,13 @@ export interface KirbySharedPageData {
 }
 
 export interface KirbyPageData extends KirbySharedPageData {
-  blocks: KirbyBlock<string>[]
+  blocks: KirbyBlock[]
   layouts: KirbyLayout[]
 }
 
 export type KirbyPageResponse = KirbyQueryResponse<KirbyPageData>
 
-export const sharedPageQuerySelects: KirbyQuerySchema['select'] = {
+export const sharedPageQuerySelects = {
   uri: true,
   intendedTemplate: true,
   title: true,
@@ -33,7 +33,7 @@ export const sharedPageQuerySelects: KirbyQuerySchema['select'] = {
     query: 'page.cover.or(site.cover).toFile?.resize(1200)',
     select: ['url'],
   },
-}
+} satisfies KirbyQuerySchema['select']
 
 export function getPageQuery(pageId: string): KirbyQuerySchema {
   return {
