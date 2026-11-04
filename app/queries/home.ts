@@ -24,7 +24,7 @@ export const homeQuery: KirbyQuerySchema = {
   query: 'page("home")',
   select: {
     intro: true,
-    contact: true,
+    contact: 'page.contact.resolvePermalinks',
     children: {
       query: 'page("angebote").children.listed',
       select: {
