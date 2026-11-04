@@ -15,23 +15,23 @@
     "prepare": "nuxt prepare"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^9.1.0",
-    "@sindresorhus/slugify": "^3.0.0",
-    "@types/node": "^26.1.0",
-    "@unocss/eslint-config": "^66.7.4",
-    "@unocss/nuxt": "^66.7.4",
-    "@vueuse/core": "^14.3.0",
-    "@vueuse/nuxt": "^14.3.0",
+    "@antfu/eslint-config": "^10.0.0",
+    "@sindresorhus/slugify": "^4.0.0",
+    "@types/node": "^26.6.6",
+    "@unocss/eslint-config": "^66.12.0",
+    "@unocss/nuxt": "^66.12.0",
+    "@vueuse/core": "^15.0.0",
+    "@vueuse/nuxt": "^15.0.0",
     "culori": "^4.0.2",
-    "eslint": "^10.6.0",
-    "kirby-types": "^1.8.1",
-    "nuxt": "^4.4.8",
-    "nuxt-kirby": "^3.0.3",
-    "prettier": "^3.9.4",
+    "eslint": "^10.14.0",
+    "kirby-types": "^1.8.2",
+    "nuxt": "^4.6.4",
+    "nuxt-kirby": "^4.1.0",
+    "prettier": "^3.9.10",
     "typescript": "^6.0.3",
     "ufo": "^1.6.4",
-    "unocss": "^66.7.4",
+    "unocss": "^66.12.0",
     "vue-router-better-scroller": "^0.0.0",
-    "vue-tsc": "^3.3.6"
+    "vue-tsc": "^3.3.14"
   }
 }
