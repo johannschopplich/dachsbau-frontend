@@ -2,18 +2,10 @@
 import type { KirbyBlock } from 'kirby-types'
 
 defineProps<{
-  block: KirbyBlock<
-    'text',
-    {
-      text: string
-      resolved: {
-        text: string
-      }
-    }
-  >
+  block: KirbyBlock<'text'>
 }>()
 </script>
 
 <template>
-  <div class="prose" v-html="block.content.resolved.text" />
+  <div class="prose" v-html="block.content.text" />
 </template>

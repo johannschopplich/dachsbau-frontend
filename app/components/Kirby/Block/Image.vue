@@ -4,18 +4,15 @@ import type { ResolvedKirbyImage } from '#shared/types/kirby'
 
 const props = defineProps<{
   block: KirbyBlock<
-    'resolved-image',
+    'image',
     {
       location: string
-      image: string[]
+      image: ResolvedKirbyImage[]
       src: string
       alt: string
       caption: string
       link: string
       size?: '' | 'normal' | 'outset' | 'pulled-left' | 'pulled-right'
-      resolved: {
-        image: ResolvedKirbyImage[]
-      }
     }
   >
 }>()
@@ -24,7 +21,7 @@ const figure = useTemplateRef('figure')
 const { width } = useElementSize(figure)
 
 const image = computed<Partial<ResolvedKirbyImage>>(
-  () => props.block.content.resolved.image?.[0] ?? {},
+  () => props.block.content.image?.[0] ?? {},
 )
 </script>
 

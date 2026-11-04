@@ -10,16 +10,8 @@ defineProps<{
         title: string
         website: string
         text: string
-        logo: string[]
+        logo: ResolvedKirbyImage | null
       }[]
-      resolved?: {
-        backers: {
-          title: string
-          website: string
-          text: string
-          logo: ResolvedKirbyImage | null
-        }[]
-      }
     }
   >
 }>()
@@ -28,7 +20,7 @@ defineProps<{
 <template>
   <div class="not-prose gap-2 grid grid-cols-2 md:grid-cols-3">
     <div
-      v-for="(item, index) in block.content.resolved?.backers"
+      v-for="(item, index) in block.content.backers"
       :key="index"
       class="p-3 bg-secondary-100 relative handdrawn-mask"
     >
