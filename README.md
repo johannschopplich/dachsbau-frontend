@@ -36,13 +36,7 @@ The site doubled as a prototype for a best-practice headless Kirby + Nuxt integr
    pnpm install
    ```
 
-3. Start the development server:
-
-   ```bash
-   pnpm run dev
-   ```
-
-Build with `pnpm run build`. Deployment targets Cloudflare Workers via [`wrangler.toml`](./wrangler.toml).
+[`AGENTS.md`](./AGENTS.md) lists the commands. Pushes to `main` deploy through [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml) to Cloudflare Workers.
 
 ## License
 
