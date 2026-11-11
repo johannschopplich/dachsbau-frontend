@@ -5,7 +5,6 @@ Nuxt frontend of dachsbau-tautenhain.de, the website of the Dachsbau Tautenhain;
 ## Commands
 
 ```bash
-pnpm dev
 pnpm build
 pnpm lint
 pnpm format:check
