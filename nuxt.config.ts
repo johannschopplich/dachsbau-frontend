@@ -1,5 +1,3 @@
-import { siteQuery } from './app/queries'
-
 export default defineNuxtConfig({
   compatibilityDate: '2026-01-01',
 
@@ -13,8 +11,5 @@ export default defineNuxtConfig({
 
   kirby: {
     auth: 'bearer',
-    prefetch: {
-      kirbySite: siteQuery,
-    },
   },
 })

@@ -1,7 +1,11 @@
 minimumReleaseAgeExcludePrune: true
+minimumReleaseAgeExclude:
+  - nuxt-kirby@5.0.0
 
 trustPolicy: no-downgrade
+
 shellEmulator: true
+
 allowBuilds:
   '@parcel/watcher': true
   esbuild: true

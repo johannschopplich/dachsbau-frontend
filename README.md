@@ -24,7 +24,7 @@ The site doubled as a prototype for a best-practice headless Kirby + Nuxt integr
 
 ## Development
 
-1. Create your `.env` from the example and point it at the backend (`KIRBY_BASE_URL`, `KIRBY_API_TOKEN`):
+1. Create your `.env` from the example and point it at the backend (`NUXT_KIRBY_URL`, `NUXT_KIRBY_TOKEN`):
 
    ```bash
    cp .env.example .env
