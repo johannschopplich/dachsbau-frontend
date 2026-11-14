@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
-  compatibilityDate: '2026-11-01',
-
   modules: ['@unocss/nuxt', '@vueuse/nuxt', 'nuxt-kirby'],
+
+  compatibilityDate: '2026-11-01',
 
   runtimeConfig: {
     public: {
