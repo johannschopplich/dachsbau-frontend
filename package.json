@@ -1,7 +1,7 @@
 {
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@12.16.1",
+  "packageManager": "pnpm@12.18.0",
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
@@ -16,21 +16,21 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^10.0.0",
-    "@sindresorhus/slugify": "^4.0.0",
+    "@sindresorhus/slugify": "^4.0.1",
     "@types/node": "^26.6.6",
-    "@unocss/eslint-config": "^66.12.0",
-    "@unocss/nuxt": "^66.12.0",
+    "@unocss/eslint-config": "^66.13.0",
+    "@unocss/nuxt": "^66.13.0",
     "@vueuse/core": "^15.0.0",
     "@vueuse/nuxt": "^15.0.0",
     "culori": "^4.0.2",
     "eslint": "^10.14.0",
     "kirby-types": "^1.8.2",
     "nuxt": "^4.6.4",
-    "nuxt-kirby": "^4.1.0",
-    "prettier": "^3.9.10",
+    "nuxt-kirby": "^4.2.0",
+    "prettier": "^3.10.1",
     "typescript": "^6.0.3",
     "ufo": "^1.6.4",
-    "unocss": "^66.12.0",
+    "unocss": "^66.13.0",
     "vue-router-better-scroller": "^0.0.0",
     "vue-tsc": "^3.3.14"
   }
