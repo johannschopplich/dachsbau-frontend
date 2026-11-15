@@ -1,13 +1,20 @@
 <script setup lang="ts">
 import type { KirbyBlock } from 'kirby-types'
-import type { KirbyBlogCardsResponse } from '~/queries'
-import { blogCardsQuery } from '~/queries'
+import type { ResolvedKirbyImage } from '#shared/types/kirby'
 
 defineProps<{
-  block: KirbyBlock<'section-blog'>
+  block: KirbyBlock<
+    'section-blog',
+    {
+      posts: {
+        title: string
+        url: string
+        description: string | null
+        cover: Pick<ResolvedKirbyImage, 'width' | 'height' | 'srcset'> | null
+      }[]
+    }
+  >
 }>()
-
-const { data } = await useKql<KirbyBlogCardsResponse>(blogCardsQuery)
 
 // Random rotation between -2 and 2 degrees.
 function randomRotation() {
@@ -20,21 +27,21 @@ function randomRotation() {
     class="not-prose gap-6 grid lg:mx-[-128px] md:grid-cols-3 sm:grid-cols-2"
   >
     <div
-      v-for="(item, index) in data?.result"
+      v-for="(post, index) in block.content.posts"
       :key="index"
       class="transform transition-transform duration-300 ease-out relative hover:rotate-0 hover:scale-102"
       :style="`--un-rotate: ${randomRotation()}deg`"
     >
       <div class="group p-4 pt-6 bg-secondary-100 handdrawn-mask">
         <AppImage
-          v-if="item.cover"
+          v-if="post.cover"
           loading="lazy"
           class="w-full aspect-[3/2] object-cover handdrawn-mask"
-          :srcset="item.cover.srcset"
-          :width="item.cover.width"
-          :height="item.cover.height"
+          :srcset="post.cover.srcset"
+          :width="post.cover.width"
+          :height="post.cover.height"
           sizes="(min-width: 768px) 16rem, (min-width: 640px) 50vw, 100vw"
-          :alt="`Titelbild für ${item.title}`"
+          :alt="`Titelbild für ${post.title}`"
         />
         <div
           v-else
@@ -43,17 +50,17 @@ function randomRotation() {
 
         <div class="mt-4 px-2">
           <NuxtLink
-            :to="`/${item.uri}`"
+            :to="post.url"
             class="text-2xl text-primary-700 leading-none font-heading-condensed group-hover:text-underline"
           >
             <span class="inset-0 absolute" />
-            {{ item.title }}
+            {{ post.title }}
           </NuxtLink>
 
           <p
             class="text-size-base text-stone-600 leading-tight font-serif mt-2"
           >
-            {{ item.description }}
+            {{ post.description }}
           </p>
         </div>
 
