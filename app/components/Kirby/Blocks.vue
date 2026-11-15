@@ -26,13 +26,10 @@ const blockComponents: Record<string, Component> = {
   'section-backers': LazyKirbyBlockSectionBackers,
   'section-blog': LazyKirbyBlockSectionBlog,
 }
-
-const content = useTemplateRef('content')
-useInternalLinks(content)
 </script>
 
 <template>
-  <div ref="content">
+  <div>
     <template v-for="(block, index) in blocks" :key="index">
       <component :is="blockComponents[block.type]" :block="block" />
     </template>

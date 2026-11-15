@@ -36,6 +36,9 @@ useServerHead({
 onClickOutside(appContainer, () => {
   appContainer.value?.focus()
 })
+
+const main = useTemplateRef('main')
+useInternalLinks(main)
 </script>
 
 <template>
@@ -57,7 +60,7 @@ onClickOutside(appContainer, () => {
     <div class="h-full relative">
       <AppHeader />
 
-      <main id="main-content" tabindex="-1">
+      <main ref="main" id="main-content" tabindex="-1">
         <NuxtPage />
       </main>
 
