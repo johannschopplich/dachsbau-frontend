@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { toRefs } from '@vueuse/core'
 
+// The page's query carries the site data on the first server render.
+await hasPage()
+
 const nuxtApp = useNuxtApp()
 const route = useRoute()
 const site = useSite()

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+// The page's query carries the site data on the first server render.
+await hasPage()
+
 const site = useSite()
 </script>
 

@@ -1,4 +1,4 @@
-import type { KirbyQueryResponse, KirbyQuerySchema } from 'kirby-types'
+import type { KirbyQuerySchema } from 'kirby-types'
 import type { KirbySharedPageData } from './page'
 import { sharedPageQuerySelects } from './page'
 
@@ -17,8 +17,6 @@ export interface KirbyHomeData extends KirbySharedPageData {
     srcset: string
   }
 }
-
-export type KirbyHomeResponse = KirbyQueryResponse<KirbyHomeData>
 
 export const homeQuery: KirbyQuerySchema = {
   query: 'page("home")',

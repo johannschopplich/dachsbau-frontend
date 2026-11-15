@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { KirbyPageResponse } from '~/queries'
+import type { KirbyPageData } from '~/queries'
 import { getPageQuery } from '~/queries'
 
 // Use current slug or fall back to the homepage.
@@ -7,7 +7,7 @@ const { slug } = useRoute().params
 const pageUri =
   (Array.isArray(slug) ? slug.filter(Boolean).join('/') : slug) || 'home'
 
-const { data: pageData } = await useKql<KirbyPageResponse>(
+const { data: pageData } = await useKqlPage<KirbyPageData>(
   getPageQuery(pageUri),
 )
 
@@ -15,8 +15,9 @@ let data = pageData.value
 
 // If page content is empty, load the error page.
 if (!data?.result) {
-  const { data: errorPageData } = await useKql<KirbyPageResponse>(
+  const { data: errorPageData } = await useKqlPage<KirbyPageData>(
     getPageQuery('error'),
+    { key: 'page:error' },
   )
   data = errorPageData.value
   const event = useRequestEvent()
